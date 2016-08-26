@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Line style: dripline/slope line/flowstone</_name>
+	<id>speleo.make.dripline</id>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<dependency type="executable" location="extensions">speleo_line.py</dependency>
+        <param name="fontsize" type="float" min="1.0" max="1000.0" _gui-text="Font size, pt">6</param>
+        <param name="fontstroke" type="float" min="0.0" max="5.0" _gui-text="Symbol thickness, mm" precision="2">0.28</param>
+        <param name="char" type="enum" _gui-text="Line type">
+            <item value="4">Type 1 (dripline 1)</item>
+            <item value="5">Type 2 (dripline 2)</item>
+            <item value="6">Type 3 (sloping step)</item>
+            <item value="7">Type 4 (flowstone)</item>
+	</param>
+	<param name="linetype" type="int" gui-hidden="true">2</param>
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+			<submenu _name="Speleo"/>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">speleo_line.py</command>
+	</script>
+</inkscape-extension>

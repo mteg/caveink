@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Render grid</_name>
+	<id>speleo.render.grid</id>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<dependency type="executable" location="extensions">speleo_grid.py</dependency>
+        <param name="spacing" type="float" min="1.0" max="1000.0" _gui-text="Grid spacing, m">50</param>
+        <param name="scale" type="enum" _gui-text="Scale">
+            <item value="25">1:25</item>
+            <item value="50">1:50</item>
+            <item value="100">1:100</item>
+            <item value="200">1:200</item>
+            <item value="250">1:250</item>
+            <item value="500">1:500</item>
+            <item value="1000">1:1000</item>
+            <item value="2000">1:2000</item>
+            <item value="2500">1:2500</item>
+            <item value="5000">1:5000</item>
+            <item value="10000">1:10000</item>
+            <item value="20000">1:20000</item>
+            <item value="25000">1:25000</item>
+        </param>
+        <param name="type" type="enum" _gui-text="Grid type">
+            <item value="cross">Crosses</item>
+            <item value="line">Lines</item>
+	</param>
+	<param name="draw-coords" type="enum" _gui-text="Coordinates">
+            <item value="none">None</item>
+            <item value="plain">Plain</item>
+            <item value="rotate">Rotate</item>
+	</param>
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+			<submenu _name="Speleo"/>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">speleo_grid.py</command>
+	</script>
+</inkscape-extension>
