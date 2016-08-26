@@ -9,16 +9,19 @@ import inkex
 import simpletransform
 import speleo_grid
 import simplestyle
+import logging
+
+log = logging.debug
 
 class SpeleoWindow(speleo_grid.SpeleoEffect):
 	def __init__(self):
 		inkex.Effect.__init__(self)
-		self.OptionParser.add_option("--depth",
-				action="store", type="int", 
-				dest="depth", default=1)
-		self.OptionParser.add_option("--mode",
+		self.OptionParser.add_option("--debug",
 				action="store", type="string", 
-				dest="mode", default="relayer")
+				dest="debug", default="")
+		self.OptionParser.add_option("--opacity",
+				action="store", type="string", 
+				dest="opacity", default="clone")
 		self.OptionParser.add_option("--parent",
 				action="store", type="string", 
 				dest="parent", default="root")
@@ -44,31 +47,51 @@ class SpeleoWindow(speleo_grid.SpeleoEffect):
 				pass
 			self.unlayer(child)
 	
-	def hasDisplayNone(self, node):
+	def styleIfPresent(self, node, key, default = ''):
 	        style = node.get('style')
 	        if style:
 	        	style = simplestyle.parseStyle(style)
-                        if style.has_key('display'):
-                                if style['display'] == 'none':
-                                        print "Node " + node.get("id") + " has display = none, really!"
-                                        return True
+                        if style.has_key(key):
+                                return style[key]
                 
-                print "Returning False for " + node.get("id")			
-	        return False
-	        				
-                                        	
+                return ""
+
 	
+	def hasDisplayNone(self, node):
+	        display = self.styleIfPresent(node, 'display')
+                if self.styleIfPresent(node, 'display') == 'none':
+                        log("Node " + node.get("id") + " has display = none, really!")
+                        return True
+                
+                log("Returning False for " + node.get("id"))
+	        return False
+
+        def getOpacity(self, node):
+                opacity = self.styleIfPresent(node, 'opacity')
+                if opacity == "":
+                        return "1"
+                return opacity
+
+        def changeStyleKey(self, node, key, value):
+	        style = node.get('style')
+	        if style:
+	        	style = simplestyle.parseStyle(style)
+                else:
+                        style = {}
+                style[key] = value
+                node.set('style', simplestyle.formatStyle(style))
+
 	# Returns False if no layers found within the hierarchy
 	#         True if any child object or the object itself is a layer
 	def addVisibleLeafLayers(self, node, keepAdding):
-	        print "Entering addVisibleLeafLayers for " + node.get("id")
+	        log("Entering addVisibleLeafLayers for " + node.get("id"))
 		if node.tag != inkex.addNS('g','svg') and node.tag != inkex.addNS('svg','svg'):
-		        print "Node " + node.get("id") + " is not a group, skipping"
+		        log("Node " + node.get("id") + " is not a group, skipping")
 			return False
 
 		# If it's not displayed, then just go through the hierarchy
 		if self.hasDisplayNone(node):
-		        print "Node " + node.get("id") + " is not actually displayed, stopping any adds"
+		        log("Node " + node.get("id") + " is not actually displayed, stopping any adds")
 			keepAdding = False
 		
 		# Process all child groups
@@ -85,15 +108,28 @@ class SpeleoWindow(speleo_grid.SpeleoEffect):
 				
 				clone = inkex.etree.SubElement(self.win_object, 'use')
 				clone.set(inkex.addNS('href', 'xlink'), '#' + str(node.get("id")))
-                                print "Node " + node.get("id") + " IS CLONED"
+				# Set opacity 
+				if self.options.opacity == "copy" or self.options.opacity == "copy-reset":
+				        clone.set("style", "opacity: " + self.getOpacity(node))
+                                if self.options.opacity == "copy-reset":
+                                        self.changeStyleKey(node, "opacity", 1)
+                                        
+                                        
+				
+				
+                                log("Node " + node.get("id") + " IS CLONED")
                         else:
-                                print "Node " + node.get("id") + " does not like to be cloned"
+                                log("Node " + node.get("id") + " does not like to be cloned")
 
 		
 		return layersInChildren or node.get(inkex.addNS('groupmode', 'inkscape')) == 'layer'
 		
 	
 	def effect(self):
+	        # Configure logging
+	        if len(self.options.debug):
+	                logging.basicConfig(level = logging.DEBUG)
+	        
 		# Get root node
                 if self.options.parent == "root":
                         root = self.get_current_layer()
@@ -112,20 +148,21 @@ class SpeleoWindow(speleo_grid.SpeleoEffect):
         	
         	# Clip if exactly one object was selected
         	selected = self.selected.iteritems()
-        	if len(self.selected) == 1:
-        	        # Move this object into a clipPath
+        	if len(self.selected) > 0:
+        	        # Move this object(s) into a clipPath
         	        defs = self.xpathSingle('/svg:svg//svg:defs')
         	        if defs == None:
         	                defs = self.document.getroot()
+
+                        clip_path = inkex.etree.SubElement(defs, inkex.addNS("clipPath", "svg"), {
+                                "clipPathUnits": "userSpaceOnUse",
+                                "id": self.uniqueId("clipPath")
+                        });
         	                
-                        # This executes just once!
         	        for id, obj in selected:
-        	                clip_path = inkex.etree.SubElement(defs, inkex.addNS("clipPath", "svg"), {
-        	                        "clipPathUnits": "userSpaceOnUse",
-        	                        "id": self.uniqueId("clipPath")
-                                });
         	                clip_path.append(obj)
-        	                self.win_object.set("clip-path", "url(#" + clip_path.get("id") + ")")
+
+                        self.win_object.set("clip-path", "url(#" + clip_path.get("id") + ")")
         	
 
 if __name__ == '__main__':
