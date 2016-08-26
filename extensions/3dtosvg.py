@@ -519,6 +519,16 @@ def print_points():
 			print '  inkscape:label="%s" />' % (label)
 		prev = xy
 
+def print_points_in_groups():
+	prev = [ -1, -1 ]
+	for label,xy in labels.iteritems():
+		if xy == prev:
+			continue
+		print '<g transform="translate(%f,%f)"><use xlink:href="#point-station" />'  % (xy[0] - min_x, xy[1] - min_y)
+		print '<text x="10" y="0">%s</text></g>' % label
+		prev = xy
+
+
 def print_stationnames():
 	for label,xy in labels.iteritems():
 		label = label.rsplit('.', 1)[-1]
@@ -590,6 +600,10 @@ print_hierarchy('', hierarchy)
 
 if args['markers'] == 3:
 	print_points()
+if args['markers'] == 4:
+	print "<g style='font-size: 30px'>"
+	print_points_in_groups()
+	print "</g>"
 if args['stationnames']:
 	print_stationnames()
 

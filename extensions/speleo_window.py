@@ -24,7 +24,7 @@ class SpeleoWindow(speleo_grid.SpeleoEffect):
 				dest="opacity", default="clone")
 		self.OptionParser.add_option("--parent",
 				action="store", type="string", 
-				dest="parent", default="root")
+				dest="parent", default="selected-layer")
 	
 
 	def relayer(self, node, depth):
@@ -51,7 +51,7 @@ class SpeleoWindow(speleo_grid.SpeleoEffect):
 	        style = node.get('style')
 	        if style:
 	        	style = simplestyle.parseStyle(style)
-                        if style.has_key(key):
+                        if key in style:
                                 return style[key]
                 
                 return ""
@@ -132,9 +132,9 @@ class SpeleoWindow(speleo_grid.SpeleoEffect):
 	        
 		# Get root node
                 if self.options.parent == "root":
-                        root = self.get_current_layer()
-                else:
                         root = self.document.getroot()
+                else:
+                        root = self.get_current_layer()
 		
 		# Create a group object to contain our clones
 		self.win_object = inkex.etree.Element('g')
