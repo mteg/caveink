@@ -73,7 +73,13 @@ class SpeleoLine(speleo_grid.SpeleoEffect):
 
 			tp.append(tspan)
 			tx.append(tp)
-			node.getparent().append(tx)
+			
+			grp = inkex.etree.SubElement(node.getparent(), "g")
+			tx.set(inkex.addNS('insensitive', 'sodipodi'), 'true')
+			grp.append(node)
+			grp.append(tx)
+			
+#			node.getparent().append(tx)
 
 if __name__ == '__main__':
 	e = SpeleoLine()

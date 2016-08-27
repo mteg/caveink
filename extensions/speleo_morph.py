@@ -59,12 +59,16 @@ class StationStore:
                 
                 return closestCandidate
        
-        def findClosest(self, x0, y0):
-                dist, index = self.kd.query((x0, y0));
-                return list(self.dict.keys())[index]
-         
+        def findClosest(self, x0, y0, n = 1):
+                dist, index = self.kd.query((x0, y0), n);
+                if n == 1:
+                        return [(self.stationList[index], dist)]
+                else:
+                        return [(self.stationList[idx], dist[n]) for n, idx in enumerate(index)]
+                        
         def buildKD(self):
                 self.kd = KDTree(list(self.dict.values()))
+                self.stationList = self.dict.keys()
 
         def __init__(self, layer):
                 self.dict = {}
@@ -85,6 +89,9 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
 		self.OptionParser.add_option("--parent",
 				action="store", type="string", 
 				dest="parent", default="root")
+		self.OptionParser.add_option("--neighbors",
+				action="store", type="int", 
+				dest="neighbors", default=1)
 	
 
 	def styleIfPresent(self, node, key, default = ''):
@@ -175,18 +182,20 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                 gx = x * t[0][0] + y * t[0][1] + t[0][2]
                 gy = x * t[1][0] + y * t[1][1] + t[1][2]
                 
-                st = src.findClosest(gx, gy)
-                if st not in dst.dict: return (x, y)
-                
-                (sx, sy) = src.dict[st]
-                (dx, dy) = dst.dict[st]
-                (ox, oy) = (dx - sx, dy - sy)
+                ox = oy = n = 0
+                for st, dist in src.findClosest(gx, gy, self.options.neighbors):
+                        if st not in dst.dict: pass
+                        (sx, sy) = src.dict[st]
+                        (dx, dy) = dst.dict[st]
+                        ox += dx - sx
+                        oy += dy - sy
+                        n = n + 1
                 
                 if abs(ox) < 1e-5 and abs(oy) < 1e-5: return (x, y)
                 
                 # Apply offset
-                gx += ox
-                gy += oy
+                gx += ox / n
+                gy += oy / n
                 
                 # Invert our transform
                 it = self.invert_transform(t)
@@ -235,6 +244,7 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
 	        # Configure logging
 	        if len(self.options.debug):
 	                logging.basicConfig(level = logging.DEBUG)
+	        
 	        
 		# Get root node
                 if self.options.parent == "root":
