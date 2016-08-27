@@ -89,9 +89,9 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
 		self.OptionParser.add_option("--parent",
 				action="store", type="string", 
 				dest="parent", default="root")
-		self.OptionParser.add_option("--neighbors",
-				action="store", type="int", 
-				dest="neighbors", default=1)
+		self.OptionParser.add_option("--mode",
+				action="store", type="string", 
+				dest="mode", default="followNearestTwo")
 	
 
 	def styleIfPresent(self, node, key, default = ''):
@@ -176,35 +176,95 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                         # Unitary transform
                         return [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
                 return simpletransform.composeTransform(self.getTotalTransform(node.getparent()), self.get_transform(node))
-
+        
         def getTransformed(self, x, y, src, dst, t):
                 # Compute global coordinates
                 gx = x * t[0][0] + y * t[0][1] + t[0][2]
                 gy = x * t[1][0] + y * t[1][1] + t[1][2]
                 
-                ox = oy = n = 0
-                for st, dist in src.findClosest(gx, gy, self.options.neighbors):
-                        if st not in dst.dict: pass
-                        (sx, sy) = src.dict[st]
-                        (dx, dy) = dst.dict[st]
-                        ox += dx - sx
-                        oy += dy - sy
-                        n = n + 1
+                (nx, ny) = self.transformCoordinates(gx, gy, src, dst)
                 
-                if abs(ox) < 1e-5 and abs(oy) < 1e-5: return (x, y)
-                
-                # Apply offset
-                gx += ox / n
-                gy += oy / n
-                
+                if nx == gx and ny == gy: return (x, y)
+
                 # Invert our transform
                 it = self.invert_transform(t)
+
+                rx = nx * it[0][0] + ny * it[0][1] + it[0][2]
+                ry = nx * it[1][0] + ny * it[1][1] + it[1][2]
+                return (rx, ry)
+
+        def transformCoordinates_PlainShift(self, gx, gy, src, dst):
+                if self.goffs <> None:
+                        return (gx + self.goffs[0], gy + self.goffs[1])
                 
-                # Compute new coordinates
-                nx = gx * it[0][0] + gy * it[0][1] + it[0][2]
-                ny = gx * it[1][0] + gy * it[1][1] + it[1][2]
+                (nx, ny) = self.transformCoordinates_KeepToClosest(gx, gy, src, dst)
+                if nx != gx or ny != gy:
+                        self.goffs = [nx - gx, ny - gy]
                 
                 return (nx, ny)
+
+        def transformCoordinates_KeepToClosest(self, gx, gy, src, dst):
+                ox = oy = n = 0
+                neigh = src.findClosest(gx, gy, 1)
+                if len(neigh) <> 1: return (gx, gy)
+                
+                (st, dist) = neigh[0]
+                if not st in dst.dict: return (gx, gy)
+                
+                (sx, sy) = src.dict[st]
+                (dx, dy) = dst.dict[st]
+                ox = dx - sx
+                oy = dy - sy
+#                       print "%.2f, %.2f is-close to %s, dist = %.2f" % (gx, gy, st, dist)
+                
+                if abs(ox) < 1e-5 and abs(oy) < 1e-5: return (gx, gy)
+                
+                # Apply offset
+                return (gx + ox, gy + oy)
+
+        def transformCoordinates_NearestTwo(self, gx, gy, src, dst):
+                neigh = src.findClosest(gx, gy, 2)
+                
+                # Need two neighbors for this trick
+                if len(neigh) <> 2: return (gx, gy)
+                
+                # Get close and far neighbor
+                (cn, cdist) = neigh[0]
+                (fn, fdist) = neigh[1]
+                
+                # If any of them is not present in dst, do not move
+                if (cn not in dst.dict) or (fn not in dst.dict): return (gx, gy)
+                
+                # Get neighbor coordinates
+                (scnx, scny) = src.dict[cn]
+                (sfnx, sfny) = src.dict[fn]
+                (dcnx, dcny) = dst.dict[cn]
+                (dfnx, dfny) = dst.dict[fn]
+                
+                # Compute neighbor distances in source and destination
+                snd = math.sqrt((scnx - sfnx) ** 2 + (scny - sfny) ** 2)
+                dnd = math.sqrt((dcnx - dfnx) ** 2 + (dfny - dcny) ** 2)
+                
+                # If neighbors are in the same place, do not move
+                if snd < 1e-5 or dnd < 1e-5: return (gx, gy)
+                
+                # Get bearing difference between the survey leg on both drawings
+                rot_by = math.atan2(dfny - dcny, dfnx - dcnx) - math.atan2(sfny - scny, sfnx - scnx)
+                
+                # Get vector to point from closer neighbor @ source
+                ox = gx - scnx
+                oy = gy - scny
+                
+                # Scale this vector
+                ratio = dnd / snd
+                ox *= ratio
+                oy *= ratio
+                
+                # Rotate this vector by the bearing difference
+                (ox, oy) = (ox * math.cos(rot_by) - oy * math.sin(rot_by), ox * math.sin(rot_by) + oy * math.cos(rot_by))
+                
+                # Compute new point position
+                return (ox + dcnx, oy + dcny)
                 
         def rePath(self, path, src, dst, tr):
                 for m, args in path:
@@ -245,6 +305,14 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
 	        if len(self.options.debug):
 	                logging.basicConfig(level = logging.DEBUG)
 	        
+	        if self.options.mode == "followNearestTwo":
+        	        self.transformCoordinates = self.transformCoordinates_NearestTwo
+                elif self.options.mode == "keepToClosest":
+        	        self.transformCoordinates = self.transformCoordinates_KeepToClosest
+                else:
+                        self.goffs = None
+        	        self.transformCoordinates = self.transformCoordinates_PlainShift
+                        
 	        
 		# Get root node
                 if self.options.parent == "root":
