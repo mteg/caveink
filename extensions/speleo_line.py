@@ -39,6 +39,9 @@ class SpeleoLine(speleo_grid.SpeleoEffect):
 		
 		for id, node in self.selected.iteritems():
 			t = self.options.linetype
+			
+			if node.tag != inkex.addNS("path", "svg"):
+				continue
 
 			tr = self.get_transform(node.getparent())
 			parent_scale = (tr[0][0] + tr[1][1]) / 2.0
