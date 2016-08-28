@@ -12,6 +12,7 @@ import simplestyle
 import logging
 import simplepath
 import sys
+import copy
 from kdtree import KDTree
 
 log = logging.debug
@@ -33,20 +34,35 @@ class StationStore:
                 nx = a[0][0] * x + a[0][1] * y + a[0][2]
                 ny = a[1][0] * x + a[1][1] * y + a[1][2]
                 
+                if name[:3] == "***": 
+                        # We have a prefix!
+                        self.prefix = name[3:]
+                        return 1
+                
                 log("Station %s has coordinates %.2f, %.2f" % (name, nx, ny))
                 self.dict[name] = (nx, ny)
+                
+                return 1
 
                                 
-        def findStations(self, children):
-                # See if this can be a station
+        def findStations(self, node, recursion = -1):
+                children = node.getchildren()
+                
+                # See if this can be a station?
                 if len(children) == 2:
                         if children[0].tag == inkex.addNS('text','svg') and children[1].tag == inkex.addNS('use','svg'):
                                 return self.gotStation(children[1], children[0])
                         elif children[1].tag == inkex.addNS('text','svg') and children[0].tag == inkex.addNS('use','svg'):
                                 return self.gotStation(children[0], children[1])
 
-                for obj in children:
-                        self.findStations(obj.getchildren())
+                if recursion > 0 or recursion < 0:
+                        # If not, go and recurse
+                        for obj in children:
+                                if self.findStations(obj, recursion - 1) == 1:
+                                        # We get the topmost layer with stations this way
+                                        self.stationLayer = node
+                        
+                return 0
 
         def findClosestA(self, x0, y0):
                 closestCandidate = None
@@ -70,12 +86,18 @@ class StationStore:
                 self.kd = KDTree(list(self.dict.values()))
                 self.stationList = self.dict.keys()
 
-        def __init__(self, layer):
+        def __init__(self, layer, recursive = True):
                 self.dict = {}
-                self.findStations(layer.getchildren())
+                self.stationLayer = None
+                self.prefix = None
+                self.findStations(layer, -1 if recursive else 1)
                 
-        
-
+                if self.prefix <> None:
+                        # Need to rename everything, sorry
+                        old_dict = self.dict
+                        self.dict = {}
+                        for k, v in old_dict.iteritems():
+                                self.dict[self.prefix + k] = v
 
 class SpeleoMorph(speleo_grid.SpeleoEffect):
 	def __init__(self):
@@ -83,9 +105,9 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
 		self.OptionParser.add_option("--debug",
 				action="store", type="string", 
 				dest="debug", default="")
-		self.OptionParser.add_option("--opacity",
-				action="store", type="string", 
-				dest="opacity", default="clone")
+		self.OptionParser.add_option("--replace",
+				action="store", type="int", 
+				dest="replace", default=0)
 		self.OptionParser.add_option("--parent",
 				action="store", type="string", 
 				dest="parent", default="root")
@@ -275,7 +297,9 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                                         n = n + 2
 
 
-        def rectify(self, src, dst, node):
+        def rectify(self, src, dst, node, centerline):
+                if self.styleIfPresent(node, "display") == "none": return
+                if node == centerline: return
                 if node.tag == inkex.addNS('path','svg'):
                         path = simplepath.parsePath(node.get("d"))
                         tr = simpletransform.composeParents(node, [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
@@ -295,10 +319,29 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                         (x, y) = self.getTransformed(float(node.get("cx")), float(node.get("cy")), src, dst, tr)
                         node.set("cx", str(x))
                         node.set("cy", str(y))
-                        
-        
+                                
                 for child in node.getchildren():
-                        self.rectify(src, dst, child)
+                        self.rectify(src, dst, child, centerline)
+	
+	def findCenterlineLayers(self, parent, list):
+	        childLayerCount = 0
+	        for node in parent.getchildren():
+	                # See if this is a layer?
+                        if node.get(inkex.addNS('groupmode', 'inkscape')) <> 'layer': continue
+                        if self.styleIfPresent(node, "display") == "none": continue
+
+                        if node == self.dst: continue
+                        childLayerCount += 1
+                        
+                        # See if it has any sub-layers?
+                        if self.findCenterlineLayers(node, list) == 0:
+                                # It's a leaf layer! See if it has any stations ...
+                                ss = StationStore(node, False)
+                                if len(ss.dict) > 0:
+                                        list.append((node, ss))
+                
+                return childLayerCount
+                
 	
 	def effect(self):
 	        # Configure logging
@@ -313,31 +356,27 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                         self.goffs = None
         	        self.transformCoordinates = self.transformCoordinates_PlainShift
                         
-	        
-		# Get root node
-                if self.options.parent == "root":
-                        root = self.document.getroot()
-                else:
-                        root = self.get_current_layer()
+                dst = self.get_current_layer()
+                if dst == None: return
+                self.dst = dst
 
-
-                src = self.xpathSingle('//svg:g[@id="%s"]' % "src")
-                srcStations = StationStore(src)
-                srcStations.buildKD()
-
-                dst = self.xpathSingle('//svg:g[@id="%s"]' % "dst")
                 dstStations = StationStore(dst)
+                # Now, go through all layers that have stations in them
+                centerLines = []
+                self.findCenterlineLayers(self.document.getroot(), centerLines)
                 
-#                print srcStations.dict
-#                print dstStations.dict
+                for (src, srcStations) in centerLines:
+                        srcStations.buildKD()
+                        # todo Huge trouble possible if two centerlines share a parent
+                        self.rectify(srcStations, dstStations, src.getparent(), src)
+                        
+                        if self.options.replace == 1:
+                                # Duplicate new centerline into old layer
+                                for ch in src:
+                                        src.remove(ch)
+                                for ch in dst:
+                                        src.append(copy.deepcopy(ch))
 
-                drawing = self.xpathSingle('//svg:g[@id="%s"]' % "content")
-                
-                self.rectify(srcStations, dstStations, drawing)
-                
-                
-                
-                
                 
 #        	selected = self.selected.iteritems()
 #        	if len(self.selected) > 0:
