@@ -36,6 +36,7 @@ class SpeleoPack(speleo_grid.SpeleoEffect):
                 return ""
 	
 	def packLayers(self, node, move = False):
+	        if node == self.box: return
 	        if node.get(inkex.addNS('groupmode', 'inkscape')) == 'layer':
                         if self.styleIfPresent(node, "display") == "none":
                                 node.getparent().remove(node)

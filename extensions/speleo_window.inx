@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Make a window</_name>
+	<id>speleo.layers.</id>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<dependency type="executable" location="extensions">speleo_window.py</dependency>
+
+        <param name="parent" type="enum" _gui-text="Clone">
+          <item value="root">All layers</item>
+          <item value="selected-layer">Current layer</item>
+	</param>
+
+        <param name="opacity" type="enum" _gui-text="Layer opacity">
+          <item value="ignore">Clone and keep linked</item>
+          <item value="copy">Clone and unlink</item>
+          <item value="copy-reset">Reset to 100%</item>
+	</param>
+
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+                      <submenu _name="Speleo">
+				<submenu _name="Layer tricks" />
+		      </submenu>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">speleo_window.py</command>
+	</script>
+</inkscape-extension>

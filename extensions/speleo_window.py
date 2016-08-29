@@ -150,6 +150,7 @@ class SpeleoWindow(speleo_grid.SpeleoEffect):
         	selected = self.selected.iteritems()
         	if len(self.selected) > 0:
         	        # Move this object(s) into a clipPath
+        	        # Stupid warnings when no defs!
         	        defs = self.xpathSingle('/svg:svg//svg:defs')
         	        if defs == None:
         	                defs = self.document.getroot()

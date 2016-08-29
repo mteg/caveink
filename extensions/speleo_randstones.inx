@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-	<_name>Randomize debris/pebbles</_name>
+	<_name>Randomize rocks</_name>
 	<id>speleo.randomize.stones</id>
 	<dependency type="executable" location="extensions">inkex.py</dependency>
 	<dependency type="executable" location="extensions">speleo_randstones.py</dependency>
 	<effect>
 		<object-type>all</object-type>
 		<effects-menu>
-			<submenu _name="Speleo"/>
+                      <submenu _name="Speleo">
+                        <submenu _name="Symbols"/>
+                      </submenu>
 		</effects-menu>
 	</effect>
 	<script>

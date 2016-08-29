@@ -14,7 +14,9 @@
 	<effect>
 		<object-type>path</object-type>
 		<effects-menu>
-			<submenu _name="Speleo"/>
+                      <submenu _name="Speleo">
+                        <submenu _name="Legacy"/>
+                      </submenu>
 		</effects-menu>
 	</effect>
 	<script>

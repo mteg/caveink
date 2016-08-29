@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-	<_name>Optimize SpeleoUIS symbol references</_name>
-	<id>speleo.optimize</id>
+	<_name>Merge layers by name</_name>
+	<id>speleo.layers.merge</id>
 	<dependency type="executable" location="extensions">inkex.py</dependency>
-	<dependency type="executable" location="extensions">speleo_optimize.py</dependency>
+	<dependency type="executable" location="extensions">speleo_merge.py</dependency>
+
 	<effect>
-		<object-type>all</object-type>
+		<object-type>path</object-type>
 		<effects-menu>
                       <submenu _name="Speleo">
-                        <submenu _name="Legacy"/>
+                        <submenu _name="Layer tricks"/>
                       </submenu>
 		</effects-menu>
 	</effect>
 	<script>
-		<command reldir="extensions" interpreter="python">speleo_optimize.py</command>
+		<command reldir="extensions" interpreter="python">speleo_merge.py</command>
 	</script>
 </inkscape-extension>

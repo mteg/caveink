@@ -40,6 +40,7 @@ continuous control over the scale (bearing likewise).
   <param name="bearing" type="int" min="0" max="359" _gui-text="Bearing (degrees)">0</param>
   <param name="markers" type="enum" _gui-text="Station Symbols" gui-description="Show symbols on stations. Markers are fixed to the centerline path, whereas clones are symbols which are independant from the centerline path and are annotated with station name (for therion export).">
     <item value="0">None</item>
+    <item value="4">Stations w/names</item>
     <item value="1">Circles (as Markers)</item>
     <item value="2">Triangles (as Markers)</item>
     <item value="3">Triangles (as Clones)</item>

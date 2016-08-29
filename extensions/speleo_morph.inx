@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Morph to new centerline</_name>
+	<id>speleo.misc.morph</id>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<dependency type="executable" location="extensions">speleo_morph.py</dependency>
+
+        <param name="mode" type="enum" _gui-text="Morphing method">
+          <item value="followNearestTwo">Nearest two stations</item>
+          <item value="keepToClosest">Nearest station</item>
+          <item value="plainShift">Quick shift</item>
+	</param>
+
+	<param name="replace" type="boolean" _gui-text="Replace original stations">1</param>
+
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+                      <submenu _name="Speleo" />
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">speleo_morph.py</command>
+	</script>
+</inkscape-extension>

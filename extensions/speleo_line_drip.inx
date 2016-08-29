@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-	<_name>Line style: dripline/slope line/flowstone</_name>
+	<_name>Path to dripline</_name>
 	<id>speleo.make.dripline</id>
 	<dependency type="executable" location="extensions">inkex.py</dependency>
 	<dependency type="executable" location="extensions">speleo_line.py</dependency>
@@ -16,7 +16,9 @@
 	<effect>
 		<object-type>path</object-type>
 		<effects-menu>
-			<submenu _name="Speleo"/>
+                    <submenu _name="Speleo">
+                      <submenu _name="Symbols"/>
+                    </submenu>
 		</effects-menu>
 	</effect>
 	<script>

@@ -106,8 +106,8 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
 				action="store", type="string", 
 				dest="debug", default="")
 		self.OptionParser.add_option("--replace",
-				action="store", type="int", 
-				dest="replace", default=0)
+				action="store", type="inkbool", 
+				dest="replace", default=False)
 		self.OptionParser.add_option("--parent",
 				action="store", type="string", 
 				dest="parent", default="root")
@@ -296,18 +296,28 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                                         (args[n], args[n+1]) = self.getTransformed(args[n], args[n+1], src, dst, tr)
                                         n = n + 2
 
+        def removeAttribIfExists(self, node, attrib):
+                if attrib in node.attrib:
+                        node.attrib.pop(attrib)
 
         def rectify(self, src, dst, node, centerline):
                 if self.styleIfPresent(node, "display") == "none": return
                 if node == centerline: return
+                if node == self.dst: return
+                if node.tag == inkex.addNS('defs', 'svg'): return
+                
                 if node.tag == inkex.addNS('path','svg'):
                         path = simplepath.parsePath(node.get("d"))
                         tr = simpletransform.composeParents(node, [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
                         
 #                        print str(path)
                         self.rePath(path, src, dst, tr)
-#                        print " now becomes \n" + str(new_path) + "\n"
+#                        print " now becomes \n" + str(path) + "\n"
                         node.set("d", simplepath.formatPath(path))
+                        self.removeAttribIfExists(node, inkex.addNS("path-effect", "inkscape"))
+                        self.removeAttribIfExists(node, inkex.addNS("original-d", "inkscape"))
+                        self.removeAttribIfExists(node, inkex.addNS("type", "sodipodi"))
+                        
                         return
                 elif node.get("x") <> None:
                         tr = simpletransform.composeParents(node, [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
@@ -336,7 +346,7 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                         # See if it has any sub-layers?
                         if self.findCenterlineLayers(node, list) == 0:
                                 # It's a leaf layer! See if it has any stations ...
-                                ss = StationStore(node, False)
+                                ss = StationStore(node)
                                 if len(ss.dict) > 0:
                                         list.append((node, ss))
                 
@@ -370,7 +380,7 @@ class SpeleoMorph(speleo_grid.SpeleoEffect):
                         # todo Huge trouble possible if two centerlines share a parent
                         self.rectify(srcStations, dstStations, src.getparent(), src)
                         
-                        if self.options.replace == 1:
+                        if self.options.replace:
                                 # Duplicate new centerline into old layer
                                 for ch in src:
                                         src.remove(ch)

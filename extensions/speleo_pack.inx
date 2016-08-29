@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Pack for export</_name>
+	<id>speleo.layers.pack</id>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<dependency type="executable" location="extensions">speleo_pack.py</dependency>
+
+        <param name="pack" type="enum" _gui-text="Pack">
+          <item value="root">All layers</item>
+          <item value="current">Current layer</item>
+        </param>
+	<param name="mode" type="string" gui-hidden="true">pack</param>
+
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+                      <submenu _name="Speleo">
+                        <submenu _name="Layer tricks"/>
+                      </submenu>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">speleo_pack.py</command>
+	</script>
+</inkscape-extension>

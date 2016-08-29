@@ -32,7 +32,9 @@
 	<effect>
 		<object-type>path</object-type>
 		<effects-menu>
-			<submenu _name="Speleo"/>
+                    <submenu _name="Speleo">
+                      <submenu _name="Generate"/>
+                    </submenu>
 		</effects-menu>
 	</effect>
 	<script>
