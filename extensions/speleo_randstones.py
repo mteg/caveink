@@ -1,123 +1,141 @@
 # -*- coding: utf-8 -*-
 '''
-Randstones
+Inkscape plugin for randomly rotating stones on cave maps
+
+Copyright (C) 2013, 2016 Mateusz Golicz, http://jaskinie.jaszczur.org
+Distributed under the terms of the GNU General Public License v2
 '''
 
-import math
 import inkex
 import simpletransform
-import speleo_grid
 import string
 import random
-import sys
 import re
-import os
 from lxml import etree
 
-class SpeleoRandstones(speleo_grid.SpeleoEffect):
-	def __init__(self):
-		inkex.Effect.__init__(self)
-		
-	def randrotate(self, p, cx = 0, cy = 0):
-#		p = node.getparent()
-		
-		tr = self.get_transform(p)
-		simpletransform.applyTransformToNode(self.invert_transform(tr), p)
+from speleo import SpeleoEffect, SpeleoTransform
 
-		try:
-			x = float(p.get("x"))
-			y = float(p.get("y"))
-			
-			p.attrib.pop("x")
-			p.attrib.pop("y")
-		except:
-			x = 0
-			y = 0
-		
-		if cx != 0 and cy != 0:
-			simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(" + str(-cx) + ", " + str(-cy) + ")"), p)
-			
-		simpletransform.applyTransformToNode(simpletransform.parseTransform("rotate(" + str(random.randint(0, 359)) + ")"), p)
-		
-		if cx != 0 and cy != 0:
-			simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(" + str(cx) + ", " + str(cy) + ")"), p)
-	
-		simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(" + str(x) + ", " + str(y) + ")"), p)
-		simpletransform.applyTransformToNode(tr, p)
+class SpeleoRandstones(SpeleoEffect):
+  def scanDefs(self, file, index):
+    '''
+    Index direct children of a <defs> element in an SVG tree by their ID
+    '''
+    
+    # Find the <defs> element
+    try:
+      defs = file.xpath('/svg:svg//svg:defs', namespaces=inkex.NSS)[0]
+    except Exception: 
+      return None
+    
+    # Iterate through all direct children
+    for node in defs:
+      index[node.get("id")] = node
+    
+    return defs
+  
+  def loadSymbols(self, file):
+    '''
+    Try loading symbols from <defs> in an external file into self.extSymbols
+    '''
+    try:
+      # Open the symbol file
+      fh = open(os.path.join(os.path.dirname(__file__), "..", "symbols", file), "r")
+      
+      # Parse XML
+      p = etree.XMLParser(huge_tree=True)
+      
+      # Load symbols
+      self.scanDefs(etree.parse(fh, parser=p), self.extSymbols)
+      
+    except Exception:
+      pass
+  
+  def ensureSymbol(self, id):
+    '''
+    See that current document has symbol with id = id
+    
+    If it is not present in <defs>, try adding it from our symbol libraries
+    If it cannot be added, return False (otherwise True)
+    '''
+    
+    # Perhaps it's in our own <defs>?
+    if id in self.ownSymbols: return True
+    
+    # Nope. Did we already load our symbol libraries?
+    if self.extSymbols == None:
+      # No. Let's load them.
+      self.extSymbols = {}
+      self.loadSymbols("cave_rocks.svg")
+      self.loadSymbols("cave_rocks_gray.svg")
+      self.loadSymbols("cave_rocks_unstyled.svg")
+      
+    # Is that symbol really available in one of our libraries?
+    if not (id in self.extSymbols): return False
 
-	def scanDefs(self, file, dict):
-		defs = file.xpath('/svg:svg//svg:defs', namespaces=inkex.NSS)[0]
-		for node in defs:
-			dict[node.get("id")] = node
-		return defs
+    # Append it to our own <defs>
+    self.defs.append(self.extSymbols[id])
+    
+    # Mark that we have it, in case we are asked again.
+    self.ownSymbols[id] = self.extSymbols[id]
+    
+    # All is well
+    return True
 
-	
-	def loadSymbols(self, file):
-		try:
-			fh = open(os.path.join(os.path.dirname(__file__), "..", "symbols", file), "r")
-			p = etree.XMLParser(huge_tree=True)
-			self.scanDefs(etree.parse(fh, parser=p), self.extSymbols)
-			
-		except Exception:
-			pass
-	
-	def ensureSymbol(self, id):
-		if id in self.ownSymbols: return True
-		if self.extSymbols == None:
-			self.extSymbols = {}
-			self.loadSymbols("cave_rocks.svg")
-			self.loadSymbols("cave_rocks_gray.svg")
-			self.loadSymbols("cave_rocks_unstyled.svg")
-			
-		if id in self.extSymbols:
-			self.defs.append(self.extSymbols[id])
-			self.ownSymbols[id] = self.extSymbols[id]
-			return True
-		
-		return False
+  def processTree(self, node):
+    '''
+    Recursively walk the SVG tree and randomize all rock/pebble symbols on the way
+    '''
+    
+    # Is this a symbol reference?
+    if node.tag == inkex.addNS('use', 'svg'):
+      # Is this one of our rock/pebble symbols?
+      m = re.match('#(gr|un|)?([ra])b([0-9]+)[a-z]', str(node.get(inkex.addNS("href", "xlink"))))
+      if m:
+        # Get current symbol transform
+        tr = SpeleoTransform.getTotalTransform(node)
+        
+        # Move it back to 0,0 for rotation
+        simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(tr), node)
 
-	def randstones(self, node):
-		if node.tag == inkex.addNS('use', 'svg'):
-			m = re.match('#(gr|un|)?([ra])b([0-9]+)[a-z]', str(node.get(inkex.addNS("href", "xlink"))))
-			if m:
-#				sys.stderr.write("#" + m.group(1) + "b" + m.group(2) + random.choice("abcdefghijklmn"))
+        # Select a new, random symbol ID (matching the symbol family)
+        new_id = m.group(1) + m.group(2) + "b" + m.group(3) + random.choice("abcdefghij")
+        
+        # Make sure the new symbol type is with us
+        if self.ensureSymbol(new_id):
+          node.set(inkex.addNS("href", "xlink"), "#" + new_id)
+          # If not, we just leave the type as it is.
 
-				tr = self.get_transform(node)
-				simpletransform.applyTransformToNode(self.invert_transform(tr), node)
+        # Apply random rotation
+        simpletransform.applyTransformToNode(simpletransform.parseTransform("rotate(" + str(random.randint(0, 359)) + ")"), node)
+        
+        # Return the symbol to where it was
+        simpletransform.applyTransformToNode(tr, node)
 
-				new_id = m.group(1) + m.group(2) + "b" + m.group(3) + random.choice("abcdefghij")
-				if self.ensureSymbol(new_id):
-					node.set(inkex.addNS("href", "xlink"), "#" + new_id)
+    # For compatibility with old maps, using speleoUIS3
+    if (node.tag == inkex.addNS('tspan', 'svg') or node.tag == inkex.addNS('text', 'svg')) and node.text:
+      if len(node.text) == 1:
+        if node.text in string.ascii_lowercase:
+          node.text = random.choice(string.ascii_lowercase)
+        elif node.text in string.ascii_uppercase:
+          node.text = random.choice(string.ascii_uppercase)
+        if (node.text in string.ascii_letters):
+          node.set("rotate",  str(random.randint(0, 359)))
 
-				simpletransform.applyTransformToNode(simpletransform.parseTransform("rotate(" + str(random.randint(0, 359)) + ")"), node)
-				simpletransform.applyTransformToNode(tr, node)
-
-
-				
-#				sys.stderr.write("cx = " + str(cx) + ", cy = " + str(cy))
-
-
-		if (node.tag == inkex.addNS('tspan', 'svg') or node.tag == inkex.addNS('text', 'svg')) and node.text:
-			if len(node.text) == 1:
-				if node.text in string.ascii_lowercase:
-					node.text = random.choice(string.ascii_lowercase)
-				elif node.text in string.ascii_uppercase:
-					node.text = random.choice(string.ascii_uppercase)
-				
-				if (node.text in string.ascii_letters):
-					node.set("rotate",  str(random.randint(0, 359)))
-
-		
-		for child in node:
-			self.randstones(child);
-	
-	def effect(self):
-		self.extSymbols = None
-		self.ownSymbols = {}
-		self.defs = self.scanDefs(self.document, self.ownSymbols)
-		for id, node in self.selected.iteritems():
-			self.randstones(node);
-			
+    # Recurse!
+    for child in node:
+      self.processTree(child);
+  
+  def effect(self):
+    self.extSymbols = None
+    self.ownSymbols = {}
+    
+    # Load our own symbols
+    self.defs = self.scanDefs(self.document, self.ownSymbols)
+    
+    # Recursively process everything selected
+    for id, node in self.selected.iteritems():
+      self.processTree(node);
+      
 if __name__ == '__main__':
-	e = SpeleoRandstones()
-	e.affect()
+  e = SpeleoRandstones()
+  e.affect()

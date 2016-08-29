@@ -1,68 +1,19 @@
 # -*- coding: utf-8 -*-
+### Still needs refactoring
+
 '''
 Generate a grid for cave plan, with coordinates printed out
 
-Copyright (C) 2013 Mateusz Golicz, http://jaskinie.jaszczur.org
+Copyright (C) 2013, 2016 Mateusz Golicz, http://jaskinie.jaszczur.org
 Distributed under the terms of the GNU General Public License v2
 '''
+
 
 import math
 import inkex
 import simpletransform
 
-class SpeleoEffect(inkex.Effect):
-	'''
-	Generic effect class, shared by other "speleo" effects
-	'''
-	def invert_transform(self, transform):
-		'''
-		Compute inverse of transform
-		'''
-		(a, b, c) = transform[0]
-		(d, e, f) = transform[1]
-		
-		# Formulas for inverting a 3x3 matrix; see SVG specification for more details
-		det = a*e - b*d
-		inverse = [[e/det, -b/det, (b*f - c*e)/det], [-d/det, a/det, (c*d - a*f)/det]]
-		
-		return inverse	
-
-	def get_transform(self, node):
-		'''
-		Recursively compute the composite transform
-		that all parent nodes apply to a node
-		'''
-		if node == None:
-			# Recursion stopping condition - we have
-			# reached the document root
-			
-			# Return identity transform
-			return [[1, 0, 0], [0, 1, 0]]
-		
-		# Get transform attached to this particular node
-		m1 = simpletransform.parseTransform(node.get('transform'))
-		
-		# Get a combined transform from all parent nodes
-		m2 = self.get_transform(node.getparent())
-		
-		# Combine these two transforms
-		return simpletransform.composeTransform(m2, m1)
-	
-	def get_current_layer(self):
-		'''
-		Get the 'nearest' true layer
-		'''
-		layer = self.current_layer
-		while True:
-			groupmode = layer.get(inkex.addNS('groupmode', 'inkscape'))
-			if groupmode == 'layer':
-				break
-			parent = layer.getparent()
-			if parent == None:
-				break
-			layer = parent
-		return layer
-	
+from speleo import SpeleoEffect, SpeleoTransform
 
 class SpeleoGrid(SpeleoEffect):
 	def __init__(self):
@@ -96,7 +47,7 @@ class SpeleoGrid(SpeleoEffect):
 				x_center = 0
 				y_center = 0
 			
-			tr = self.get_transform(obj)
+			tr = SpeleoTransform.getTotalTransform(obj)
 			x_center += tr[0][2]
 			y_center += tr[1][2]
 		except:
@@ -112,8 +63,9 @@ class SpeleoGrid(SpeleoEffect):
 		num_x = int(math.ceil(doc_w / uu_spacing))
 		num_y = int(math.ceil(doc_h / uu_spacing))
 
-		layer = self.get_current_layer()
+		layer = self.currentLayer()
 		g = inkex.etree.SubElement(layer, 'g')
+		simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(SpeleoTransform.getTotalTransform(g)), g)
 
 		if self.options.coords != "none":
 			cg = inkex.etree.SubElement(g, "g")

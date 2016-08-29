@@ -47,7 +47,15 @@ class SpeleoTransform:
     '''
     if node.tag == inkex.addNS("svg", "svg"): return SpeleoTransform.Identity
     return simpletransform.composeParents(node, SpeleoTransform.Identity)
-  
+
+  @staticmethod
+  def transformCoords(pt, a):
+    '''
+    Shorthand method that is almost there in simpletransform
+    '''
+    nx = a[0][0] * pt[0] + a[0][1] * pt[1] + a[0][2]
+    ny = a[1][0] * pt[0] + a[1][1] * pt[1] + a[1][2]
+    return (nx, ny)
 
 class SpeleoEffect(inkex.Effect):
   '''
@@ -147,3 +155,10 @@ class SpeleoEffect(inkex.Effect):
     Shorthand method for identifying a layer
     '''
     return node.get(inkex.addNS('groupmode', 'inkscape')) == 'layer' 
+
+  def removeAttrib(self, node, attrib):
+    '''
+    Remove an attribute from XML node
+    '''
+    if attrib in node.attrib:
+      node.attrib.pop(attrib)

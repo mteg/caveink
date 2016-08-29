@@ -29,10 +29,10 @@
      showborder="true"
      units="mm"
      showgrid="false"
-     inkscape:current-layer="svg2"
+     inkscape:current-layer="layer6"
      inkscape:document-units="mm"
-     inkscape:cy="720.49003"
-     inkscape:cx="259.55693"
+     inkscape:cy="795.49003"
+     inkscape:cx="268.12836"
      inkscape:zoom="1.4"
      inkscape:pageshadow="2"
      inkscape:pageopacity="1"
@@ -789,7 +789,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

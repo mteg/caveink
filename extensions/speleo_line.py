@@ -9,13 +9,11 @@ Copyright (C) 2013 Mateusz Golicz, http://jaskinie.jaszczur.org
 Distributed under the terms of the GNU General Public License v2
 '''
 
-import math
 import inkex
-import speleo_grid
+from speleo import SpeleoEffect, SpeleoTransform
 
-class SpeleoLine(speleo_grid.SpeleoEffect):
-	def __init__(self):
-		inkex.Effect.__init__(self)
+class SpeleoLine(SpeleoEffect):
+	def initOptions(self):
 		self.OptionParser.add_option("--fontsize",
 				action="store", type="float", 
 				dest="fontsize", default=6)
@@ -43,10 +41,10 @@ class SpeleoLine(speleo_grid.SpeleoEffect):
 			if node.tag != inkex.addNS("path", "svg"):
 				continue
 
-			tr = self.get_transform(node.getparent())
+			tr = SpeleoTransform.getTotalTransform(node.getparent())
 			parent_scale = (tr[0][0] + tr[1][1]) / 2.0
 
-			tr = self.get_transform(node)
+			tr = SpeleoTransform.getTotalTransform(node)
 			this_scale = (tr[0][0] + tr[1][1]) / 2.0
 
 			fontsize = self.options.fontsize / parent_scale
