@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="105mm"
+   height="148mm"
+   viewBox="0 0 372.04724 524.40944"
+   id="svg3382"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="simple.svg">
+  <defs
+     id="defs3384">
+    <symbol
+       id="source">
+      <title
+         id="title123162">Water inlet</title>
+      <path
+         d="m -0.35811379,-0.022431 c 0,0 1.15754,-0.707388 0.78419,-1.368253 -0.37335,-0.660864 -1.53495001,-0.871165 -1.51024001,-1.62825 0.0247,-0.757085 1.68255001,-1.153227 1.71347001,-2.022723 0.0309,-0.869496 -1.41362,-1.214251 -1.44559,-2.054149 -0.032,-0.839897 1.28858,-1.577801 1.22855,-2.048283 -0.0369,-0.288781 -0.42314,-1.51044 -0.42314,-1.51044 m -3.98440601,8.139523 c 0,0 -0.32239,2.492596 3.91111601,2.492596 4.23350999,0 3.78736999,-2.492596 3.78736999,-2.492596"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path24753"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path24757"
+         d="m -1.2988238,-10.22622 2.718,-0.486 -2.646,-4.14 z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="camp">
+      <title
+         id="title123196">Camp</title>
+      <path
+         d="M -4.383029,-0.55889042 -0.38302903,-10.889247 3.616971,-0.55889042 m -10,0 12,0"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path26794"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path26796"
+         d="M -0.38302903,-11.55889 2.507111,-10.2816 0.36697097,-9.0588944 Z"
+         style="color:#000000;opacity:1;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m -0.15688903,-10.6416 2.66400003,0.36 -2.26800003,0.6839996 z M -3.383029,-0.55889042 -0.38302903,-8.5588904 2.616971,-0.55889042 Z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         id="path26798"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="crystal">
+      <title
+         id="title123275">Crystal</title>
+      <path
+         id="path27301-6-8"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 2.2575708,-3.7133361 -4.5,7.79422 m 0,-7.79422 4.5,7.79422 m -6.75,-3.89711002 9,0"
+         inkscape:connector-curvature="0" />
+    </symbol>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="275.41963"
+     inkscape:cy="390.36075"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer4"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="692"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3387">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Original"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-527.95276)"
+     style="display:inline">
+    <use
+       id="use8697"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(235.85654,628.23808)" />
+    <g
+       inkscape:groupmode="layer"
+       id="layer2"
+       inkscape:label="Sub-layer"
+       style="display:inline">
+      <use
+         id="use8697-31"
+         xlink:href="#source"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%"
+         transform="matrix(1.9262042,0,0,1.9351273,246.77629,699.69733)" />
+      <use
+         id="use8697-9"
+         xlink:href="#source"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%"
+         transform="matrix(1.9262042,0,0,1.9351273,325.20031,712.82854)" />
+      <use
+         id="use8697-9-3"
+         xlink:href="#source"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%"
+         transform="translate(251.67024,748.03459)" />
+      <use
+         id="use8926-2"
+         xlink:href="#crystal"
+         transform="translate(305.56357,715.29256)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8926-13"
+         xlink:href="#crystal"
+         transform="translate(310.61434,744.58698)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8926-29"
+         xlink:href="#crystal"
+         transform="translate(340.91891,748.12252)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <g
+         id="g8979"
+         transform="matrix(0.73811388,0.67467614,-0.67467614,0.73811388,563.10421,-56.092911)">
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           transform="translate(339.90876,710.74687)"
+           xlink:href="#crystal"
+           id="use8926" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           transform="translate(341.92907,683.47276)"
+           xlink:href="#crystal"
+           id="use8926-1" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           transform="translate(367.68796,701.6555)"
+           xlink:href="#crystal"
+           id="use8926-298" />
+      </g>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer3"
+       inkscape:label="Invisible sub-layer"
+       style="display:none">
+      <use
+         id="use8743"
+         xlink:href="#camp"
+         transform="translate(292.16874,601.89282)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8743-6"
+         xlink:href="#camp"
+         transform="translate(298.59732,634.39282)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8743-2"
+         xlink:href="#camp"
+         transform="translate(275.74017,662.6071)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8743-4"
+         xlink:href="#camp"
+         transform="translate(316.09732,661.53567)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8743-0"
+         xlink:href="#camp"
+         transform="translate(342.16874,629.39282)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8743-44"
+         xlink:href="#camp"
+         transform="translate(333.24017,578.67853)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="use8743-446"
+         xlink:href="#camp"
+         transform="translate(247.52589,572.96425)"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <use
+       id="search4"
+       xlink:href="#camp"
+       transform="translate(156.45446,589.39282)"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       inkscape:label="#use8743-6-5" />
+    <use
+       id="use8697-5"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(199.42797,676.45236)" />
+    <use
+       id="use8697-3"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(195.14226,651.09522)" />
+    <use
+       id="use8697-6"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(230.14226,670.38093)" />
+    <use
+       id="use8697-1"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(186.57083,700.02379)" />
+    <use
+       id="use8697-7"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(142.28511,675.73808)" />
+    <use
+       id="search3"
+       xlink:href="#crystal"
+       transform="translate(179.27814,575.74986)"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       inkscape:label="#use8926-9" />
+    <use
+       style="display:inline"
+       id="search1"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(141.57083,594.66665)"
+       inkscape:label="#use8697-3-4" />
+    <use
+       style="display:inline"
+       id="search2"
+       xlink:href="#source"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(121.92797,598.95236)"
+       inkscape:label="#use8697-3-4" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Target"
+     transform="translate(0,-219.68504)" />
+</svg>

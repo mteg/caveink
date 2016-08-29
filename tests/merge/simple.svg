@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="74mm"
+   height="52mm"
+   viewBox="0 0 262.20472 184.25197"
+   id="svg61824"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="simple.svg">
+  <defs
+     id="defs61826" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="228.314"
+     inkscape:cy="45.248715"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="692"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="target" />
+  <metadata
+     id="metadata61829">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Source"
+     id="g3347"
+     inkscape:groupmode="layer">
+    <g
+       inkscape:groupmode="layer"
+       id="g3349"
+       inkscape:label="Lower layer">
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Invisible"
+         id="g3351"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;opacity:0.525;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+           x="-2.0396228"
+           y="-4.4998999"
+           id="text3375-4-8"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3377-3-3"
+             x="-2.0396228"
+             y="-4.4998999"
+             style="stroke:#0000ff">Should be invisible</tspan></text>
+      </g>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       inkscape:label="Upper Layer"
+       id="g3357">
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Lower sublayer"
+         id="g3359" />
+      <g
+         inkscape:groupmode="layer"
+         style="opacity:0.525"
+         inkscape:label="Upper sublayer"
+         id="g3363"
+         transform="matrix(0.93969262,0.34202014,-0.34202014,0.93969262,0,0)">
+        <text
+           xml:space="preserve"
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+           x="156.35689"
+           y="-5.9464331"
+           id="text3375-4"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3377-3"
+             x="156.35689"
+             y="-5.9464331"
+             style="stroke:#0000ff">Upper sublayer</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+         x="-0.71428579"
+         y="203.63332"
+         id="text3375"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3377"
+           x="-0.71428579"
+           y="203.63332"
+           style="stroke:#0000ff">An object in upper layer by itself</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="target"
+     inkscape:label="Target"
+     transform="translate(0,-77.952756)"
+     style="display:inline">
+    <g
+       inkscape:label="Lower layer"
+       id="layer1"
+       inkscape:groupmode="layer">
+      <g
+         id="layer8"
+         inkscape:label="Visible sublayer"
+         inkscape:groupmode="layer">
+        <text
+           xml:space="preserve"
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+           x="273.38129"
+           y="404.51328"
+           id="text61838-1"
+           sodipodi:linespacing="125%"
+           transform="matrix(0.886343,0.463029,-0.463029,0.886343,-72.042896,-327.28428)"><tspan
+             sodipodi:role="line"
+             id="tspan61840-6"
+             x="273.38129"
+             y="404.51328"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu">You should see this, but somewhat clipped</tspan></text>
+      </g>
+    </g>
+    <g
+       id="layer7"
+       inkscape:label="Upper Layer"
+       inkscape:groupmode="layer">
+      <g
+         id="layer11"
+         inkscape:label="Lower sublayer"
+         inkscape:groupmode="layer">
+        <rect
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="rect61860"
+           width="157.85715"
+           height="22.857143"
+           x="434.28571"
+           y="400.93362"
+           transform="matrix(0.886343,0.463029,-0.463029,0.886343,-79.752916,-378.85892)" />
+      </g>
+      <g
+         id="layer10"
+         inkscape:label="Upper sublayer"
+         style="opacity:0.73699999"
+         inkscape:groupmode="layer">
+        <path
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="path61862"
+           sodipodi:type="arc"
+           sodipodi:cx="586.42859"
+           sodipodi:cy="410.57651"
+           sodipodi:rx="48.57143"
+           sodipodi:ry="46.07143"
+           sodipodi:start="0"
+           sodipodi:end="6.2709156"
+           sodipodi:open="true"
+           d="m 635.00002,410.57651 a 48.57143,46.07143 0 0 1 -48.42244,46.07121 48.57143,46.07143 0 0 1 -48.71951,-45.78857 48.57143,46.07143 0 0 1 48.12356,-46.35212 48.57143,46.07143 0 0 1 49.01473,45.50421"
+           transform="matrix(0.886343,0.463029,-0.463029,0.886343,-218.43966,-485.15638)" />
+        <text
+           xml:space="preserve"
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+           x="712.95972"
+           y="-2.7736371"
+           id="text61864"
+           sodipodi:linespacing="125%"
+           transform="matrix(0.593156,0.805088,-0.805088,0.593156,-218.43966,-485.15638)"><tspan
+             sodipodi:role="line"
+             id="tspan61866"
+             x="712.95972"
+             y="-2.7736371"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu">Circle on top of rectangle</tspan></text>
+      </g>
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="clip2"
+         width="270"
+         height="187.85715"
+         x="315.71429"
+         y="298.79077"
+         transform="matrix(0.886343,0.463029,-0.463029,0.886343,-79.752916,-378.85892)" />
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 323.57143,372.3622 -27.85714,25 12.85714,12.85715 23.57143,1.42857 z"
+         id="clip1"
+         inkscape:connector-curvature="0"
+         transform="matrix(0.886343,0.463029,-0.463029,0.886343,-79.752916,-378.85892)" />
+    </g>
+  </g>
+</svg>

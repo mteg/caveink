@@ -1,77 +1,76 @@
 # -*- coding: utf-8 -*-
 '''
-Copyright (C) 2008 Thomas Holder, http://sf.net/users/speleo3/
+Inkscape plugin for gathering all symbols of a particular kind
+
+Copyright (C) 2016 Mateusz Golicz, http://jaskinie.jaszczur.org
 Distributed under the terms of the GNU General Public License v2
 '''
 
-import math
 import inkex
 import simpletransform
-import speleo_grid
-import simplestyle
-import logging
-import simplepath
-import sys
 
-class SpeleoFind2(speleo_grid.SpeleoEffect):
-	def __init__(self):
-		inkex.Effect.__init__(self)
-		self.OptionParser.add_option("--debug",
-				action="store", type="string", 
-				dest="debug", default="")
-		self.OptionParser.add_option("--mode",
-				action="store", type="string", 
-				dest="mode", default="pack")
-		self.OptionParser.add_option("--pack",
-				action="store", type="string", 
-				dest="pack", default="root")
+from speleo import SpeleoEffect, SpeleoTransform
 
-	def styleIfPresent(self, node, key, default = ''):
-	        style = node.get('style')
-	        if style:
-	        	style = simplestyle.parseStyle(style)
-                        if style.has_key(key):
-                                return style[key]
+class SpeleoFind2(SpeleoEffect):
+  def scanTree(self, node, sel, group, correctiveTransform):
+    '''
+    Recursively look for <use>s referring to symbol sel
+    
+    Adds all these symbols to group 'group', applying transforms accordingly
+    '''
+    
+    # Avoid too much recursion
+    if node == group: return
+    
+    # Do not go into invisible layers
+    if self.isLayer(node):
+      if self.hasDisplayNone(node):
+        return
+    
+    # Recurse first
+    for i in node:
+      self.scanTree(i, sel, group, correctiveTransform)
+        
+    # See if it's the symbol we need
+    href = node.get(inkex.addNS('href', 'xlink'))
+    
+    # Perhaps not a reference at all...
+    if href == None: return
+    
+    if href == sel:
+      # Get total transform of this symbol
+      transform = SpeleoTransform.getTotalTransform(node)
+      
+      # Group it together with others
+      group.append(node)
+
+      # Reset this node transform
+      node.set("transform", simpletransform.formatTransform(
+                  simpletransform.composeTransform(correctiveTransform, transform)
+            ))
                 
-                return ""
-	
-
-	# Make an index of names appearing in layer hierarchy
-	def scanTree(self, node, sel):
-	        if node == self.group: return
-	        if node.get(inkex.addNS('groupmode', 'inkscape')) == 'layer':
-	                # Skip if invisible
-	                # TODO ... and requested as such
-	                if self.styleIfPresent(node, "display") == "none":
-	                        return
-                
-                href = node.get(inkex.addNS('href', 'xlink'))
-                if href <> None:
-                        if href == sel and self.group <> node:
-                                # Get transform
-                                thisTransform = simpletransform.composeParents(node, [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
-                                self.group.append(node)
-                                # Reset this node transform
-                                node.set("transform", simpletransform.formatTransform(thisTransform))
-                
-                for i in node:
-                        self.scanTree(i, sel)
-
-	
-	def effect(self):
-	        # Configure logging
-	        if len(self.options.debug):
-	                logging.basicConfig(level = logging.DEBUG)
-
-
-                for id, obj in self.selected.iteritems():
-                        link = obj.get(inkex.addNS("href", "xlink"))
-                        if link == None: continue
-                        
-                        self.group = inkex.etree.SubElement(self.get_current_layer(), "g")
-                        self.scanTree(self.document.getroot(), link)
+  def effect(self):
+    symbol_ids = []
+    # Go through all selected ...
+    for id, obj in self.selected.iteritems():
+      # Get unique symbol IDs
+      symbol_ids.append(obj.get(inkex.addNS("href", "xlink")))
+    
+    # For all found distinct symbol IDs ...
+    for link in set(symbol_ids):
+      # Perhaps not a symbol? 
+      if link == None: continue
+      
+      # Create a group
+      group = inkex.etree.SubElement(self.currentLayer(), "g")
+      
+      # Compute corrective transform
+      correctiveTransform = SpeleoTransform.invertTransform(SpeleoTransform.getTotalTransform(group))
+      
+      # Look for our symbols!
+      self.scanTree(self.document.getroot(), link, group, correctiveTransform)
 
 if __name__ == '__main__':
-	e = SpeleoFind2()
-	e.affect()
+  e = SpeleoFind2()
+  e.affect()
 
