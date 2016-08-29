@@ -1,3 +1,5 @@
 /work
 *~
 *.pyc
+/tests/*/*.out.svg
+/tests/*/*.out.png

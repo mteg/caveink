@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="rocks.svg"
+   inkscape:version="0.91 r"
+   version="1.1"
+   id="svg55355"
+   viewBox="0 0 744.09448819 1052.3622047"
+   height="297mm"
+   width="210mm">
+  <defs
+     id="defs55357">
+    <symbol
+       id="grrb150d">
+      <title
+         id="title58255">Pebble, d</title>
+      <path
+         id="grQrb150d"
+         d="m -1.4631622,1.1844465 c -1.18829,-1.43715 -0.2896,-5.45778 2.44079,-4.35615 1.06855,0.43112 2.04306,2.00407 1.60414,3.07352 -0.53892,1.31316 -3.14151,2.37524 -4.04493,1.28263 z"
+         style="color:#a0a0a0;opacity:1;fill:#a0a0a0;stroke:none;stroke-width:0.99212593" />
+    </symbol>
+    <symbol
+       id="grab200d">
+      <title
+         id="title58215">Rock, d</title>
+      <path
+         id="grQab200d"
+         d="m -2.9263253,-2.3689478 0,5.2635203 2.29268999,0 4.91295001,-2.57805033 -3.05697,-3.97449997 z"
+         style="color:#a0a0a0;opacity:1;fill:#a0a0a0;stroke:none;stroke-width:0.99212599" />
+    </symbol>
+    <symbol
+       id="rb200j">
+      <title
+         id="title56272">Pebble, 200j</title>
+      <path
+         inkscape:connector-curvature="0"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.99212599"
+         d="M -2.9883448,2.0754525 C -4.1006677,1.0539735 -2.3311613,-2.5570791 1.2078985,-3.1030002 4.7469583,-3.6488971 3.3616363,-1.8538364 1.3419218,0.82547463 -0.67788661,3.5047855 -1.8759046,3.0972189 -2.9882509,2.0754525 Z"
+         id="Qrb200j" />
+    </symbol>
+    <symbol
+       id="unrb200f">
+      <title
+         id="title58672">Pebble, 200f</title>
+      <path
+         id="unQrb200f"
+         d="m -3.6927434,1.8115164 c -0.67952,-1.02151999 1.0574,-4.6326599 4.19642008,-5.17858 3.13901992,-0.54592 4.34132992,3.52598001 2.32142992,6.20536 -2.01989992,2.67937 -5.83834,-0.005 -6.51785,-1.02678 z"
+         style="color:inherit;opacity:1;fill:inherit;stroke:inherit;stroke-width:0.99212599" />
+    </symbol>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="24"
+     inkscape:window-x="0"
+     inkscape:window-height="692"
+     inkscape:window-width="1366"
+     showgrid="false"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="677.68383"
+     inkscape:cx="153.80294"
+     inkscape:zoom="3.959798"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata55360">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect61822"
+       width="161.37187"
+       height="105.81348"
+       x="75.761444"
+       y="315.4559" />
+    <g
+       id="rockgroup">
+      <use
+         transform="translate(145.35783,358.93777)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grrb150d"
+         id="rock1" />
+      <use
+         transform="translate(156.46973,358.49107)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grrb150d"
+         id="use60585-5"
+         style="display:inline" />
+      <use
+         transform="translate(143.33775,368.59259)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grrb150d"
+         id="use60585-4"
+         style="display:inline" />
+      <use
+         transform="translate(153.18673,370.10782)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grrb150d"
+         id="use60585-54"
+         style="display:inline" />
+      <use
+         transform="translate(173.64232,376.92635)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grrb150d"
+         id="use60585-2"
+         style="display:inline" />
+      <use
+         transform="translate(175.91517,363.28929)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grrb150d"
+         id="use60585-57"
+         style="display:inline" />
+      <use
+         transform="translate(144.78547,336.54575)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grab200d"
+         id="use60674" />
+      <use
+         transform="translate(158.42253,337.80844)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grab200d"
+         id="use60674-1"
+         style="display:inline" />
+      <use
+         transform="translate(171.30198,338.8186)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grab200d"
+         id="use60674-9"
+         style="display:inline" />
+      <use
+         transform="translate(189.23218,345.13205)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grab200d"
+         id="use60674-19"
+         style="display:inline" />
+      <use
+         transform="translate(188.97965,364.07241)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grab200d"
+         id="use60674-7"
+         style="display:inline" />
+      <use
+         transform="translate(212.21315,358.51657)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#grab200d"
+         id="use60674-15"
+         style="display:inline" />
+      <use
+         transform="translate(128.00334,396.94915)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#rb200j"
+         id="use61207" />
+      <use
+         transform="translate(143.15563,396.94915)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#rb200j"
+         id="use61207-1"
+         style="display:inline" />
+      <use
+         transform="translate(155.78254,397.20169)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#rb200j"
+         id="use61207-7"
+         style="display:inline" />
+      <use
+         transform="translate(181.54143,399.47453)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#rb200j"
+         id="use61207-18"
+         style="display:inline" />
+      <use
+         transform="translate(195.9361,396.44408)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#rb200j"
+         id="use61207-8"
+         style="display:inline" />
+      <use
+         style="fill:#ff00ff;stroke:#0000ff"
+         transform="translate(96.732309,332.84535)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#unrb200f"
+         id="use61565" />
+      <use
+         transform="translate(97.237385,344.71464)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#unrb200f"
+         id="use61565-5"
+         style="display:inline;fill:#ff00ff;stroke:#0000ff" />
+      <use
+         transform="translate(97.237385,362.39231)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#unrb200f"
+         id="use61565-3"
+         style="display:inline;fill:#ff00ff;stroke:#0000ff" />
+      <use
+         transform="translate(97.237385,371.73623)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#unrb200f"
+         id="use61565-53"
+         style="display:inline;fill:#ff00ff;stroke:#0000ff" />
+    </g>
+  </g>
+</svg>
