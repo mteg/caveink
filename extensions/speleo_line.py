@@ -3,11 +3,14 @@
 Uses the 'text along path' feature to quickly style paths
 into step symbols, dripline etc.
 
-Needs the Speleo Sans font, version 2!
+Needs the Speleo Sans font, version 2+!
 
 Copyright (C) 2013 Mateusz Golicz, http://jaskinie.jaszczur.org
 Distributed under the terms of the GNU General Public License v2
 '''
+
+# Now that inkscape uses symbols, probably we can get rid of the SpeleoUIS font.
+# Just need to find suitable glyphs in Unicode :)
 
 import inkex
 from speleo import SpeleoEffect, SpeleoTransform

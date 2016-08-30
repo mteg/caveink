@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+# BADLY NEEDS A REWRITE!
+
 help = '''
 Copyright (C) 2008 Thomas Holder, http://sf.net/users/speleo3/
 Distributed under the terms of the GNU General Public License v2
 
-Modified by Mateusz Golicz in 04.2013, 11.2013.
+Modified by Mateusz Golicz in 04.2013, 11.2013, 08.2016.
 
 Converts Survex 3D files (*.3d) to SVG.
 Usage: python 3dtosvg.py [OPTIONS] FILE.3d
@@ -12,8 +15,10 @@ Usage: python 3dtosvg.py [OPTIONS] FILE.3d
   --scale=ARG        Import with a scale of 1:ARG (default 100)
   --view=[0,1,2]     0: Plan (default), 1: Profile, 2: Extend
   --bearing=[0-359]  Bearing in degrees north (default 0)
-  --markers=[0-2]    0: No station markers, 1: Display stations as small
-                     circles (default), 2: ditto as triangles
+  --path=ARG         Control generation of centerline. Use 'none', 'plain',
+                     'circle-marked' or 'triangle-marked'
+  --stations=ARG     Control generation of stations. Use 'none', 'just-name',
+                     'triangle-clones', 'labeled-triangle-clones', 'caveink-groups'
   --dpi=ARG          Resolution in DPI (default 90)
   --extend-cmd=ARG   The "extend" program is part of Survex and required
                      for --view=2. If it is not found inside PATH, you may
@@ -37,6 +42,8 @@ Changelog:
  * 2013-04-20: Each survey traverse becomes a separate path
  * 2013-04-20: Groupping of SVG paths accordingly to perfix hierarchy
  * 2013-11-26: Support for v8 Survex format. Now it became really filthy code!
+ * 2016-08-30: Added support for station markers compatible with other caveink extensions
+               Removed --marker and --stationnames in favour of --stations and --path
 '''
 
 import sys, math, os
@@ -45,12 +52,11 @@ args = {
 	'scale': 100,
 	'view': 0,
 	'bearing': 0,
-	'markers': 1,
 	'dpi': 90,
 	'extend-cmd': 'extend',
 	'scalebar': 1,
-	'stationnames': 0,
-
+	'stations': 'caveink-groups',
+	'path': 'plain',
 	'annotate': 1,
 	'use_inkscape_label': 1,
 	'use_therion_attribs': 0,
@@ -460,9 +466,9 @@ height = max_y - min_y
 scale = args['dpi'] / 2.54 / args['scale']
 
 marker = {
-	1: 'url(#StationCircle)',
-	2: 'url(#StationTriangle)',
-}.get(args['markers'], 'none')
+	'circle-marked': 'url(#StationCircle)',
+	'triangle-marked': 'url(#StationTriangle)',
+}.get(args['path'], 'none')
 
 style = [
 	'fill:none',
@@ -595,16 +601,18 @@ def print_hierarchy(hname, h):
 				print_path(p)
 		print_hierarchy(label, child)
 		print "</g>"
-		
-print_hierarchy('', hierarchy)
 
-if args['markers'] == 3:
+if args['path'] <> 'none':	
+	print_hierarchy('', hierarchy)
+
+if args['stations'] == 'triangle-clones' or args['stations'] == 'labeled-triangle-clones':
 	print_points()
-if args['markers'] == 4:
+	if args['stations'] == 'labeled-triangle-clones': print_stationnames()
+elif args['stations'] == 'caveink-groups':
 	print "<g style='font-size: 30px'>"
 	print_points_in_groups()
 	print "</g>"
-if args['stationnames']:
+elif args['stations'] <> 'none':
 	print_stationnames()
 
 print '</g>'

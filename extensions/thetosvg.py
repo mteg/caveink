@@ -2,10 +2,6 @@
 # -*- coding: utf-8 -*-
 
 help = '''
-Copyright (C) 2013 Mateusz Golicz
-
-Uses code from 3dtosvg, which is Copyright (C) 2008 Thomas Holder, http://sf.net/users/speleo3/
-Distributed under the terms of the GNU General Public License v2
 
 Converts PocketTopo sketches, exported as Therion files (*.the) into SVG files.
 Usage: python thetosvg.py [OPTIONS] FILE.the
@@ -20,6 +16,10 @@ Usage: python thetosvg.py [OPTIONS] FILE.the
   --splays=[0,1]     Display splay shots (default: 1)
   --dpi=ARG          Resolution in DPI (default 90)
   
+Copyright (C) 2013 Mateusz Golicz
+Uses code from 3dtosvg, which is Copyright (C) 2008 Thomas Holder, http://sf.net/users/speleo3/
+
+Distributed under the terms of the GNU General Public License v2
 '''
 
 import sys, math, os, string

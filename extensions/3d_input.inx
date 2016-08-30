@@ -38,16 +38,22 @@ continuous control over the scale (bearing likewise).
     <option value="2">Extended elevation</option>
   </param>
   <param name="bearing" type="int" min="0" max="359" _gui-text="Bearing (degrees)">0</param>
-  <param name="markers" type="enum" _gui-text="Station Symbols" gui-description="Show symbols on stations. Markers are fixed to the centerline path, whereas clones are symbols which are independant from the centerline path and are annotated with station name (for therion export).">
-    <item value="0">None</item>
-    <item value="4">Stations w/names</item>
-    <item value="1">Circles (as Markers)</item>
-    <item value="2">Triangles (as Markers)</item>
-    <item value="3">Triangles (as Clones)</item>
+  <param name="path" type="enum" _gui-text="Survey centerline" gui-description="Show symbols on stations. Markers are fixed to the centerline path, whereas clones are symbols which are independant from the centerline path and are annotated with station name (for therion export).">
+    <item value="none">None</item>
+    <item value="plain">Plain line</item>
+    <item value="circle-marked">Line w/Circle markers</item>
+    <item value="triangle-marked">Line w/Triangle markers</item>
+  </param>
+
+  <param name="stations" type="enum" _gui-text="Survey stations">
+    <item value="none">None</item>
+    <item value="just-name">Just names</item>
+    <item value="triangle-clones">Triangles (as Clones)</item>
+    <item value="labeled-triangle-clones">Triangles (as Clones) w/name</item>
+    <item value="caveink-groups">Caveink groups</item>
   </param>
   <param name="filter" type="string" _gui-text="Filter Prefix"></param>
   <param name="annotate" type="boolean" _gui-text="Annotate Clones for Therion Export">true</param>
-  <param name="stationnames" type="boolean" _gui-text="Draw Station Names">true</param>
   <param name="scalebar" type="boolean" _gui-text="Draw Scalebar">true</param>
   <!--
 	<param name="dpi" type="int" min="1" max="1200" _gui-text="DPI">90</param>
