@@ -1,0 +1,24 @@
+caveink is a set of Inkscape extensions for drawing cave maps
+
+------
+DISCLAIMER: This is an early test version! DO NOT use for any big projects. 
+Feel free to do lots of testing and to contribute. Any kind of help is welcome.
+------
+
+
+These extensions add the following features to Inkscape:
+- A library of cave map symbols following UIS conventions
+- Fill patterns for carpeting areas with rocks/pebbles/sand/clay/silt
+- Convenient way of styling "speleo" lines (ie. step/pit, dripline)
+- Easy offset "windows" for showing intersecting passages 
+- Tools for merging drawings from multiple files
+- Morphing drawings to centerlines a'la Therion
+- Direct import of centerlines from Survex .3d files
+- Import capability for PocketTopo "Therion export" drawings
+- Easy generation of scale bars and coordinate-annotated grids
+
+
+caveink has been developed from former work by myself and Thomas Holder
+(see https://github.com/mteg/inkscape-speleo)
+
+Contact: Mateusz Golicz, mateusz.golicz / pza org pl

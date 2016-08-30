@@ -1,0 +1,82 @@
+Claryfing overlapping passages
+The problem
+windows_intersect_problem.png
+
+Suppose you have two intersecting passages filled with detail. You cannot simply
+overlap one on top of the other on your plan, because it is then difficult to read
+which details belong to which of the two passages.
+
+The usual solution is to faithfully depict only the topmost passage on the main
+drawing, marking the passage(s) underneath with faded colors in the
+background or a dashed line. Details of lower parts of the cave are then
+represented on an extra window, which is laid out slightly offset to the actual
+map.
+
+Caveink can automatically generate that window for you and even make it
+automatically update when you change anything on your main drawing.
+---
+Layering
+windows_intersect_layering.png
+
+In order for this to work, you need to put your passages in two different
+layers. In this example, we will use a slightly transparent, solid fill. For
+clarity, the upper passage is somewhat blue-ish, while the lower one has a touch of
+green. The upper passage has a streamway and sand, whereas the lower passage
+is well-decorated. They both deserve to be present on the drawing!
+
+---
+Prepare
+windows_intersect_alpha.png
+
+Select the passage fill, go to Fill and Stroke and adjust the "alpha" (A) component
+of the color so that the lower passage is barely visible. Repeat for the lower passage
+fill. This is how your main map will look like. Now, let's make the offset window.
+---
+Set up layers
+windows_intersect_ordering.png
+
+Change the ordering of layers - make the lower passage the topmost layer.
+
+---
+Define the view
+windows_intersect_rectangle.png
+
+Create a rectangle covering the area where passages intersect. This
+rectangle defines what will be depicted on the offset window. Make sure
+it is selected as the current object before running the extension (dashed
+lines and some control icons around the rectangle).
+---
+Run the extension
+windows_intersect_run.png
+
+Select <i>Extensions/Speleo/Layer tricks/Make a window</i> from the drop-down
+menu. Select <i>Clone: All layers</i> and <i>Layer opacity: Clone and keep
+linked</i>. Click <i>Apply.</i>. The rectangle should disappear.
+---
+Position your offset window
+windows_intersect_position.png
+
+Now you can drag your window from where the rectangle has been to its
+final position.
+---
+Re-order layers
+window_intersect_relayer
+
+Use the Layers dialog to re-order layers back to normal (ie. lower passage
+is hidden). Ordering in the window should not change!
+
+---
+Decorate
+windows_intersect_decorate.png
+
+Draw nice frames around the conflict area so that everyone knows what is going on.
+
+---
+Keep working on the original drawing
+windows_intersect_update.png
+
+We are done. If you change anything on the original drawing, the window will update
+automatically! But beware! Since the window references the original layers, you
+cannot move it into one of them, as it would create a looped reference. If
+you do it, the window contents will disappear. If you want to neatly group all your
+offset windows, simply create a layer for them.

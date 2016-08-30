@@ -1,9 +1,9 @@
-- refactor - BADLY NEEDED!!!
-- fix 3dtosvg interface
++ fix 3dtosvg interface
 - docs
-- test cases
++ test cases
 - make SpeleoLine also able to fix broken lines
-- Fix grid on different page geometries; grids on bigger rectangles
-- xpath single throwing stupid errors/exceptions (what if no defs in speleo_window?)
+- grids on rectangles rather than pages
+- xpath single throwing stupid errors/exceptions
 - clipPath translations - see what happens when packing/unpacking some content with window
 - solve overview maps (outline clipping? what about presumed dimensions...?) 
+- test under Windows
