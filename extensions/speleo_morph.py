@@ -218,27 +218,23 @@ class SpeleoMorph(SpeleoEffect):
 
     # ... so that we do not waste time on inverting transforms
     
-    # Invert transform
-    it = SpeleoTransform.invertTransform(t)
-    
     # See if we need to rotate a symbol...
     if angle <> 0 and node <> None:
       # Maybe it needs rotation!
       if node.tag == inkex.addNS("use", "svg") and self.options.rotate:
         name = node.get(inkex.addNS("href", "xlink"))[1:]
         if name in [
-          "gradient", "mini-gradient", "source", "sink", "water", "draft", "paleoflow", "scallops",
-          "grgradient", "grmini-gradient", "grsource", "grsink", "grwater", "grdraft", "grpaleoflow", "grscallops"]:
+          "gradient", "mini-gradient", "source", "sink", "water", "draft", "paleoflow", "scallops", "gradarr", "mini-gradarr"
+          "grgradient", "grmini-gradient", "grsource", "grsink", "grwater", "grdraft", "grpaleoflow", "grscallops", "gradarr", "mini-gradarr"]:
           
-          # Invert original node transform
-          simpletransform.applyTransformToNode(it, node)
-
-          # Apply rotation
-          simpletransform.applyTransformToNode(simpletransform.parseTransform("rotate(" + str(angle) + ")"), node)
-          
-          # Go back
-          simpletransform.applyTransformToNode(t, node)
+#          simpletransform.applyTransformToNode(simpletransform.parseTransform("rotate(" + str(angle) + ")"), node)
+          node.set("transform", node.get("transform") + " rotate(" + str(angle) + ")")
+          t = SpeleoTransform.getTotalTransform(node)
      
+
+    # Invert transform
+    it = SpeleoTransform.invertTransform(t)
+    
     
     # Go back to local coordinate system
     return SpeleoTransform.transformCoords((nx, ny), it)
@@ -385,15 +381,19 @@ class SpeleoMorph(SpeleoEffect):
       
       return
     elif node.get("x") <> None and node.tag == inkex.addNS("use", "svg"):
+
+      # Convert use coordinates to a transform
+#      node.set("transform", node.get("transform") + " translate(" + node.get('x') + "," + node.get('y') + ")")
+      #simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(" + node.get('x') + "," + node.get('y') + ")"), node)
+
       # Handle symbols
       tr = SpeleoTransform.getTotalTransform(node)
       
       # Convert and set new coordinates
       (x, y) = self.getTransformed(float(node.get("x")), float(node.get("y")), src, dst, tr, node)
       
-      simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(" + str(x) + "," +str(y) + ")"), node)
-      node.set("x", "0")
-      node.set("y", "0")
+      node.set("x", str(x))
+      node.set("y", str(y))
     elif node.get("x") <> None:
       # Generic handler for nodes having x & y coordinates
       tr = SpeleoTransform.getTotalTransform(node)

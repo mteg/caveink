@@ -62,7 +62,7 @@
     <title
        id="grtitle123181">Gradient arrow</title>
     <path
-       style="fill:inherit;stroke:none;stroke-width:0"
+       style="fill:inherit;stroke:none;stroke-width:inherit"
        d="m 0.19701309,-7.9098426 -3.02400009,13.464 6.1200001,0 -3.09600001,-13.464 z"
        inkscape:connector-curvature="0"
        id="grpath123183" />
@@ -73,13 +73,35 @@
     <title
        id="grtitle123186">Mini gradient arrow</title>
     <path
-       style="fill:inherit;stroke:none;stroke-width:0"
+       style="fill:inherit;stroke:none;stroke-width:inherit"
        d="m 0.08155535,-3.7957054 -1.51199995,6.732 3.0599999,0 -1.54799995,-6.732 z"
        inkscape:connector-curvature="0"
        id="grpath123188" />
   </symbol>
-
-
+  <symbol
+     id="grgradarr">
+    <title>Gradient arrow (UIS)</title>
+    <path
+       style="fill:inherit;stroke:none;stroke-width:inherit;" 
+       d="m 0,-11.637795 -3,7.9999997 6,0"
+       id="grpath48025" />
+    <path
+       style="fill:none;stroke:inherit;stroke-width:inherit;" 
+       d="M 0,7.3622047 0,-4.5971851"
+       id="grpath48027" />
+  </symbol>
+  <symbol
+     id="grmini-gradarr">
+    <title>Mini gradient arrow (UIS)</title>
+    <path
+       id="grpath47446"
+       d="m 0,-7.6377953 -2,5 4,0"
+       style="fill:inherit;stroke:none;stroke-width:inherit;" />
+    <path
+       id="grpath47988"
+       d="m 0,4.3622047 0,-8"
+       style="fill:none;stroke:inherit;stroke-width:inherit;" />
+  </symbol>
   <symbol     
      id="grsand">
     <title
@@ -97,19 +119,19 @@
     <title
        id="grtitle123223">More sand</title>
     <circle
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.5"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        id="grpath26959-7"
        cx="-0.69284582"
        cy="0.51390457"
        r="0.098647706" />
     <circle
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.5"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        id="grpath26959-2"
        cx="-0.16161157"
        cy="-0.58555228"
        r="0.098647706" />
     <circle
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.5"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        id="grQsands"
        cx="0.80771828"
        cy="0.41727066"
@@ -133,19 +155,19 @@
     <title
        id="grtitle123229">More gravel</title>
     <circle
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.5"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        id="grpath26959-4-8"
        cx="-1.3165044"
        cy="0.33123484"
        r="0.48045975" />
     <circle
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.5"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        id="grpath26959-4-8-2"
        cx="0.38813037"
        cy="-1.1208683"
        r="0.48045975" />
     <circle
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.5"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        id="grQgravels"
        cx="0.95633715"
        cy="0.8994416"
@@ -156,7 +178,7 @@
     <title
        id="grtitle123211">Clay</title>
     <path
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -3.2465327,-0.74014929 c 0,0 1.9553,2.36606999 3.27493005,0.625 1.31963995,-1.74107001 3.03571945,0.75893 3.03571945,0.75893"
        id="grQclay"
        sodipodi:nodetypes="czc"
@@ -171,7 +193,7 @@
        inkscape:connector-curvature="0"
        id="grQsilt"
        d="m -1.4790024,-0.13935182 3.5154,0"
-       style="color:inherit;display:inline;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605" />
+       style="color:inherit;display:inline;opacity:1;fill:none;stroke:inherit;stroke-width:inherit" />
   </symbol>
   <symbol
      
@@ -179,7 +201,7 @@
     <title
        id="grtitle123177">Guano</title>
     <path
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -3.1363633,-1.8458472 c 1.63729,-1.193072 3.21904002,-0.912542 2.84329002,3.538785 0.73756,-4.108993 3.74063998,-4.298065 4.31495998,-1.97135703"
        id="grQguano"
        sodipodi:nodetypes="ccc"
@@ -193,7 +215,7 @@
        id="grtitle123162">Water inlet</title>
     <path
        d="m -0.35811379,-0.022431 c 0,0 1.15754,-0.707388 0.78419,-1.368253 -0.37335,-0.660864 -1.53495001,-0.871165 -1.51024001,-1.62825 0.0247,-0.757085 1.68255001,-1.153227 1.71347001,-2.022723 0.0309,-0.869496 -1.41362,-1.214251 -1.44559,-2.054149 -0.032,-0.839897 1.28858,-1.577801 1.22855,-2.048283 -0.0369,-0.288781 -0.42314,-1.51044 -0.42314,-1.51044 m -3.98440601,8.139523 c 0,0 -0.32239,2.492596 3.91111601,2.492596 4.23350999,0 3.78736999,-2.492596 3.78736999,-2.492596"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath24753"
        inkscape:connector-curvature="0" />
     <path
@@ -209,7 +231,7 @@
        id="grtitle123167">Water sink</title>
     <path
        d="m -4.1732358,-2.7037251 c 0,0 -0.32239,2.49259601 3.91112003,2.49259601 4.23350997,0 3.78736997,-2.49259601 3.78736997,-2.49259601 M -0.70295577,-16.60021 c 0,0 -1.15754003,0.707388 -0.78419003,1.368253 0.37335,0.660864 1.53495003,0.871165 1.51024003,1.62825 -0.0247,0.757085 -1.68255003,1.153227 -1.71347003,2.022723 -0.0309,0.869496 1.41362003,1.214251 1.44559003,2.0541489 0.032,0.839897 -1.28858003,1.577801 -1.22855003,2.048283 0.0369,0.288781 0.42314,1.51044 0.42314,1.51044"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath24753-5"
        inkscape:connector-curvature="0" />
     <path
@@ -227,7 +249,7 @@
        inkscape:connector-curvature="0"
        id="grpath24753-5-6"
        d="m 0.05791987,6.4782525 c 0,0 -1.15753997,-0.707388 -0.78419,-1.368253 0.37335,-0.660864 1.53495,-0.871165 1.51024,-1.62825 -0.0247,-0.757085 -1.68255,-1.153227 -1.71347,-2.022723 -0.0309,-0.86949595 1.41362,-1.21425095 1.44559,-2.05414895 0.032,-0.83989705 -1.28858,-1.57780105 -1.22855,-2.04828305 0.0369,-0.288781 0.42314,-1.51044 0.42314,-1.51044"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605" />
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit" />
     <path
        inkscape:connector-curvature="0"
        id="grpath24757-6-3"
@@ -241,7 +263,7 @@
        id="grtitle123191">Draft</title>
     <path
        d="m 0.04106592,3.9944374 -3.84000002,3.839998 m 0,3.5671006 3.84000002,-3.8399976 0,-13.776"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath26779"
        inkscape:connector-curvature="0" />
     <path
@@ -257,7 +279,7 @@
        id="grtitle123196">Camp</title>
     <path
        d="M -4.383029,-0.55889042 -0.38302903,-10.889247 3.616971,-0.55889042 m -10,0 12,0"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath26794"
        inkscape:connector-curvature="0" />
     <path
@@ -279,12 +301,12 @@
     <path
        id="grpath27131"
        d="m -0.17177909,0.43572189 27.90546009,0 0,14.01587011"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:1"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        inkscape:connector-curvature="0" />
     <path
        id="grpath27133"
        d="m 23.713681,13.131592 4.02,1.32 4.08,-1.32 -4.05,11.04 z"
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:inherit"
        inkscape:connector-curvature="0" />
   </symbol>
   <symbol
@@ -293,7 +315,7 @@
     <title
        id="grtitle123244">Cross-section arrow -- part 1</title>
     <path
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:1"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        d="m -26.613929,0.43554725 26.66999971,0"
        id="grQxsect1"
        inkscape:connector-curvature="0" />
@@ -305,7 +327,7 @@
     <title
        id="grtitle123207">Bones</title>
     <path
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.5"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        d="m -3.8133097,-2.0143401 c 0.44307,-0.66192 1.30081,-0.0611 1.7027,-0.34747 0.40189,-0.28634 -0.0739,-1.24955 0.6973,-1.21254 0.72465005,0.22332 0.84379005,1.80431 1.94064005,3.03120996 1.08979995,1.25514 5.14532995,2.85835004 4.84186995,4.19122004 -0.57692,0.46692 -1.62344,-0.20714 -2.01861,0.18813 -0.44727,0.23031 0.36981,1.29803 -0.6359,1.13345 -1.00574,-0.16458 -0.69089,-2.66174 -2.59199995,-3.936 -1.90111005,-1.27426004 -4.44076005,-1.88702004 -3.93600005,-3.048 z"
        id="grQbones"
        sodipodi:nodetypes="ccccccccc"
@@ -321,10 +343,10 @@
        cy="-0.17794935"
        cx="-0.14094818"
        id="grpath26821"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605" />
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit" />
     <path
        d="M -0.14092327,-0.17794193 -2.3591433,2.0402781 m 5.39218,-2.21822003 -3.17395997,0 -2.21822003,-2.21821997"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath26823-6"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -333,10 +355,10 @@
 	<g>
           <path
                   d="M -1.8,1 1.8,1 0,-2 -1.8,1 z"
-                  style="stroke:inherit; fill:none; stroke-width:0.4;stroke-linejoin:miter;fill-opacity:0.5" />
+                  style="stroke:inherit; fill:none; stroke-width:inherit;stroke-linejoin:miter;fill-opacity:0.5" />
           <path
                   d="M 0,0 0,0"
-                  style="stroke:inherit;fill:none;stroke-width:0.7;stroke-linecap:round" />
+                  style="stroke:inherit;fill:none;stroke-width:inherit;stroke-linecap:round" />
 	</g>
   </symbol>
   <symbol id="grnamed-station">
@@ -356,7 +378,7 @@
        id="grtitle123240">Level reference</title>
     <path
        id="grQlevelref"
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:inherit;stroke-width:inherit"
        d="m -7.1589276,0.11376192 10.206,0 m -1.98,-0.54 1.98,-3.72600002 -3.726,0 z"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -370,10 +392,10 @@
        cy="0.078313254"
        cx="0.037127618"
        id="grpath27066"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605" />
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit" />
     <path
        d="m 1.4686608,0.07832388 2.84105,0 m -4.27258,4.27258002 0,-2.84105 m 0,-2.86307 0,-2.84105 m -4.27259,4.27258998 2.84105,0"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath27068-86"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -384,7 +406,7 @@
        id="grtitle123287">Stalagnate</title>
     <path
        id="grQstalagnate"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m 2.0268809,6.5340998 -1.99999999,-3 m -2.00000001,-9 2.00000001,3 0,6 -2.00000001,3 m 4,-12 -1.99999999,3"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -395,7 +417,7 @@
        id="grtitle123279">Stalactite</title>
     <path
        id="grQstalactite"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m 1.9371518,-5.69873 -1.99999997,3 m -2.00000003,-3 2.00000003,3 0,6"
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0" />
@@ -407,7 +429,7 @@
        id="grtitle123283">Stalagmite</title>
     <path
        id="grQstalagmite"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m 2.1256608,3.981999 -2,-2.99999998 m -2,2.99999998 2,-2.99999998 0,-6.00000002"
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0" />
@@ -419,7 +441,7 @@
        id="grtitle123271">Helictite</title>
     <path
        id="grQhelictite"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -2.8873555,-5.2857593 0,6.00000003 6,0 0,5.99999997 m -3.00000003,-12 0,12"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -430,7 +452,7 @@
        id="grtitle123267">Curtain</title>
     <path
        id="grQcurtain"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m 1.9771618,-3.5702844 -1.99999997,3.00000004 m -2.00000003,-3.00000004 2.00000003,3.00000004 0,1.99999996 c 0,0 -1.00000003,0 -1.00000003,1 0,1 1.00000003,1 1.00000003,1 l 0,2"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -441,7 +463,7 @@
        id="grtitle123291">Soda straws</title>
     <path
        id="grQsodas"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m 6.7072691,0.32870448 0,1.99596002 m -0.85231,-1.99596002 0,3.79530002 m -2.36755,-3.79530002 0,1.71186002 m -2.39911,-1.67306002 0,2.96732002 m -1.64150003,-3.00612002 0,1.86970002 m -2.24127997,-1.86970002 0,4.33137002 m -1.98873,-4.33137002 0,1.11208002 m -1.51523,-1.11208002 0,2.78515002 m -1.2456,-2.78515002 15,0"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -451,7 +473,7 @@
     <title
        id="grtitle123262">Disk</title>
     <circle
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath27066-8"
        cx="-0.16140349"
        cy="-1.4028301"
@@ -459,7 +481,7 @@
     <path
        id="grpath27158"
        d="M -1.3667536,3.1061025 -0.20604362,0.38288245 1.3118164,3.1507425"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        inkscape:connector-curvature="0" />
   </symbol>
   <symbol
@@ -468,7 +490,7 @@
     <title
        id="grtitle123258">Flowstone</title>
     <path
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="M -2.1787521,-0.25173495 0.94624795,-1.367805 1.1694579,1.578625"
        id="grQflowstone"
        inkscape:connector-curvature="0" />
@@ -479,7 +501,7 @@
     <title
        id="grtitle123254">Moonmilk</title>
     <path
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -5.1890899,-1.2072905 c 1.33521,-2.07322 2.39429,-1.77221 3.77232,-0.37946 1.45181,-0.92849 2.76232,-1.33059 3.50446,0.98214002 1.99435,-0.84270002 3.39982,-0.64327002 3.25893,1.96428998"
        id="grQmoonmilk"
        sodipodi:nodetypes="cccc"
@@ -492,7 +514,7 @@
        id="grtitle123275">Crystal</title>
     <path
        id="grpath27301-6-8"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m 2.2575708,-3.7133361 -4.5,7.79422 m 0,-7.79422 4.5,7.79422 m -6.75,-3.89711002 9,0"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -505,11 +527,11 @@
        cy="-4.9320254"
        cx="-0.021177925"
        id="grpath27336"
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:inherit"
        r="1.7589217" />
     <path
        d="m -2.0211782,0.06797828 4,0 m -1.99999997,-4.99999998 0,4.99999998"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath27340"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -523,22 +545,22 @@
        cy="-4.7232122"
        cx="-4.2704525"
        id="grpath27336-9"
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:0.53149605" />
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:inherit" />
     <circle
        r="1.7589217"
        cy="-4.7232122"
        cx="0.10454761"
        id="grpath27336-7"
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:0.53149605" />
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:inherit" />
     <circle
        r="1.7589217"
        cy="-4.7232122"
        cx="4.4795475"
        id="grpath27336-2"
-       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:0.53149605" />
+       style="color:inherit;opacity:1;fill:inherit;fill-opacity:1;stroke:none;stroke-width:inherit" />
     <path
        d="m 4.4795462,-4.7232083 0,5.00000005 m -4.37499999,-5.00000005 0,5.00000005 m -4.37500001,-5.00000005 0,5.00000005 m -2,0 12.75,0"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        id="grpath27340-7"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -549,7 +571,7 @@
        id="grtitle123328">Vegetation</title>
     <path
        id="grQveget"
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m 1.4253714,0.02772484 0.18574,-4.59628004 2.87888,-1.99636 m -4.50406003,-1.53209 0.0929,8.44971004 m -4.73624997,-8.21758004 3.66823997,3.85344 -0.60362997,4.17844004"
        inkscape:connector-curvature="0" />
   </symbol>
@@ -572,7 +594,7 @@
     <title
        id="grtitle123320">Anostomosen</title>
     <path
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -13.998997,4.4875308 c 0,0 0.061,2.63151 2.84105,2.33598 2.7800099,-0.29553 -0.43341,-13.30437 4.2300199,-12.81631 4.66342,0.48806 -2.12755,13.60273 2.71478,13.95273 4.84232996,0.35 0.0673,-14.45533 4.92449996,-14.079 4.85717004,0.37633 -2.19014996,13.6711 2.58851004,14.079 4.77866,0.4079 0.26701,-13.95462 4.98763,-13.57392 4.7206201,0.3807 -0.47886,12.73458 2.1465701,13.70019 2.62544,0.96561 2.71479,-1.76777 2.71479,-1.76777"
        id="grQanastomosen"
        sodipodi:nodetypes="czzzzzzzc"
@@ -585,7 +607,7 @@
     <title
        id="grtitle123324">Karren</title>
     <path
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -2.8365229,2.013106 1.71429,1 2.57142,-6 1.71429,1"
        id="grQkarren"
        inkscape:connector-curvature="0" />
@@ -602,7 +624,7 @@
      inkscape:connector-curvature="0" />
   <path
      d="m -1.98545,-1.4195495 c 0,0 0.0893,1.99999996 2.04464,1.99999996 1.95536,0 1.95536,-1.99999996 1.95536,-1.99999996 m -2,-11.0259905 0,20.0260005"
-     style="color:inherit;display:inline;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+     style="color:inherit;display:inline;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
      id="grpath27456"
      inkscape:connector-curvature="0" />
   </symbol>
@@ -611,7 +633,7 @@
     <title
        id="grtitle123312">Scallops</title>
     <path
-       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -1.3467872,-0.69807292 c 0.25355,1.18728 0.61026999,2.41878002 1.27799999,3.78357002 0.66934,-1.04073 1.41996001,-1.72921 1.92600001,-3.47757002 0,0 -0.15699,-1.60608998 -1.56600001,-1.69199998 -1.40900999,-0.0859 -1.63799999,1.38599998 -1.63799999,1.38599998 z"
        id="grQscallops"
        sodipodi:nodetypes="ccczc"
@@ -623,7 +645,7 @@
        id="grtitle123316">Flutes</title>
     <path
        id="grQflutes"
-       style="color:inherit;display:inline;opacity:1;fill:none;stroke:inherit;stroke-width:0.53149605"
+       style="color:inherit;display:inline;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="m -1.428879,0.35225046 c 1.57534,2.31125004 3.1507,2.46115004 4.72604,0 m -7.08907,0 9.4521,0"
        inkscape:connector-curvature="0" />
   </symbol>
