@@ -11,7 +11,9 @@
           <item value="plainShift">Quick shift</item>
 	</param>
 
+	<param name="scale" type="boolean" _gui-text="Scale distances from stations">1</param>
 	<param name="replace" type="boolean" _gui-text="Replace original stations">1</param>
+	<param name="rotate-symbols" type="boolean" _gui-text="Rotate symbols">1</param>
 
 	<effect>
 		<object-type>path</object-type>

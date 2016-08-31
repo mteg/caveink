@@ -1,0 +1,23 @@
+div.clear {
+	clear: both;
+}
+
+div.tutorial > div {
+	background-color: #f8f8f8;
+	position: relative;
+}
+
+div.tutorial > div > h2 {
+	width: 100%;
+	background: #e8e8e8;
+}
+
+div.tutorial > div > img {
+	float: left;
+	padding: 5pt;
+}
+
+div.tutorial > div > p {
+	font-size: 14pt;
+	text-align: justify;
+}

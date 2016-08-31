@@ -10,6 +10,7 @@ Distributed under the terms of the GNU General Public License v2
 '''
 
 import math
+import sys
 import inkex
 import simpletransform
 import logging
@@ -107,6 +108,34 @@ class StationStore:
       return [(self.stationList[index], dist)]
     else:
       return [(self.stationList[idx], dist[n]) for n, idx in enumerate(index)]
+  
+  def findDistinctClosest(self, x0, y0, n = 1):
+    '''
+    Find closest n DISTINCT stations
+    '''
+    m = n
+    while m <= (len(self.stationList) * 2) or m == n:
+      # Query the k,d-tree
+      kd = self.findClosest(x0, y0, m)
+      
+      # See how many different stations are there
+      stationsPresent = {}
+      result = []
+      for name, dist in kd:
+        if not name in stationsPresent:
+          stationsPresent[name] = True
+          result.append((name, dist))
+      
+      # Do we have enough?
+      if len(result) >= n:
+        return result[:n]
+      
+      # No? Sorry ...
+      m *= 2
+    
+    # Cannot satisfy
+    return kd
+      
                         
   def buildKD(self):
     '''
@@ -117,6 +146,21 @@ class StationStore:
     # Make an index for resolving queries
     self.stationList = self.dict.keys()
 
+    # Resolve references
+    for idx, name in enumerate(self.stationList):
+      self.log(name)
+      if name[:3] == "-->":
+        self.log("Resolving reference " + name)
+        # Get referenced station
+        ref = name[3:].strip()
+        
+        # Add only if we can resolve it
+        if ref in self.dict:
+          self.stationList[idx] = ref
+        else:
+          sys.stderr.write("Cannot resolve station " + name)
+
+
   def __init__(self, layer, recursive = True):
     '''
     Initialize a station storage object, loading stations from an XML node
@@ -126,17 +170,20 @@ class StationStore:
     self.stationLayer = None
     self.prefix = None
     
-    
     # Look for stations
     self.findStations(layer, -1 if recursive else 1)
-          
+    
+    
     # Did we find a prefix on the way?
     if self.prefix <> None:
       # Need to rename everything, sorry
       old_dict = self.dict
       self.dict = {}
       for k, v in old_dict.iteritems():
-        self.dict[self.prefix + k] = v
+        if k[:3] == "-->":
+          self.dict["-->" + self.prefix + k[3:].strip()] = v
+        else:
+          self.dict[self.prefix + k] = v
 
 class SpeleoMorph(SpeleoEffect):
   def initOptions(self):
@@ -149,8 +196,14 @@ class SpeleoMorph(SpeleoEffect):
     self.OptionParser.add_option("--mode",
         action="store", type="string", 
         dest="mode", default="followNearestTwo")  
+    self.OptionParser.add_option("--scale",
+        action="store", type="inkbool", 
+        dest="scale", default=True)  
+    self.OptionParser.add_option("--rotate-symbols",
+        action="store", type="inkbool", 
+        dest="rotate", default=True)  
         
-  def getTransformed(self, x, y, src, dst, t):
+  def getTransformed(self, x, y, src, dst, t, node = None):
     '''
     Transform local coordinates into new local coordinates
     '''
@@ -158,15 +211,34 @@ class SpeleoMorph(SpeleoEffect):
     (gx, gy) = SpeleoTransform.transformCoords((x, y), t)
     
     # Compute new coordinates using transformation method of choice
-    (nx, ny) = self.transformCoordinates(gx, gy, src, dst)
+    (nx, ny, angle) = self.transformCoordinates(gx, gy, src, dst)
           
     # If nothing changed, return old local coordinates
-    if nx == gx and ny == gy: return (x, y)
+    if nx == gx and ny == gy and angle == 0: return (x, y)
 
     # ... so that we do not waste time on inverting transforms
     
     # Invert transform
     it = SpeleoTransform.invertTransform(t)
+    
+    # See if we need to rotate a symbol...
+    if angle <> 0 and node <> None:
+      # Maybe it needs rotation!
+      if node.tag == inkex.addNS("use", "svg") and self.options.rotate:
+        name = node.get(inkex.addNS("href", "xlink"))[1:]
+        if name in [
+          "gradient", "mini-gradient", "source", "sink", "water", "draft", "paleoflow", "scallops",
+          "grgradient", "grmini-gradient", "grsource", "grsink", "grwater", "grdraft", "grpaleoflow", "grscallops"]:
+          
+          # Invert original node transform
+          simpletransform.applyTransformToNode(it, node)
+
+          # Apply rotation
+          simpletransform.applyTransformToNode(simpletransform.parseTransform("rotate(" + str(angle) + ")"), node)
+          
+          # Go back
+          simpletransform.applyTransformToNode(t, node)
+     
     
     # Go back to local coordinate system
     return SpeleoTransform.transformCoords((nx, ny), it)
@@ -179,7 +251,7 @@ class SpeleoMorph(SpeleoEffect):
     # Do we already know the offset?
     if self.goffs <> None:
       # Yes! Just apply it.
-      return (gx + self.goffs[0], gy + self.goffs[1])
+      return (gx + self.goffs[0], gy + self.goffs[1], 0)
     
     # Find out the offset by a slightly "better" method
     (nx, ny) = self.transformCoordinates_KeepToClosest(gx, gy, src, dst)
@@ -190,23 +262,23 @@ class SpeleoMorph(SpeleoEffect):
       self.goffs = [nx - gx, ny - gy]
     
     # ... and apply!
-    return (nx, ny)
+    return (nx, ny, 0)
 
   def transformCoordinates_KeepToClosest(self, gx, gy, src, dst):
     '''
     Keep constant bearing and distance from closest station
     '''
     # Find the closest station
-    neigh = src.findClosest(gx, gy, 1)
+    neigh = src.findDistinctClosest(gx, gy, 1)
     
     # There has to be one? Just one!
-    if len(neigh) <> 1: return (gx, gy)
+    if len(neigh) <> 1: return (gx, gy, 0)
     
     # Get name and distance...
     (st, dist) = neigh[0]
     
     # Does not exist in target centerline? Keep in place then!
-    if not st in dst.dict: return (gx, gy)
+    if not st in dst.dict: return (gx, gy, 0)
     
     # See how this station moved between the centerlines...
     (sx, sy) = src.dict[st]
@@ -215,22 +287,22 @@ class SpeleoMorph(SpeleoEffect):
     oy = dy - sy
     
     # Let's not bother with details
-    if abs(ox) < 1e-5 and abs(oy) < 1e-5: return (gx, gy)
+    if abs(ox) < 1e-5 and abs(oy) < 1e-5: return (gx, gy, 0)
     
     # Apply the offset to supplied coordinates
-    return (gx + ox, gy + oy)
+    return (gx + ox, gy + oy, 0)
 
   def transformCoordinates_NearestTwo(self, gx, gy, src, dst):
     # Need two neighbors for this trick
-    neigh = src.findClosest(gx, gy, 2)
-    if len(neigh) <> 2: return (gx, gy)
+    neigh = src.findDistinctClosest(gx, gy, 2)
+    if len(neigh) <> 2: return (gx, gy, 0)
     
     # Get close and far neighbor
     (cn, cdist) = neigh[0]
     (fn, fdist) = neigh[1]
     
     # If any of them is not present in dst, do not move
-    if (cn not in dst.dict) or (fn not in dst.dict): return (gx, gy)
+    if (cn not in dst.dict) or (fn not in dst.dict): return (gx, gy, 0)
     
     # Get neighbor coordinates
     (scnx, scny) = src.dict[cn]
@@ -243,7 +315,7 @@ class SpeleoMorph(SpeleoEffect):
     dnd = math.sqrt((dcnx - dfnx) ** 2 + (dfny - dcny) ** 2)
     
     # If neighbors are in the same place, do not move
-    if snd < 1e-5 or dnd < 1e-5: return (gx, gy)
+    if snd < 1e-5 or dnd < 1e-5: return (gx, gy, 0)
     
     # Get bearing difference between the survey leg on both drawings
     rot_by = math.atan2(dfny - dcny, dfnx - dcnx) - math.atan2(sfny - scny, sfnx - scnx)
@@ -253,15 +325,16 @@ class SpeleoMorph(SpeleoEffect):
     oy = gy - scny
     
     # Scale this vector
-    ratio = dnd / snd
-    ox *= ratio
-    oy *= ratio
+    if self.options.scale:
+      ratio = dnd / snd
+      ox *= ratio
+      oy *= ratio
     
     # Rotate this vector by the bearing difference
     (ox, oy) = (ox * math.cos(rot_by) - oy * math.sin(rot_by), ox * math.sin(rot_by) + oy * math.cos(rot_by))
     
     # Compute new point position
-    return (ox + dcnx, oy + dcny)
+    return (ox + dcnx, oy + dcny, rot_by / math.pi * 180)
                 
   def rectifyPath(self, path, src, dst, tr):
     '''
@@ -311,12 +384,23 @@ class SpeleoMorph(SpeleoEffect):
       self.removeAttrib(node, inkex.addNS("type", "sodipodi"))
       
       return
+    elif node.get("x") <> None and node.tag == inkex.addNS("use", "svg"):
+      # Handle symbols
+      tr = SpeleoTransform.getTotalTransform(node)
+      
+      # Convert and set new coordinates
+      (x, y) = self.getTransformed(float(node.get("x")), float(node.get("y")), src, dst, tr, node)
+      
+      simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(" + str(x) + "," +str(y) + ")"), node)
+      node.set("x", "0")
+      node.set("y", "0")
     elif node.get("x") <> None:
       # Generic handler for nodes having x & y coordinates
       tr = SpeleoTransform.getTotalTransform(node)
       
       # Convert and set new coordinates
-      (x, y) = self.getTransformed(float(node.get("x")), float(node.get("y")), src, dst, tr)
+      (x, y) = self.getTransformed(float(node.get("x")), float(node.get("y")), src, dst, tr, node)
+      
       node.set("x", str(x))
       node.set("y", str(y))
     elif node.get("cx") <> None:
@@ -364,7 +448,7 @@ class SpeleoMorph(SpeleoEffect):
   
   def effect(self):
     # Configure self.logging
-    if len(self.options.debug):self.logging.basicConfig(level = self.logging.DEBUG)
+    if len(self.options.debug): logging.basicConfig(level = logging.DEBUG)
           
     # Configure morphing method
     if self.options.mode == "followNearestTwo":

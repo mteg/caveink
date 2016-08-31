@@ -13,7 +13,7 @@ all:
 	@echo ""
 
 test:
-	make -C tests
+	PYTHONPATH="../extensions:../../extensions:/usr/share/inkscape/extensions" make -C tests
 
 clean:
 	make -C tests clean

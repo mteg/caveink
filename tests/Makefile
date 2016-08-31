@@ -1,7 +1,6 @@
 
 
 all:
-	export PYTHONPATH="../extensions:../../extensions:/usr/share/inkscape/extensions"
 	make -C randstones
 	make -C window
 	make -C line

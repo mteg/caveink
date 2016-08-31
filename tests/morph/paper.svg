@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="paper.svg"
+   inkscape:version="0.91 r"
+   version="1.1"
+   id="svg2"
+   viewBox="0 0 744.09448819 1052.3622047"
+   height="297mm"
+   width="210mm">
+  <defs
+     id="defs4">
+    <symbol
+       id="point-station-0">
+      <path
+         id="path3521"
+         style="fill:white;stroke-width:0.4;stroke-linejoin:miter;fill-opacity:0.5"
+         d="M -1.8,1 1.8,1 0,-2 -1.8,1 z" />
+      <path
+         id="path3523"
+         style="fill:none;stroke-width:0.7;stroke-linecap:round"
+         d="M 0,0 0,0" />
+    </symbol>
+    <marker
+       id="StationCircle"
+       style="overflow:visible">
+      <circle
+         id="circle3526"
+         style="fill:none;stroke:#666;stroke-width:0.7"
+         r="2" />
+    </marker>
+    <marker
+       id="StationTriangle"
+       style="overflow:visible">
+      <use
+         id="use3529"
+         transform="scale(1.5)"
+         style="stroke:#666"
+         xlink:href="#point-station-0" />
+    </marker>
+    <symbol
+       transform="scale(7.055556)"
+       id="point-station">
+      <use
+         id="use3532"
+         style="stroke:black"
+         xlink:href="#point-station-0" />
+    </symbol>
+    <symbol
+       id="point-station-0-7">
+      <path
+         id="path3754"
+         style="fill:white;stroke-width:0.4;stroke-linejoin:miter;fill-opacity:0.5"
+         d="M -1.8,1 1.8,1 0,-2 -1.8,1 z" />
+      <path
+         id="path3756"
+         style="fill:none;stroke-width:0.7;stroke-linecap:round"
+         d="M 0,0 0,0" />
+    </symbol>
+    <marker
+       id="StationCircle-1"
+       style="overflow:visible">
+      <circle
+         id="circle3759"
+         style="fill:none;stroke:#666;stroke-width:0.7"
+         r="2" />
+    </marker>
+    <marker
+       id="StationTriangle-9"
+       style="overflow:visible">
+      <use
+         id="use3762"
+         transform="scale(1.5)"
+         style="stroke:#666"
+         xlink:href="#point-station-0-7" />
+    </marker>
+    <symbol
+       transform="scale(14.111111)"
+       id="point-station-05">
+      <use
+         id="use3765"
+         style="stroke:black"
+         xlink:href="#point-station-0-7" />
+    </symbol>
+    <symbol
+       id="station">
+      <title
+         id="title4269">Surveying station</title>
+      <g
+         id="g4271">
+        <path
+           d="M -1.8,1 1.8,1 0,-2 -1.8,1 z"
+           style="stroke:#000000; fill:none; stroke-width:0.4;stroke-linejoin:miter;fill-opacity:0.5"
+           id="path4273" />
+        <path
+           d="M 0,0 0,0"
+           style="stroke:#000000;fill:none;stroke-width:0.7;stroke-linecap:round"
+           id="path4275" />
+      </g>
+    </symbol>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="24"
+     inkscape:window-x="0"
+     inkscape:window-height="692"
+     inkscape:window-width="1366"
+     showgrid="false"
+     inkscape:current-layer="layer3"
+     inkscape:document-units="px"
+     inkscape:cy="469.89257"
+     inkscape:cx="403.0593"
+     inkscape:zoom="3.959798"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Sketch"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="opacity:0.60900005">
+    <image
+       sodipodi:absref="/home/mteg/devel/caveink/tests/morph/paper.jpg"
+       y="495.91013"
+       x="356.12415"
+       id="image3453"
+       xlink:href="file:///home/mteg/devel/caveink/tests/morph/paper.jpg"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="164.38249"
+       width="152.62086" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Outline">
+    <path
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165341;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 356.74038,606.38825 c 0,0 2.28231,-2.9638 2.28231,-3.87572 0,-0.91194 0,-3.87573 0,-5.01565 0,-1.13991 1.59762,-20.29053 2.73878,-23.25432 1.14116,-2.96379 2.05408,-7.75145 1.82586,-9.8033 -0.22823,-2.05185 -1.14115,-10.94321 -1.14115,-12.76708 0,-1.82387 -0.45647,-10.48725 1.36937,-12.99507 1.82586,-2.50782 5.70579,-6.15555 8.6728,-6.61152 2.96701,-0.45597 8.90102,-1.3679 10.27042,-1.3679 1.36939,0 6.39048,0.45596 7.30341,0.45596 0.91292,0 7.53162,-7.06749 8.21633,-8.43539 0.68469,-1.3679 8.21632,-7.97942 9.81395,-8.43539 1.59762,-0.45597 8.6728,-0.45597 10.04218,0.22798 1.36938,0.68395 4.79286,0.91194 6.84694,0.91194 2.05409,0 9.58573,-0.68395 10.49865,-0.22799 0.91292,0.45597 4.79286,2.05185 5.47756,4.33169 0.68469,2.27984 2.967,6.15556 4.56463,7.0675 1.59762,0.91192 8.44456,0 10.04218,0 1.59763,0 5.47755,-0.22799 5.93402,0.91192 0.45647,1.13992 0,8.4354 1.82584,10.48726 1.82587,2.05185 2.73879,3.87572 6.61873,6.15555 3.87992,2.27983 10.49865,3.41975 11.41157,4.1037 0.91292,0.68394 7.07516,3.87572 7.07516,6.38354 0,2.50784 0,4.78766 0,7.29548 0,2.50782 -1.36937,12.31112 -2.967,15.50289 -1.59761,3.19177 -3.87993,12.99506 -4.10816,13.907 -0.22824,0.91193 0.22823,7.75143 0.45645,8.66337 0.22824,0.91194 2.28232,7.52345 2.73879,8.4354 0.45646,0.91193 5.70578,9.5753 7.3034,11.1712"
+       id="path3475"
+       inkscape:connector-curvature="0" />
+    <path
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 410.91589,615.42527 c 0,0 12.35169,-6.83863 14.98515,-8.56488 2.61424,-1.71367 1.94534,-1.17827 5.19893,-5.81189 4.27659,-6.09054 6.42221,-24.77699 6.42221,-27.22409 0,-2.44711 -4.89312,-7.64722 -6.42221,-9.48255 -1.5291,-1.83533 -6.11639,-4.28244 -11.62113,-2.14122 -5.50475,2.14122 -12.53861,6.11778 -16.20843,7.9531 -3.66984,1.83533 -10.70368,6.72956 -11.92696,9.78844 -1.22328,3.05889 -6.42221,17.74154 -7.33966,21.7181 -0.91746,3.97655 -12.53859,30.28297 -12.84442,31.50653 -0.30582,1.22355 -6.4222,9.48255 -10.39785,11.62376"
+       id="path3842"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csssssssssc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Details" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Stations"
+     style="display:inline">
+    <g
+       id="g9184"
+       transform="translate(-5.050763,-30.809652)">
+      <use
+         transform="translate(335.37065,557.47675)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#station"
+         id="use9162" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text9180"
+         y="553.59937"
+         x="311.63205"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:sans;-inkscape-font-specification:sans"
+           y="553.59937"
+           x="311.63205"
+           id="tspan9182"
+           sodipodi:role="line">***paper.</tspan></text>
+    </g>
+    <g
+       id="g9184-9"
+       transform="translate(80.923816,-43.362149)">
+      <use
+         transform="translate(335.37065,557.47675)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#station"
+         id="use9162-1"
+         style="stroke:#ff0000" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text9180-7"
+         y="558.65015"
+         x="338.14856"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:sans;-inkscape-font-specification:sans;fill:#ff0000"
+           y="558.65015"
+           x="338.14856"
+           id="tspan9182-4"
+           sodipodi:role="line">q23</tspan></text>
+    </g>
+    <g
+       id="g9184-9-3"
+       transform="translate(107.36972,10.119501)">
+      <use
+         transform="translate(335.37065,557.47675)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#station"
+         id="use9162-1-2"
+         style="stroke:#ff0000" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text9180-7-3"
+         y="558.65015"
+         x="338.14856"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:sans;-inkscape-font-specification:sans;fill:#ff0000"
+           y="558.65015"
+           x="338.14856"
+           id="tspan9182-4-2"
+           sodipodi:role="line">q22</tspan></text>
+    </g>
+    <g
+       id="g9184-9-3-7"
+       transform="translate(142.01749,72.243883)">
+      <use
+         transform="translate(335.37065,557.47675)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#station"
+         id="use9162-1-2-3"
+         style="stroke:#ff0000" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text9180-7-3-4"
+         y="558.65015"
+         x="338.14856"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:sans;-inkscape-font-specification:sans;fill:#ff0000"
+           y="558.65015"
+           x="338.14856"
+           id="tspan9182-4-2-2"
+           sodipodi:role="line">q21</tspan></text>
+    </g>
+    <g
+       id="g9184-9-3-2"
+       transform="translate(31.910864,75.779417)">
+      <use
+         transform="translate(335.37065,557.47675)"
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#station"
+         id="use9162-1-2-7"
+         style="stroke:#ff0000" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text9180-7-3-8"
+         y="558.65015"
+         x="338.14856"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:sans;-inkscape-font-specification:sans;fill:#ff0000"
+           y="558.65015"
+           x="338.14856"
+           id="tspan9182-4-2-9"
+           sodipodi:role="line">q24</tspan></text>
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot9273"
+       style="fill:#000000;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr;text-anchor:start;baseline-shift:baseline;color:#000000;fill-opacity:1;fill-rule:nonzero;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal'"><flowRegion
+         id="flowRegion9275"><rect
+           id="rect9277"
+           width="19.192898"
+           height="58.336311"
+           x="316.93536"
+           y="568.49915" /></flowRegion><flowPara
+         id="flowPara9279" /></flowRoot>    <g
+       transform="translate(39.260794,33.627645)"
+       id="g9488"
+       style="display:inline">
+      <use
+         style="stroke:#ff0000"
+         id="use9490"
+         xlink:href="#station"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%"
+         transform="translate(335.37065,557.47675)" />
+      <text
+         xml:space="preserve"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;enable-background:accumulate"
+         x="338.14856"
+         y="558.65015"
+         id="text9492"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan9494"
+           x="338.14856"
+           y="558.65015"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:sans;-inkscape-font-specification:sans;fill:#ff0000">--&gt; q23</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Survey">
+    <g
+       transform="scale(0.141732,0.141732)"
+       style="font-size:10px"
+       id="import">
+      <!-- imported with scale 1:250 from file -->
+    </g>
+    <g
+       transform="matrix(0.070866,0,0,0.070866,97.155762,513.30367)"
+       style="font-size:10px"
+       id="import-3">
+      <!-- imported with scale 1:500 from file -->
+      <g
+         id="paper">
+        <path
+           id="path3769"
+           d="M 2458,2485 3223,917 2626,254 1926,0 1234,1248 0,1804"
+           style="fill:none;stroke:#990000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;marker-start:none;marker-mid:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g3771"
+         style="font-size:30px">
+        <g
+           id="g3773"
+           transform="translate(1234,1248)">
+          <use
+             id="use3775"
+             xlink:href="#point-station-05"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+          <text
+             id="text3777"
+             y="0"
+             x="10">paper.q24</text>
+        </g>
+        <g
+           id="g3779"
+           transform="translate(0,1804)">
+          <use
+             id="use3781"
+             xlink:href="#point-station-05"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+          <text
+             id="text3783"
+             y="0"
+             x="10">paper.q25</text>
+        </g>
+        <g
+           id="g3785"
+           transform="translate(2626,254)">
+          <use
+             id="use3787"
+             xlink:href="#point-station-05"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+          <text
+             id="text3789"
+             y="0"
+             x="10">paper.q22</text>
+        </g>
+        <g
+           id="g3791"
+           transform="translate(1926,0)">
+          <use
+             id="use3793"
+             xlink:href="#point-station-05"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+          <text
+             id="text3795"
+             y="0"
+             x="10">paper.q23</text>
+        </g>
+        <g
+           id="g3797"
+           transform="translate(2458,2485)">
+          <use
+             id="use3799"
+             xlink:href="#point-station-05"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+          <text
+             id="text3801"
+             y="0"
+             x="10">paper.q20</text>
+        </g>
+        <g
+           id="g3803"
+           transform="translate(3223,917)">
+          <use
+             id="use3805"
+             xlink:href="#point-station-05"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+          <text
+             id="text3807"
+             y="0"
+             x="10">paper.q21</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

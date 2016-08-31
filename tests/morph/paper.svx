@@ -1,0 +1,10 @@
+*begin paper
+*data normal from to compass clino tape backcompass backclino
+
+Q20	Q21	26	6.6	17.55	206	-6
+Q21	Q22	317	-1.85	8.92	139	-1
+Q22	Q23	291	6	7.50	109	-7.5
+Q23	Q24	210	24	15.69	28	-25
+Q24	Q25	246	3.3	13.56	65.5	-4
+
+*end paper
