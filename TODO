@@ -7,3 +7,5 @@
 - clipPath translations - see what happens when packing/unpacking some content with window
 - solve overview maps (outline clipping? what about presumed dimensions...?) 
 - test under Windows
+- fix randstones x=,y=
+- add "leave original as frame" to window.py

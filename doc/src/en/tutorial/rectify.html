@@ -1,0 +1,56 @@
+Fixing your map after closing a survey loop
+The problem
+loop_loop.png
+
+This is a real nightmare of everyone working on cave maps in a drawing
+program: suppose you made a neatly map... and then closed a surveying loop
+through another passage. And of course it is off by a couple of meters.
+
+Of course, there is great software to handle loop closures and neatly
+determine the most appropriate positions of your surveying stations.
+But now your drawing is wrong and perhaps you regret not using Therion in
+the first place...
+
+With Inkcave, there is some hope.
+---
+Preparations
+loop_centerlines.png
+
+You need to have two centerlines imported in your drawing (see <a
+href="tutorial_3d_input.html">Survex input tutorial</a>). They have to be
+put in separate layers.
+
+One of them contains the original survey data - the one the drawing is
+already <i>referenced to</i>. The second one is the new one, the one the drawing
+should be <i>morphed to</i>.
+---
+Layers
+loop_layers.png
+
+Carefully tend to the Layers dialog. Make all layers you <i>do not</i> want
+morphed invisible (for example, hide any layers containing cross-sections or
+a drawing legend). Select the layer that contains the <i>new centerline</i>
+as the active layer.
+---
+Running the extension
+loop_extension.png
+
+Select <i>Extensions / Speleo / Morph to new centerline</i>. Select
+<i>Nearest station</i> as the <i>Morphing method</i>. Uncheck all the
+checkboxes. Click <i>Apply</i>.
+---
+Voila!
+loop_fix.png
+
+Your drawing should now be aligned with the new centerline.
+
+This trick works by referring every single point on your drawing (eg. symbol
+positions, path nodes etc.) to the nearest station on the <i>old</i>
+centerline and then moving it exactly the offset this station has moved
+between <i>old</i> and <i>new</i> centerline. 
+
+If that nearest station is not present in the target centerline, that
+particular point is left in place.
+
+It is in fact very simple - and thus, while this feature is very helpful,
+you should not expect miracles in complex cases.

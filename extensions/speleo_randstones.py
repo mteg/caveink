@@ -11,6 +11,7 @@ import simpletransform
 import string
 import random
 import re
+import os
 from lxml import etree
 
 from speleo import SpeleoEffect, SpeleoTransform
@@ -48,6 +49,7 @@ class SpeleoRandstones(SpeleoEffect):
       self.scanDefs(etree.parse(fh, parser=p), self.extSymbols)
       
     except Exception:
+      print "Error"
       pass
   
   def ensureSymbol(self, id):
@@ -65,6 +67,8 @@ class SpeleoRandstones(SpeleoEffect):
     if self.extSymbols == None:
       # No. Let's load them.
       self.extSymbols = {}
+      self.loadSymbols("cave_symbols.svg")
+      self.loadSymbols("cave_symbols_unstyled.svg")
       self.loadSymbols("cave_rocks.svg")
       self.loadSymbols("cave_rocks_gray.svg")
       self.loadSymbols("cave_rocks_unstyled.svg")
@@ -125,12 +129,17 @@ class SpeleoRandstones(SpeleoEffect):
     for child in node:
       self.processTree(child);
   
-  def effect(self):
+  def initSymbols(self):
     self.extSymbols = None
     self.ownSymbols = {}
     
     # Load our own symbols
     self.defs = self.scanDefs(self.document, self.ownSymbols)
+  
+  
+  def effect(self):
+    # Initialize symbol knowledge
+    self.initSymbols()
     
     # Recursively process everything selected
     for id, node in self.selected.iteritems():

@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg9364"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="tutorial.svg">
+  <defs
+     id="defs9366">
+    <symbol
+       id="camp">
+      <title
+         id="title123196">Camp</title>
+      <path
+         d="M -4.383029,-0.55889042 -0.38302903,-10.889247 3.616971,-0.55889042 m -10,0 12,0"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path26794"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path26796"
+         d="M -0.38302903,-11.55889 2.507111,-10.2816 0.36697097,-9.0588944 Z"
+         style="color:#000000;opacity:1;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m -0.15688903,-10.6416 2.66400003,0.36 -2.26800003,0.6839996 z M -3.383029,-0.55889042 -0.38302903,-8.5588904 2.616971,-0.55889042 Z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         id="path26798"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="humanact">
+      <title
+         id="title123202">Human activity</title>
+      <circle
+         r="3.1739593"
+         cy="-0.17794935"
+         cx="-0.14094818"
+         id="path26821"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605" />
+      <path
+         d="M -0.14092327,-0.17794193 -2.3591433,2.0402781 m 5.39218,-2.21822003 -3.17395997,0 -2.21822003,-2.21821997"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path26823-6"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="water">
+      <title
+         id="title123172">Water flow</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path24753-5-6"
+         d="m 0.05791987,6.4782525 c 0,0 -1.15753997,-0.707388 -0.78419,-1.368253 0.37335,-0.660864 1.53495,-0.871165 1.51024,-1.62825 -0.0247,-0.757085 -1.68255,-1.153227 -1.71347,-2.022723 -0.0309,-0.86949595 1.41362,-1.21425095 1.44559,-2.05414895 0.032,-0.83989705 -1.28858,-1.57780105 -1.22855,-2.04828305 0.0369,-0.288781 0.42314,-1.51044 0.42314,-1.51044"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path24757-6-3"
+         d="m 0.99862987,-3.7255365 -2.71799997,-0.486 2.64599997,-4.14 z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none" />
+    </symbol>
+    <symbol
+       id="gravels">
+      <title
+         id="title123229">More gravel</title>
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="path26959-4-8"
+         cx="-1.3165044"
+         cy="0.33123484"
+         r="0.48045975" />
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="path26959-4-8-2"
+         cx="0.38813037"
+         cy="-1.1208683"
+         r="0.48045975" />
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="Qgravels"
+         cx="0.95633715"
+         cy="0.8994416"
+         r="0.48045975" />
+    </symbol>
+    <symbol
+       id="stalactite">
+      <title
+         id="title123279">Stalactite</title>
+      <path
+         id="Qstalactite"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 1.9371518,-5.69873 -1.99999997,3 m -2.00000003,-3 2.00000003,3 0,6"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="guano">
+      <title
+         id="title123177">Guano</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -3.1363633,-1.8458472 c 1.63729,-1.193072 3.21904002,-0.912542 2.84329002,3.538785 0.73756,-4.108993 3.74063998,-4.298065 4.31495998,-1.97135703"
+         id="Qguano"
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="gradient">
+      <title
+         id="title123181">Gradient arrow</title>
+      <path
+         style="fill:#000000;stroke:none;stroke-width:0"
+         d="m 0.19701309,-7.9098426 -3.02400009,13.464 6.1200001,0 -3.09600001,-13.464 z"
+         inkscape:connector-curvature="0"
+         id="path123183" />
+    </symbol>
+    <symbol
+       id="gradarr">
+      <title
+         id="title10276">Gradient arrow (UIS)</title>
+      <path
+         style="fill:#000000;stroke:none;stroke-width:0.99212599;"
+         d="m 0,-11.637795 -3,7.9999997 6,0"
+         id="path48025" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.99212599;"
+         d="M 0,7.3622047 0,-4.5971851"
+         id="path48027" />
+    </symbol>
+    <symbol
+       id="mini-gradarr">
+      <title
+         id="title10281">Mini gradient arrow (UIS)</title>
+      <path
+         id="path47446"
+         d="m 0,-7.6377953 -2,5 4,0"
+         style="fill:#000000;stroke:none;stroke-width:0.99212599;" />
+      <path
+         id="path47988"
+         d="m 0,4.3622047 0,-8"
+         style="fill:none;stroke:#000000;stroke-width:0.35433072;" />
+    </symbol>
+    <symbol
+       id="clay">
+      <title
+         id="title123211">Clay</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -3.2465327,-0.74014929 c 0,0 1.9553,2.36606999 3.27493005,0.625 1.31963995,-1.74107001 3.03571945,0.75893 3.03571945,0.75893"
+         id="Qclay"
+         sodipodi:nodetypes="czc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="station">
+      <title
+         id="title10347">Surveying station</title>
+      <g
+         id="g10349">
+        <path
+           d="M -1.8,1 1.8,1 0,-2 -1.8,1 z"
+           style="stroke:#000000; fill:none; stroke-width:0.4;stroke-linejoin:miter;fill-opacity:0.5"
+           id="path10351" />
+        <path
+           d="M 0,0 0,0"
+           style="stroke:#000000;fill:none;stroke-width:0.7;stroke-linecap:round"
+           id="path10353" />
+      </g>
+    </symbol>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="278.37709"
+     inkscape:cy="894.03106"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="692"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata9369">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Outline"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       d="m 367.64026,105.49798 c 0,0 -10.5465,6.5712 -13.18313,11.82814 -2.63663,5.25696 0.43944,12.70431 6.59157,21.02781 6.15212,8.32351 14.94088,13.14238 14.94088,18.39933 0,5.25696 -13.18313,34.17019 -17.57751,39.42714 -4.39438,5.25695 -21.09301,3.06655 -34.27614,-0.87616 -13.18314,-3.94271 -27.24515,-10.07582 -44.82265,-15.33277 -17.57751,-5.25696 -43.50434,-2.62848 -51.41422,-2.62848 -7.90988,0 -45.70152,0.43808 -45.70152,0.43808 l 3.5155,-48.18872 c 0,0 48.33815,6.57118 63.71848,3.50463 15.38031,-3.06655 38.23107,-6.13311 52.73252,-14.45662 14.50145,-8.3235 45.70153,-17.08509 47.01984,-18.837409"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#e3dbdb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.77199996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path15109"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csssssssccssc" />
+    <path
+       id="path15087"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77199996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 182.19754,177.78107 c 0,0 37.79164,-0.43808 45.70152,-0.43808 7.90988,0 33.83671,-2.62848 51.41422,2.62848 17.5775,5.25695 31.63951,11.39006 44.82265,15.33277 13.18313,3.94271 29.88176,6.13311 34.27614,0.87616 4.39437,-5.25695 17.57751,-34.17018 17.57751,-39.42714 0,-5.25695 -8.78876,-10.07582 -14.94088,-18.39933 -6.15213,-8.3235 -9.22819,-15.77085 -6.59157,-21.0278 2.63663,-5.25695 13.18313,-11.82815 13.18313,-11.82815 m -181.92722,24.09437 c 0,0 48.33815,6.57118 63.71848,3.50463 15.38031,-3.06655 38.23107,-6.13311 52.73252,-14.45662 14.50144,-8.3235 45.70152,-17.08509 47.01984,-18.837409"
+       inkscape:connector-curvature="0" />
+    <use
+       id="use15423-4"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(263.63428,142.92035)" />
+    <use
+       id="use15423-0"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(295.41999,133.99178)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Decoration"
+     style="display:inline">
+    <use
+       transform="translate(310.06285,145.42036)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#stalactite"
+       id="use15437" />
+    <use
+       transform="translate(321.84857,129.70607)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#stalactite"
+       id="use15439" />
+    <use
+       transform="translate(307.20571,128.99179)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#stalactite"
+       id="use15441" />
+    <use
+       transform="translate(246.49142,150.06321)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#stalactite"
+       id="use15443" />
+    <use
+       transform="translate(203.63428,152.56321)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#stalactite"
+       id="use15445" />
+    <use
+       id="use15423"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(212.20571,172.20607)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Details"
+     style="display:inline">
+    <path
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#0000ff;stroke-width:1.77199996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 183.21429,168.43363 c 0,0 11.78571,-3.21428 15,-3.92857 3.21428,-0.71429 21.42857,-2.5 29.64285,0 8.21429,2.5 26.42857,6.07143 34.28572,4.28571 7.85714,-1.78571 18.92857,-1.42857 25,-5.71428 6.07143,-4.28572 36.78571,-10.71429 38.92857,-15 2.14286,-4.28572 11.78571,-23.21429 15.35714,-28.21429 3.57143,-5 17.5,-19.999997 17.5,-19.999997"
+       id="path15322"
+       inkscape:connector-curvature="0" />
+    <path
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.77199996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 296.42857,175.21935 c 4.28572,2.85714 17.5,8.92857 22.14286,9.28571 4.64286,0.35714 12.5,3.57143 20.35714,3.57143 7.85714,0 15.71429,-6.42857 18.57143,-11.07143 2.85714,-4.64286 6.07143,-15.71429 5,-21.07143 -1.07143,-5.35714 -15.35714,-21.42857 -17.14286,-24.64286 -1.78571,-3.21428 -8.21428,-3.92857 -8.21428,-3.92857 l -11.07143,20 -7.5,4.64286 -29.4875,9.46954 c -10.43433,6.39473 -7.05302,4.41185 7.34464,13.74475 z"
+       id="path15324"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csssssccccc" />
+    <use
+       transform="matrix(0.262185,0.96501763,-0.96501763,0.262185,193.22184,170.401)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#water"
+       id="use15354" />
+    <use
+       id="use15338"
+       xlink:href="#water"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="matrix(-0.07147349,0.9974425,-0.9974425,-0.07147349,251.71203,164.72218)" />
+    <use
+       id="use15338-7"
+       xlink:href="#water"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="matrix(0.81391044,0.58099036,-0.58099036,0.81391044,343.12801,111.23243)" />
+    <use
+       transform="translate(279.10865,161.75863)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#gravels"
+       id="use15402" />
+    <use
+       transform="translate(285.89437,157.83006)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#gravels"
+       id="use15404" />
+    <use
+       transform="translate(293.39437,154.25863)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#gravels"
+       id="use15406" />
+    <use
+       transform="translate(301.60865,151.40149)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#gravels"
+       id="use15408" />
+    <use
+       transform="translate(319.46579,140.68721)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#gravels"
+       id="use15410" />
+    <use
+       id="use15384"
+       xlink:href="#gravels"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(330.18008,124.97292)" />
+    <use
+       id="search"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(280.41999,141.84892)" />
+    <use
+       id="use15423-8"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(369.34856,161.49178)" />
+    <use
+       id="use15423-67"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(355.06285,188.63464)" />
+    <use
+       id="use15423-3"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(220.06285,145.42035)" />
+    <use
+       id="use15423-83"
+       xlink:href="#stalactite"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(188.99142,149.34892)" />
+    <use
+       id="use15516"
+       xlink:href="#humanact"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(192.64095,157.89729)" />
+    <use
+       transform="translate(214.14935,156.42088)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#guano"
+       id="use15568" />
+    <use
+       transform="translate(227.72078,149.63517)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#guano"
+       id="use15570" />
+    <use
+       transform="translate(234.50649,157.84946)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#guano"
+       id="use15572" />
+    <use
+       transform="translate(255.22078,151.42088)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#guano"
+       id="use15574" />
+    <use
+       id="use15554"
+       xlink:href="#guano"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(267.72078,157.49231)" />
+    <use
+       transform="matrix(0.35033978,-0.93662268,0.93662268,0.35033978,276.17686,153.29314)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#mini-gradarr"
+       id="use15657" />
+    <use
+       id="use15641"
+       xlink:href="#mini-gradarr"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="matrix(0.98268916,-0.18526204,0.18526204,0.98268916,289.6231,145.02723)" />
+    <use
+       style="display:inline"
+       id="use15641-1"
+       xlink:href="#mini-gradarr"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="matrix(0.91185134,0.41052058,-0.41052058,0.91185134,303.77468,142.16249)" />
+    <use
+       transform="translate(285.79837,176.03522)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#clay"
+       id="use15699" />
+    <use
+       transform="translate(309.72695,185.32094)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#clay"
+       id="use15701" />
+    <use
+       transform="translate(335.44123,192.10665)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#clay"
+       id="use15703" />
+    <use
+       transform="translate(362.94123,175.32094)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#clay"
+       id="use15705" />
+    <use
+       transform="translate(358.65552,141.03522)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#clay"
+       id="use15707" />
+    <use
+       id="use15685"
+       xlink:href="#clay"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(347.22695,123.53522)" />
+    <use
+       transform="translate(195,139.028)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#station"
+       id="use15740" />
+    <use
+       transform="translate(253.21429,140.45657)"
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       xlink:href="#station"
+       id="use15742" />
+    <use
+       id="use15722"
+       xlink:href="#station"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(324.28572,115.09943)" />
+  </g>
+</svg>

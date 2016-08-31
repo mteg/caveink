@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Find and replace</_name>
+	<id>speleo.misc.replace</id>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<dependency type="executable" location="extensions">speleo_find2.py</dependency>
+
+	<param name="replace" type="enum" _gui-text="Replace with">
+          <item value="gradient">Gradient arrow</item>
+          <item value="mini-gradient">Mini gradient arrow</item>
+          <item value="gradarr">Gradient arrow (UIS)</item>
+          <item value="mini-gradarr">Mini gradient arrow (UIS)</item>
+          <item value="sand">Sand</item>
+          <item value="sands">More sand</item>
+          <item value="gravel">Gravel</item>
+          <item value="gravels">More gravel</item>
+          <item value="clay">Clay</item>
+          <item value="silt">Silt</item>
+          <item value="guano">Guano</item>
+          <item value="source">Water inlet</item>
+          <item value="sink">Water sink</item>
+          <item value="water">Water flow</item>
+          <item value="draft">Draft</item>
+          <item value="camp">Camp</item>
+          <item value="xsectarrow2">Cross-section arrow -- part 2</item>
+          <item value="xsectarrow1">Cross-section arrow -- part 1</item>
+          <item value="bones">Bones</item>
+          <item value="humanact">Human activity</item>
+          <item value="levelref">Level reference</item>
+          <item value="altasl">Altitude ASL</item>
+          <item value="stalagnate">Stalagnate</item>
+          <item value="stalactite">Stalactite</item>
+          <item value="stalagmite">Stalagmite</item>
+          <item value="helictite">Helictite</item>
+          <item value="curtain">Curtain</item>
+          <item value="sodas">Soda straws</item>
+          <item value="disk">Disk</item>
+          <item value="flowstone">Flowstone</item>
+          <item value="moonmilk">Moonmilk</item>
+          <item value="crystal">Crystal</item>
+          <item value="cauliflower">Cauliflower</item>
+          <item value="cauliflowers">Cauliflowers</item>
+          <item value="veget">Vegetation</item>
+          <item value="tree">Tree</item>
+          <item value="anostomosen">Anostomosen</item>
+          <item value="karren">Karren</item>
+          <item value="paleoflow">Paleoflow</item>
+          <item value="scallops">Scallops</item>
+          <item value="flutes">Flutes</item>
+          <item value="grgradient">Gradient arrow (Unstyled)</item>
+          <item value="grmini-gradient">Mini gradient arrow (Unstyled)</item>
+          <item value="grgradarr">Gradient arrow (UIS) (Unstyled)</item>
+          <item value="grmini-gradarr">Mini gradient arrow (UIS) (Unstyled)</item>
+          <item value="grsand">Sand (Unstyled)</item>
+          <item value="grsands">More sand (Unstyled)</item>
+          <item value="grgravel">Gravel (Unstyled)</item>
+          <item value="grgravels">More gravel (Unstyled)</item>
+          <item value="grclay">Clay (Unstyled)</item>
+          <item value="grsilt">Silt (Unstyled)</item>
+          <item value="grguano">Guano (Unstyled)</item>
+          <item value="grsource">Water inlet (Unstyled)</item>
+          <item value="grsink">Water sink (Unstyled)</item>
+          <item value="grwater">Water flow (Unstyled)</item>
+          <item value="grdraft">Draft (Unstyled)</item>
+          <item value="grcamp">Camp (Unstyled)</item>
+          <item value="grxsectarrow2">Cross-section arrow -- part 2 (Unstyled)</item>
+          <item value="grxsectarrow1">Cross-section arrow -- part 1 (Unstyled)</item>
+          <item value="grbones">Bones (Unstyled)</item>
+          <item value="grhumanact">Human activity (Unstyled)</item>
+          <item value="grlevelref">Level reference (Unstyled)</item>
+          <item value="graltasl">Altitude ASL (Unstyled)</item>
+          <item value="grstalagnate">Stalagnate (Unstyled)</item>
+          <item value="grstalactite">Stalactite (Unstyled)</item>
+          <item value="grstalagmite">Stalagmite (Unstyled)</item>
+          <item value="grhelictite">Helictite (Unstyled)</item>
+          <item value="grcurtain">Curtain (Unstyled)</item>
+          <item value="grsodas">Soda straws (Unstyled)</item>
+          <item value="grdisk">Disk (Unstyled)</item>
+          <item value="grflowstone">Flowstone (Unstyled)</item>
+          <item value="grmoonmilk">Moonmilk (Unstyled)</item>
+          <item value="grcrystal">Crystal (Unstyled)</item>
+          <item value="grcauliflower">Cauliflower (Unstyled)</item>
+          <item value="grcauliflowers">Cauliflowers (Unstyled)</item>
+          <item value="grveget">Vegetation (Unstyled)</item>
+          <item value="grtree">Tree (Unstyled)</item>
+          <item value="granostomosen">Anostomosen (Unstyled)</item>
+          <item value="grkarren">Karren (Unstyled)</item>
+          <item value="grpaleoflow">Paleoflow (Unstyled)</item>
+          <item value="grscallops">Scallops (Unstyled)</item>
+          <item value="grflutes">Flutes (Unstyled)</item>
+	</param>
+
+	<param name="group" type="boolean" _gui-text="Group found symbols together">1</param>
+
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+                      <submenu _name="Speleo">
+		      	<submenu _name="Symbols"/>
+		      </submenu>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">speleo_find2.py</command>
+	</script>
+</inkscape-extension>

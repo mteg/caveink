@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-Inkscape plugin for gathering all symbols of a particular kind
+Inkscape plugin for searching & replacing symbols
 
 Copyright (C) 2016 Mateusz Golicz, http://jaskinie.jaszczur.org
 Distributed under the terms of the GNU General Public License v2
@@ -10,8 +10,17 @@ import inkex
 import simpletransform
 
 from speleo import SpeleoEffect, SpeleoTransform
+from speleo_randstones import SpeleoRandstones
 
-class SpeleoFind2(SpeleoEffect):
+class SpeleoFind2(SpeleoRandstones):
+  def initOptions(self):
+    self.OptionParser.add_option("--group",
+        action="store", type="inkbool", 
+        dest="group", default=True)
+    self.OptionParser.add_option("--replace",
+        action="store", type="string", 
+        dest="replace", default="")
+  
   def scanTree(self, node, sel, group, correctiveTransform):
     '''
     Recursively look for <use>s referring to symbol sel
@@ -37,19 +46,32 @@ class SpeleoFind2(SpeleoEffect):
     # Perhaps not a reference at all...
     if href == None: return
     
+    # Is this the right symbol?
     if href == sel:
-      # Get total transform of this symbol
-      transform = SpeleoTransform.getTotalTransform(node)
-      
-      # Group it together with others
-      group.append(node)
+      # Move to our group
+      if group <> None:
+        # Get total transform of this symbol
+        transform = SpeleoTransform.getTotalTransform(node)
+        
+        # Group it together with others
+        group.append(node)
 
-      # Reset this node transform
-      node.set("transform", simpletransform.formatTransform(
-                  simpletransform.composeTransform(correctiveTransform, transform)
-            ))
+        # Reset this node transform
+        node.set("transform", simpletransform.formatTransform(
+                    simpletransform.composeTransform(correctiveTransform, transform)
+              ))
+      
+      # Did anyone order a replace?
+      if self.options.replace:
+        node.set(inkex.addNS('href', 'xlink'), '#' + self.options.replace)
                 
   def effect(self):
+    # Initialize symbol knowledge
+    self.initSymbols()
+    
+    if self.options.replace:
+      self.ensureSymbol(self.options.replace)
+
     symbol_ids = []
     # Go through all selected ...
     for id, obj in self.selected.iteritems():
@@ -61,11 +83,16 @@ class SpeleoFind2(SpeleoEffect):
       # Perhaps not a symbol? 
       if link == None: continue
       
-      # Create a group
-      group = inkex.etree.SubElement(self.currentLayer(), "g")
-      
-      # Compute corrective transform
-      correctiveTransform = SpeleoTransform.invertTransform(SpeleoTransform.getTotalTransform(group))
+      if self.options.group:
+        # Create a group
+        group = inkex.etree.SubElement(self.currentLayer(), "g", {"style": "stroke:black; stroke-width: 0.28mm;"})
+        
+        # Compute corrective transform
+        correctiveTransform = SpeleoTransform.invertTransform(SpeleoTransform.getTotalTransform(group))
+      else:
+        # No group, no transform!
+        group = None
+        correctiveTransform = None
       
       # Look for our symbols!
       self.scanTree(self.document.getroot(), link, group, correctiveTransform)
