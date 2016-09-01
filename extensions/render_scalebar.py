@@ -77,17 +77,17 @@ class Scalebar:
 		d = d.replace(' ', ' m-%f,0 ' % steplength, 1)
 
 		self.g = inkex.etree.Element('g')
-		self.g.set('style', 'font-size:10px;text-anchor:middle;font-family:sans-serif')
+		self.g.set('style', 'font-size:10px;text-anchor:middle;font-family:sans-serif;stroke-width:0;fill:black;stroke:black')
 		self.g.set(inkex.addNS('label', 'inkscape'), 'none scalebar')
 
 		node = inkex.etree.Element('path')
 		node.set('d', d)
-		node.set('style', 'fill:black;stroke:none')
+		node.set('style', 'stroke:none')
 		self.g.append(node)
 
 		node = inkex.etree.Element('path')
 		node.set('d', 'M0,0 h%f M0,%f h%f' % (steplength * 5, 7 / docunit, steplength * 5))
-		node.set('style', 'fill:none;stroke:black;stroke-width:' + str(0.5 / docunit))
+		node.set('style', 'fill:none;stroke-width:' + str(0.5 / docunit))
 		self.g.append(node)
 
 		for i in range(6):
@@ -133,7 +133,7 @@ class InsertScalebar(inkex.Effect):
 						help="DPI")
 		self.OptionParser.add_option("--text",
 				action="store", type="string", 
-				dest="text", default="")
+				dest="text", default="Scale")
 
 	
 	def get_current_layer(self):

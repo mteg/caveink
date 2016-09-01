@@ -20,15 +20,19 @@
             <item value="20000">1:20000</item>
             <item value="25000">1:25000</item>
         </param>
-        <param name="type" type="enum" _gui-text="Grid type">
+        <param name="type" type="enum" _gui-text="Grid style">
+            <item value="line">Rectangular</item>
             <item value="cross">Crosses</item>
-            <item value="line">Lines</item>
 	</param>
 	<param name="draw-coords" type="enum" _gui-text="Coordinates">
             <item value="none">None</item>
             <item value="plain">Plain</item>
             <item value="rotate">Rotate</item>
 	</param>
+	<param name="units" type="string" _gui-text="Units"> m</param>
+	<param name="origin-x" type="int" _gui-text="Origin X" min="-10000000" max="10000000">0</param>
+	<param name="origin-y" type="int" _gui-text="Origin Y" min="-10000000" max="10000000">0</param>
+	<param name="font-size" type="int" _gui-text="Font size (pt)" max="144">8</param>
 	<effect>
 		<object-type>path</object-type>
 		<effects-menu>

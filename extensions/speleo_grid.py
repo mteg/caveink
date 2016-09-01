@@ -30,49 +30,55 @@ class SpeleoGrid(SpeleoEffect):
 		self.OptionParser.add_option("--type",
 				action="store", type="string", 
 				dest="type", default="line")
+		self.OptionParser.add_option("--units",
+				action="store", type="string", 
+				dest="units", default=" m")
+		self.OptionParser.add_option("--origin-x",
+				action="store", type="int", 
+				dest="origin_x", default=0)
+		self.OptionParser.add_option("--origin-y",
+				action="store", type="int", 
+				dest="origin_y", default=0)
+		self.OptionParser.add_option("--font-size",
+				action="store", type="int", 
+				dest="fontsize", default=0)
 
-	
-	def effect(self):
+	def drawGrid(self, x_center, y_center, doc_w, doc_h, pos_x = 0, pos_y = 0):
+
 		if self.options.coords == "rotate":
 			rot = " rotate(270)"
 		else:
 			rot = ""
 			
-		try:
-			id, obj = self.selected.popitem()
-			try:
-				x_center = float(obj.get("x"))
-				y_center = float(obj.get("y"))
-			except:
-				x_center = 0
-				y_center = 0
-			
-			tr = SpeleoTransform.getTotalTransform(obj)
-			x_center += tr[0][2]
-			y_center += tr[1][2]
-		except:
-			x_center = 0
-			y_center = 0
-		
-		doc_w = self.unittouu(self.document.getroot().get('width'))
-		doc_h = self.unittouu(self.document.getroot().get('height'))
-		uu_spacing = self.options.spacing / self.options.scale * 1000.0 / 25.4 * 90.0
-		
+		x_center -= pos_x
+		y_center -= pos_y
+		uu_spacing = self.options.spacing / self.options.scale * 1000.0 / 25.4 * 90.0		
 		x_start = x_center - math.floor(x_center / uu_spacing) * uu_spacing
 		y_start = y_center - math.floor(y_center / uu_spacing) * uu_spacing
 		num_x = int(math.ceil(doc_w / uu_spacing))
 		num_y = int(math.ceil(doc_h / uu_spacing))
 
 		layer = self.currentLayer()
+
 		g = inkex.etree.SubElement(layer, 'g')
+		
+		# Invert any sub-transforms of layer
 		simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(SpeleoTransform.getTotalTransform(g)), g)
 
+		# Add translation
+		simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(%.6f, %.6f)" % (pos_x, pos_y)), g)
+
 		if self.options.coords != "none":
+			g.set('style', 'stroke:#888;fill:#888;stroke-width:0.2mm;font-size:' + str(self.options.fontsize) + 'pt;text-anchor:end;text-align:end')
+
 			cg = inkex.etree.SubElement(g, "g")
 			g = inkex.etree.SubElement(g, "g")
-			cg.set('style', 'stroke:none;font-size:10pt;fill:#888;text-anchor:end;text-align:end')
 
-		g.set('style', 'stroke:#888;stroke-width:0.2mm')
+			g.set('style', 'fill:none;')
+			cg.set('style', 'stroke:none;stroke-width:0')
+		else:
+			g.set('style', 'stroke:#888;fill:none;stroke-width:0.2mm')
+
 
 		# Vertical lines and coordinates
 		for x in range(0, num_x):
@@ -80,18 +86,12 @@ class SpeleoGrid(SpeleoEffect):
 			if x > doc_w: break
 			
 			if self.options.type == "line":
-#				l = inkex.etree.SubElement(g, 'line')
-#				l.set('x1', str(x))
-#				l.set('x2', str(x))
-#				l.set('y1', "0")
-#				l.set('y2', str(doc_h))
-
 				l = inkex.etree.SubElement(g, 'path')
 				l.set('d', 'M ' + str(x) + ",0 L " + str(x) + "," + str(doc_h))
 		
 			if self.options.coords != "none":
 				l = inkex.etree.SubElement(cg, 'text')
-				l.text = str(int(round((x - x_center) / uu_spacing * self.options.spacing))) + " m"
+				l.text = str(int(round((x - x_center) / uu_spacing * self.options.spacing) + self.options.origin_x)) + self.options.units
 				l.set("style", "text-anchor:end;text-align:end")
 				l.set("transform", ("translate(%.2f,15)" + rot) % (x - 5))
 		
@@ -101,20 +101,16 @@ class SpeleoGrid(SpeleoEffect):
 			if y > doc_h: break
 
 			if self.options.type == "line":
-#				l = inkex.etree.SubElement(g, 'line')
-#				l.set('y1', str(y))
-#				l.set('y2', str(y))
-#				l.set('x1', "0")
-#				l.set('x2', str(doc_w))
 				l = inkex.etree.SubElement(g, 'path')
 				l.set('d', 'M 0,' + str(y) + " L " + str(doc_w) + "," + str(y))
 
 			if self.options.coords != "none":
 				l = inkex.etree.SubElement(cg, 'text')
-				l.text = str(int(-round((y - y_center) / uu_spacing * self.options.spacing))) + " m"
+				l.text = str(int(-round((y - y_center) / uu_spacing * self.options.spacing) + self.options.origin_y)) + self.options.units
 				l.set("style", "text-anchor:end;text-align:end")
 				l.set("transform", "translate(45,%.2f)" % (y - 5))
 
+		# Crosses, if requested
 		if self.options.type == "cross":
 			l = inkex.etree.SubElement(g, 'path')
 			path_id = self.uniqueId("gridCross", True)
@@ -136,6 +132,60 @@ class SpeleoGrid(SpeleoEffect):
 					l.set(inkex.addNS('href', 'xlink'), '#' + str(path_id))
 					l.set("transform", "translate(%.2f,%.2f)" % (x_doc, y_doc))
 					
+	
+	def getBox(self, obj):
+		x = y = w = h = 0
+		try:
+			x = float(obj.get("x"))
+			y = float(obj.get("y"))
+		except:
+			pass
+		tr = SpeleoTransform.getTotalTransform(obj)
+		(x, y) = SpeleoTransform.transformCoords((x, y), tr)
+		
+		if obj.tag == inkex.addNS("rect", "svg"):
+			try:
+				x2 = float(obj.get("x")) + float(obj.get("width"))
+				y2 = float(obj.get("y")) + float(obj.get("height"))
+				(x2, y2) = SpeleoTransform.transformCoords((x2, y2), tr)
+				w = abs(x2 - x)
+				h = abs(y2 - y)
+			except:
+				pass
+		
+		return (x, y, w, h)
+	
+	
+	def effect(self):
+		doc_w = self.unittouu(self.document.getroot().get('width'))
+		doc_h = self.unittouu(self.document.getroot().get('height'))
+		pos_x = pos_y = 0
+		
+		if self.options.fontsize < 1:
+			self.options.fontsize = 8
+
+		if len(self.selected) == 0:
+			# Start at (0, 0)
+			xc = yc = 0
+		elif len(self.selected) == 1:
+			# A symbol or rectangle to mark origin
+			id, obj = self.selected.popitem()
+			(xc, yc, w, h) = self.getBox(obj)
+		elif len(self.selected) == 2:
+			id1, obj1 = self.selected.popitem()	
+			id2, obj2 = self.selected.popitem()
+			(xc1, yc1, w1, h1) = self.getBox(obj1)
+			(xc2, yc2, w2, h2) = self.getBox(obj2)
+			# Now, depending on area ...
+			if (w1 * h1) > (w2 * h2): 
+				(xc, yc) = (xc2, yc2)
+				(pos_x, pos_y, doc_w, doc_h) = (xc1, yc1, w1, h1)
+			else:				
+				(xc, yc) = (xc1, yc1)
+				(pos_x, pos_y, doc_w, doc_h) = (xc2, yc2, w2, h2)
+				
+		self.drawGrid(xc, yc, doc_w, doc_h, pos_x, pos_y)
+
 
 if __name__ == '__main__':
 	e = SpeleoGrid()

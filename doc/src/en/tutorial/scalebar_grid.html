@@ -1,0 +1,91 @@
+Generating grids and scale bars
+So, your drawing is ready?
+scalegrid_ready.png
+
+Now that we have our map ready, it is time to lay it out for a nice PDF export.
+
+Obviously, before preparing a legend, it would be nice to have a grid and
+a scalebar.
+
+---
+Grid options
+scalegrid_options.png
+
+Lets' go to <i>Extensions / Speleo / Generate / Render grid...</i>. 
+
+You need to tell the extension the scale of your drawing and decide whether
+you want the coordinates printed where the grid lines end or not. The X-axis
+coordinates can be rotated 90 degrees.
+
+There are actually two styles of grid available - one is a traditional,
+rectangular grid. The other one (<i>Crosses</i>) is a minimalistic grid,
+without lines, but rather just small crosses printed out at grid
+intersections.
+
+Click <i>Apply</i>.
+---
+Getting it right
+scalegrid_wrong.png
+
+By default, the grid covers the whole page and coordinates start at top
+left corner of the page. This is most often not what we need.
+
+Lets' adjust the grid origin point first. Delete the grid.
+Open <i>Object / Symbols</i> and select the <i>Cave plan</i> symbol set.
+Drag a station symbol onto your drawing and place it where (0, 0) should 
+actually be. 
+---
+Better origin
+scalegrid_origin.png
+
+Make sure the symbol is selected (dashed lines and transformation handles
+around). Run <i>Extensions / Speleo / Generate / Render grid...</i> again.
+Adjust <i>Origin X</i> and <i>Origin Y</i> if it is not really (0, 0) that
+should be where the station symbol is. Click <i>Apply</i>.
+
+It is almost good, but in our example we actually do not want the grid to
+fill all the page. As a matter of fact, we need two grids - one for the
+plan and other for the elevation drawing.
+---
+Confine the grid
+scalegrid_confine.png
+
+Delete the grid again. Now draw a rectangle defining an area where the grid
+should appear. Select <i>both</i> that rectangle and the station symbol that
+we used to indicate the origin point.
+
+Re-run the grid extension (you can simply use <i>Extensions / Previous
+extension</i> or Alt+Q).
+---
+Almost good
+scalegrid_styling.png
+
+Now it is much better, but perhaps you would rather have the lines in red?
+Simply select the grid object and go to <i>Fill and Stroke</i>. You can
+adjust line color in the <i>Stroke paint</i> tab and coordinate color in
+<i>Fill</i>.
+---
+Making it perfect
+scalegrid_rework.png
+
+The grid is a simple group, containing groups of lines and text inside. You
+can ungroup it by hitting Ctrl+U twice and re-work it.
+
+For example, you may want to select all the grid elements, use the <i>Node</i>
+tool to select a couple of line ends and then drag them together with Ctrl held
+so that they are shorter.
+
+Another trick is to select one of the coordinate captions, right-click it
+and choose <i>Select same / Object type</i>. After that, going to <i>Text /
+Text and font...</i> will let you adjust font size and font face for the
+coordinates.
+---
+Adding a scalebar
+scalegrid_bar.png
+
+Generating scalebars is even easier. Simply go to <i>Extensions / Speleo /
+Generate / Render scalebar...</i>. Again, you need to tell Inkcave what
+scale are you drawing in.
+
+Again, you can go to <i>Object / Fill and stroke</i> to adjust colors of
+your scalebar.
