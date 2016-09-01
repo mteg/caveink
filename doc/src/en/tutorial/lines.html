@@ -1,0 +1,72 @@
+Steps and driplines
+Difficult styles
+lines_lines.png
+
+Two line styles very important for cave maps - dripline and step - are in
+fact very difficult to render in Inkscape. This is because SVG does not
+provide an easy way to add perpendicular ticks to a line.
+
+Caveink provides a way around.
+---
+First step line
+lines_path.png
+
+Draw a path using the Pen/Bezier tool (B). Select it and go to <i>Extensions
+/ Speleo / Symbols / Path to step</i>. Configure <i>Font size: 6</i>,
+<i>Line thickness: 0.2</i>, <i>Line type: minor step</i>. Click
+<i>Apply</i>.
+
+A neat step line will appear. For your next lines, you can use a keyboard
+shortcut, Alt+1, if only Caveink keyboard bindings were properly installed.
+---
+Editing the line
+lines_edit.png
+
+Switch to the node tool (N) and click on our new line. Standard path handles
+will appear and let you edit the line. Step ticks should neatly follow,
+as you change the shape. Select <i>Path / Reverse</i> to switch the side on
+which the ticks protrude. 
+---
+Caveats
+lines_trick.png
+
+Unfortunately, this line style is in fact a little trick. Your line consists
+of two distinct objects - your original path and the ticks. The ticks are
+linked to the path and usually follow it. If you edit or move the path,
+ticks should automatically update.
+
+There is one nasty limitation of this method. If you copy and paste or otherwise
+duplicate the line, the copied ticks stay linked to the original path.
+Everything seems fine, until you edit the copied path. The ticks no longer
+follow and it looks bad.
+---
+There is help
+lines_fix.png
+
+If you end up in such situation, you have two choices. If it is only one
+line, you may select it and re-style via Alt+1 (or <i>Extensions / Speleo / Symbols /
+Path to step</i>). The broken ticks will be deleted. 
+
+If you have many broken lines to fix (eg. after importing one file into
+another), it might be quicker to use <i>Extensions / Speleo / Symbols /
+Repair file</i>. This action finds and regenerates broken links throughout the whole
+document.
+---
+Zombie ticks
+lines_zombie.png
+
+If you accidentaly delete only the path object, but leave the ticks in
+place, you might end up with <i>zombie ticks</i> on your drawing. These annoying
+artifacts neither are linked to any path, nor can be selected for deletion.
+
+The easiest way to get rid of them is to do <i>Extensions / Speleo / Symbols /
+Repair file</i>.
+---
+Dripline
+lines_drip.png
+
+Let's go back to positive news. A dripline is made as easy as a step. Just
+draw a path using the Pen tool (B), select it and press Alt+2 (or go to
+<i>Extensions / Speleo / Symbols / Path to dripline</i>).
+
+All remarks above apply.
