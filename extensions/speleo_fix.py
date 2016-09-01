@@ -11,8 +11,9 @@ import os
 from lxml import etree
 
 from speleo import SpeleoEffect, SpeleoTransform
+from speleo_line import SpeleoLine
 
-class SpeleoFix(SpeleoEffect):
+class SpeleoFix(SpeleoLine):
   def scanDefs(self, file, index):
     '''
     Index direct children of a <defs> element in an SVG tree by their ID
@@ -89,6 +90,17 @@ class SpeleoFix(SpeleoEffect):
     self.defs = self.scanDefs(self.document, self.ownSymbols)
 
   def processTree(self, node):
+    # Is this a SpeleoLine we can fix?
+    if self.testFix(node): return
+    
+    # Then, perhaps an orphaned immutable text!
+    if inkex.addNS("text", "svg") == node.tag:
+      ins = inkex.addNS("insensitive", "sodipodi")
+      if ins in node.attrib:
+        if node.get(ins) == "true":
+          node.getparent().remove(node)    
+          return
+
     # Recurse first
     for child in node:
       self.processTree(child)
@@ -100,6 +112,7 @@ class SpeleoFix(SpeleoEffect):
       if href[0] == "#":
         # Make sure it's there!
         self.ensureSymbol(href[1:])
+    
     
   def effect(self):
     # Initialize symbol knowledge

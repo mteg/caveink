@@ -25,6 +25,17 @@ class SpeleoRandstones(SpeleoFix):
       # Is this one of our rock/pebble symbols?
       m = re.match('#(gr|un|)?([ra])b([0-9]+)[a-z]', str(node.get(inkex.addNS("href", "xlink"))))
       if m:
+        # Add translation, if present
+        x = float(node.get("x"))
+        y = float(node.get("y"))
+        
+        if x <> 0 or y <> 0:
+          node.set("x", "0")
+          node.set("y", "0")
+          currentTr = node.get("transform")
+          if currentTr == None: currentTr = ""
+          node.set("transform", currentTr + (" translate(%.6f, %.6f) " % (x, y)))
+
         # Get current symbol transform
         tr = SpeleoTransform.getTotalTransform(node)
         
@@ -44,6 +55,7 @@ class SpeleoRandstones(SpeleoFix):
         
         # Return the symbol to where it was
         simpletransform.applyTransformToNode(tr, node)
+
 
     # For compatibility with old maps, using speleoUIS3
     if (node.tag == inkex.addNS('tspan', 'svg') or node.tag == inkex.addNS('text', 'svg')) and node.text:

@@ -2,11 +2,11 @@
 - docs
 + test cases
 - make SpeleoLine also able to fix broken lines
-- grids on rectangles rather than pages
++ grids on rectangles rather than pages
 - xpath single throwing stupid errors/exceptions
-- clipPath translations - see what happens when packing/unpacking some content with window
++ clipPath translations - see what happens when packing/unpacking some content with window
 - solve overview maps (outline clipping? what about presumed dimensions...?) 
 - test under Windows
-- fix randstones x=,y=
-- add "leave original as frame" to window.py
-- fix drawing
++ fix randstones x=,y=
++ add "leave original as frame" to window.py
++ fix drawing
