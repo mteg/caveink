@@ -168,9 +168,9 @@ class SpeleoPack(SpeleoEffect):
       
       # What to pack?
       if self.options.pack == "root":
-        root = self.document.getroot()
+        root = self.getRoot()
       else:
-        root = self.get_current_layer()
+        root = self.currentLayer()
                         
       # Create a containter to pack the layers into
       self.box = inkex.etree.SubElement(self.document.getroot(), "g")

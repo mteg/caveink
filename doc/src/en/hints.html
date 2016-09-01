@@ -1,13 +1,65 @@
 <h1>For best results...</h1>
 <h2>Choose your scale wisely</h2>
+<p>
+Even in the digital age, we still draw cave maps to scale. Zooming in or out
+is very difficult, because the symbols usually have to <i>retain
+their sizes</i> independently of the scale. See the picture below.
+</p>
+<p>
+Because of that problem, you need to select your scale carefully at the very
+beginning of your work.
+</p>
 
 <h2>Reference to a locked survey layer</h2>
+<p>
+</p>
 
 <h2>Use layers and use them well</h2>
+<p>
 
-<h2>Use carpeting</h2>
+</p>
+
+<h2>Use fill patterns</h2>
+<p>
+Generally, the more distinct objects you have in your drawing, the slower
+Inkscape responds.
+</p>
+<p>
+With this in mind, if your five kilometer long cave is filled with sand, it is a
+very poor idea to indicate that fact with thousands of little circles.
+Better use the sand pattern fill. Being only a handful of distinct
+objects repeated many times, it is much faster for Inkscape to process!
+</p>
 
 <h2>Never embed paper sketches</h2>
+<p>
+When importing images (such as scans of paper sketches) into Inkscape, you
+are always asked whether to just <i>Link</i> to the included file in your
+drawing, or rather to <i>Embed</i> the image inside the SVG document. Always
+opt for <i>linking</i>! 
+</p> 
+<p>
+It is about how Inkscape extensions internally work. Unfortunately, it is
+extremely simple: every time you use an extension, your whole drawing is
+saved in a temporary file and then passed to the selected extension for
+further processing.
+</p>
+<p>
+Raster files are often very large, and embedding them
+into your drawing will result in a large amount of data being packed and
+unpacked every time you use one of the <i>Extension / Speleo</i> menu items.
+And this essentialy means you will have to wait longer!
+</p>
 
 <h2>Remove paperless sketches from your main drawing</h2>
-
+<p>
+Importing paperless sketches as vector graphics is very convenient. These
+sketches, however, usually contain an enormous amount of data that is not
+really useful after the sketch has been traced.
+</p>
+<p>
+I am not suggesting to throw away these sketches! I just say that there is
+no point in keeping them in the clean copy file. If you need to fix an error
+or re-work something, you still have them in their original files - and you
+can always import them again.
+</p>
