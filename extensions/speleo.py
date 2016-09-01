@@ -174,9 +174,16 @@ class SpeleoEffect(inkex.Effect):
     simpletransform.applyTransformToNode(oldParentTr, node)
     simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(newParentTr), node)
     parent.append(node)
+    return node
 
   def safelyCopyTo(self, node, parent):
     '''
     Copy a node, preserving its position in absolute coordinates
     '''
     return self.safelyMoveTo(node, parent, True)
+  
+  def getElementById(self, id):
+    try:
+      return self.xpathSingle("//*[@id='%s']" % id)
+    except:
+      return None

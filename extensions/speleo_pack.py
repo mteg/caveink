@@ -11,6 +11,7 @@ Distributed under the terms of the GNU General Public License v2
 import math
 import inkex
 import simpletransform
+import sys
 from speleo import SpeleoEffect, SpeleoTransform
 
 class SpeleoPack(SpeleoEffect):
@@ -49,6 +50,66 @@ class SpeleoPack(SpeleoEffect):
     # Go deep
     for child in node:
       self.packLayers(child)
+  
+  def fixClips(self, node, root, transform):
+    '''
+    Recursively fix references to clipped paths. 
+    The clipping paths need to be moved to given root and transformed as specified.
+    '''
+    
+    sys.stderr.write("fix clips for " + str(node.get("id")) + "\n")
+    
+    if "clip-path" in node.attrib:
+      # Need to act!
+      clipper = node.get("clip-path")
+      if clipper[0] == "#":
+        clipper = self.getElementById(node.get("clip-path")[1:])
+      elif clipper[0:5] == "url(#":
+        clipper = self.getElementById(node.get("clip-path")[5:-1])
+      else:
+        clipper = None
+
+      # If it exists at all...
+      if clipper <> None:
+        # Copy to root
+        newId = self.uniqueId("clipPath")
+        newClip = self.safelyCopyTo(clipper, root)
+        newClip.set("id", newId)
+        
+        # Apply transform
+        simpletransform.applyTransformToNode(transform, newClip)
+        
+        # Set a new clip
+        node.set("clip-path", newId)
+    
+    for child in node:
+      self.fixClips(child, root, transform)
+
+  def indexUses(self, node, index):
+    '''
+    '''
+    
+    if node.tag == inkex.addNS("use", "svg"):
+      href = node.get(inkex.addNS('href', 'xlink'))
+      if href[0] == "#":
+        refel = self.getElementById(href[1:])
+        if refel <> None:
+          # Don't bother about symbols
+          if refel.getparent().tag <> "defs":
+            index.append((node, refel, SpeleoTransform.getTotalTransform(refel)))
+
+    for child in node:
+      self.indexUses(child, index)
+
+  def fixUses(self, index):
+    '''
+    '''
+    
+    for (obj, refel, tr) in index:
+      currentTr = SpeleoTransform.getTotalTransform(refel)
+      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(tr), obj)
+      simpletransform.applyTransformToNode(currentTr, obj)
+      sys.stderr.write("was " + str(tr) + " is " + str(currentTr) + "\n")
         
   def unpackLayers(self, node, transform):
     '''
@@ -84,6 +145,12 @@ class SpeleoPack(SpeleoEffect):
     
     # It never was a layer! We can simply apply our transform and say goodbye!
     simpletransform.applyTransformToNode(transform, node)
+    
+    # ... well, almost :( still need to search for clips and fix them accordingly
+ #   try:
+#    self.fixClips(node, node.getparent(), transform)
+#    except:
+ #     pass
                             
   def processLayerContainer(self, node, root, invertedRootTransform):
     '''
@@ -115,6 +182,7 @@ class SpeleoPack(SpeleoEffect):
             
       # Get current layer
       root = self.currentLayer()
+      useIndex = []
         
       # Are we in the root layer?
       invertedTransform = SpeleoTransform.invertTransform(SpeleoTransform.getTotalTransform(root))
@@ -122,7 +190,14 @@ class SpeleoPack(SpeleoEffect):
       # Go through all selected layer containers
       for id, node in self.selected.iteritems():
         if node.tag != inkex.addNS('g','svg'): continue
+        # Make an index of all recursive <use> references
+        self.indexUses(node, useIndex)
+    
+        # Transform the group
         self.processLayerContainer(node, root, invertedTransform)
+        
+      self.fixUses(useIndex)
+      sys.stderr.write(str(useIndex))
     else:
       # Pack layers into group
       
@@ -135,17 +210,18 @@ class SpeleoPack(SpeleoEffect):
       # Create a containter to pack the layers into
       self.box = inkex.etree.SubElement(self.document.getroot(), "g")
       
+      
       # Pack all the layers!
       for child in root:
         self.packLayers(child, True)
                         
-      # Unmark any current layer setting
-      try:
-        view = self.xpathSingle('//sodipodi:namedview')
-        current_layer = inkex.addNS('current-layer', 'inkscape')
-        view.attrib.pop(current_layer)
-      except Exception:
-        pass
+    # Unmark any current layer setting
+    try:
+      view = self.xpathSingle('//sodipodi:namedview')
+      current_layer = inkex.addNS('current-layer', 'inkscape')
+      view.attrib.pop(current_layer)
+    except Exception:
+      pass
 
 if __name__ == '__main__':
   e = SpeleoPack()

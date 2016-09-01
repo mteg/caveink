@@ -116,7 +116,6 @@ class SpeleoWindow(SpeleoEffect):
       });
               
       # Move all selected objects into the clipPath
-      # TODO need to untransform them!!!
       selected = self.selected.iteritems()
       for id, obj in selected:
         self.safelyMoveTo(obj, clip_path)
