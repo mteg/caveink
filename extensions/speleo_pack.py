@@ -51,71 +51,29 @@ class SpeleoPack(SpeleoEffect):
     for child in node:
       self.packLayers(child)
       
-  def indexUses(self, node, index, idIndex):
+  def fixUses(self, node, index):
     '''
-    Make an index of all <use> tags referencing anything inside a node hierarchy
+    Fix <use> objects after transformation the objects their refer to
     '''
     
-    # See if it is a <use>
-    if node.tag == inkex.addNS("use", "svg"):
-      # Get reference
-      href = node.get(inkex.addNS('href', 'xlink'))
-      if href[0] == "#":
-        # Find the reference
-        if href[1:] in idIndex:
-          # Add to list
-          index.append((node,  SpeleoTransform.getTotalTransform(node)))
-
-    # Dig recursively
-    for child in node:
-      self.indexUses(child, index, idIndex)
-  
-
-  def fixUses(self, node, index):
+    # Go deep first
     for i in node:
       self.fixUses(i, index)
 
+    # Is it a <use> tag?
     if node.tag == inkex.addNS("use", "svg"):
       # Get reference
       href = node.get(inkex.addNS('href', 'xlink'))
       if href[0] == "#":
-        # See if it references something inside the container - we don't apply the transform then!
+        # Did we apply any transforms to the referred node?
         if href[1:] in index:
+          # Yes!
           thatTr = index[href[1:]]
           thisTr = SpeleoTransform.getTransform(node)
-          invTr = SpeleoTransform.invertTransform(thatTr)
-          node.set("transform", simpletransform.formatTransform(simpletransform.composeTransform(thisTr, invTr)))
-#          node.set("transform", simpletransform.formatTransform(SpeleoTransform.invertTransform(tr)) + " " + node.get("transform"))
-
-#      currentObjTr = SpeleoTransform.getTotalTransform(obj)
-#      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(currentObjTr), obj)
-#      simpletransform.applyTransformToNode(objtr, obj)
-#      sys.stderr.write("Fixing2 " + obj.get("id") + " was " + str(objtr) + " is " + str(currentObjTr) + "\n")
-  def isInternalUse(self, node, idIndex):
-    
-    return False
-  
-        
-  def applyTransformToLeafs(self, transform, node, idIndex):
-    if node.tag == inkex.addNS("g", "svg"):
-      # Compose the transform with what we have here
-      thisTransform = SpeleoTransform.getTransform(node)
-      transform = simpletransform.composeTransform(thisTransform, transform)
-      transform = simpletransform.composeTransform(SpeleoTransform.invertTransform(thisTransform), transform)
-
-      # Not a leaf, dig deeper
-      for child in node:
-        self.applyTransformToLeafs(transform, child, idIndex)
-    else:
-      # Is it a <use> object? 
-      if self.isInternalUse(node, idIndex):
-        # Bail out
-        sys.stderr.write(node.get("id") + " Bailing out\n")
-        simpletransform.applyTransformToNode(transform, node)
-        return
-      else:
-        sys.stderr.write(node.get("id") + " keeping ref\n")
-      
+          invThatTr = SpeleoTransform.invertTransform(thatTr)
+          
+          # So, first transform of this <use> should be *reverting* that transform!
+          node.set("transform", simpletransform.formatTransform(simpletransform.composeTransform(thisTr, invThatTr)))
 
       
   def unpackLayers(self, node, transform, appliedTransforms):
@@ -136,7 +94,9 @@ class SpeleoPack(SpeleoEffect):
         # The group could have acquired its own transform...
         layerTransform = node.get("transform")
         
+        # Save transform applied to this layer, in case it is used by <use>
         appliedTransforms[node.get("id")] = transform
+
         # Transforms on regular groups are nice, but we do not want to have a transform on a layer!
         if layerTransform <> None:
           # Remove the transform
@@ -154,14 +114,10 @@ class SpeleoPack(SpeleoEffect):
 
     # We can simply apply our transform and say goodbye!
     simpletransform.applyTransformToNode(transform, node)
+    
+    # Save transform applied to this object, in case it is used by <use>
     appliedTransforms[node.get("id")] = transform
     
-    # ... well, almost :( still need to search for clips and fix them accordingly
- #   try:
-#    self.fixClips(node, node.getparent(), transform)
-#    except:
- #     pass
-                            
   def processLayerContainer(self, node, root, invertedRootTransform, idIndex):
     '''
     Unpack layers contained in a layer container.
@@ -199,20 +155,14 @@ class SpeleoPack(SpeleoEffect):
       for id, node in self.selected.iteritems():
         if node.tag != inkex.addNS('g','svg'): continue
 
-        # Make an index of all ids
+        # Index of all applied transforms
         idIndex = {}
- #       useIndex = []
-#        self.indexById(node, idIndex)
- #       self.indexUses(node, useIndex, idIndex)
-#        sys.stderr.write(str(idIndex) + "\n")
-    
+
         # Transform the group
         self.processLayerContainer(node, root, invertedTransform, idIndex)
         
-        sys.stderr.write(str(idIndex))
-        self.fixUses(root, idIndex)
-        
         # Fix references
+        self.fixUses(root, idIndex)
     else:
       # Pack layers into group
       
