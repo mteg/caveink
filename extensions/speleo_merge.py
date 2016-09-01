@@ -9,6 +9,7 @@ Distributed under the terms of the GNU General Public License v2
 import inkex
 import simpletransform
 import logging
+import sys
 
 from speleo import SpeleoEffect, SpeleoTransform
 
@@ -17,9 +18,6 @@ class SpeleoMerge(SpeleoEffect):
     '''
     Recursively merge layers into their older twins
     '''
-    # Do not go into the active layer!
-    if node == active: return
-    
     # If it's not a layer, end of story.
     if not self.isLayer(node): return
     
@@ -37,6 +35,9 @@ class SpeleoMerge(SpeleoEffect):
     if name in bigbrothers:
       # Indeed! Let's merge this layer with it's bigger brother!
       bigBrother = bigbrothers[name]
+      
+      # Ain't that us?
+      if bigBrother == node: return
       
       # Get transforms (ours & brother's)
       ourTransform = SpeleoTransform.getTotalTransform(node)
@@ -56,26 +57,31 @@ class SpeleoMerge(SpeleoEffect):
 
   def scanLayerTree(self, node, index):
     '''
-    Make an index of layers by name
+    Make a BFS index of layers by name
     '''
-    # Not a layer? Goodbye!
-    if not self.isLayer(node): return
+    bfsList = [node]
+    while len(bfsList):
+      node = bfsList.pop(0)
+      
+      # Not a layer? Goodbye!
+      if not (self.isLayer(node) or node.tag == inkex.addNS("svg", "svg")): continue
     
-    # Invisible? Goodbye!
-    # TODO ... if requested as such
-    if self.hasDisplayNone(node): return
+      if self.isLayer(node):
+        # Invisible? Goodbye!
+        # TODO ... if requested as such
+        if self.hasDisplayNone(node): continue
 
-    # Get layer name
-    name = node.get(inkex.addNS('label', 'inkscape'))
-          
-    # Put it in the dictionary
-    if not (name in index):
-      self.log("indexing " + str(node) + " as " + name)
-      index[name] = node
+        # Get layer name
+        name = node.get(inkex.addNS('label', 'inkscape'))
+              
+        # Put it in the dictionary
+        if not (name in index):
+          self.log("indexing " + str(node) + " as " + name)
+          index[name] = node
   
-    # Recurse
-    for i in node:
-      self.scanLayerTree(i, index)
+      # Recurse
+      for i in node:
+        bfsList.append(i)
   
   def effect(self):
     # Configure logging
@@ -87,9 +93,10 @@ class SpeleoMerge(SpeleoEffect):
     # Make an index of targets
     targets = {}
     self.scanLayerTree(root, targets)
-
+    self.scanLayerTree(self.getRoot(), targets)
+    
     # Merge layers having same names!
-    for i in self.document.getroot():
+    for i in self.getRoot():
       self.mergeTwins(i, targets, root)
 
 

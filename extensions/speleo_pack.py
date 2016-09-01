@@ -181,12 +181,11 @@ class SpeleoPack(SpeleoEffect):
         self.packLayers(child, True)
                         
     # Unmark any current layer setting
-    try:
-      view = self.xpathSingle('//sodipodi:namedview')
+    view = self.xpathSingle('//sodipodi:namedview')
+    if view <> None:
       current_layer = inkex.addNS('current-layer', 'inkscape')
-      view.attrib.pop(current_layer)
-    except Exception:
-      pass
+      if current_layer in view.attrib:
+        view.attrib.pop(current_layer)
 
 if __name__ == '__main__':
   e = SpeleoPack()

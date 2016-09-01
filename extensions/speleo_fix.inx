@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Repair file</_name>
+	<id>speleo.misc.fix</id>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<dependency type="executable" location="extensions">speleo_fix.py</dependency>
+
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+                      <submenu _name="Speleo">
+		      	<submenu _name="Symbols"/>
+		      </submenu>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">speleo_fix.py</command>
+	</script>
+</inkscape-extension>

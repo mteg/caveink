@@ -10,9 +10,9 @@ import inkex
 import simpletransform
 
 from speleo import SpeleoEffect, SpeleoTransform
-from speleo_randstones import SpeleoRandstones
+from speleo_fix import SpeleoFix
 
-class SpeleoFind2(SpeleoRandstones):
+class SpeleoFind2(SpeleoFix):
   def initOptions(self):
     self.OptionParser.add_option("--group",
         action="store", type="inkbool", 

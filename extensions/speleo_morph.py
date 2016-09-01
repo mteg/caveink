@@ -250,7 +250,7 @@ class SpeleoMorph(SpeleoEffect):
       return (gx + self.goffs[0], gy + self.goffs[1], 0)
     
     # Find out the offset by a slightly "better" method
-    (nx, ny) = self.transformCoordinates_KeepToClosest(gx, gy, src, dst)
+    (nx, ny, junk) = self.transformCoordinates_KeepToClosest(gx, gy, src, dst)
     
     # If there is any offset...?
     if nx != gx or ny != gy:

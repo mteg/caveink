@@ -1,4 +1,70 @@
 Merging drawings
-Big projects need collaboration
+A workaround
+pack_problem.png
 
+This tutorial does not concern a great feature, but rather a necessary
+workaround. If you have already been using Inkscape, you could already have
+noticed that it is rather difficult to merge two layered files together. If
+you use <i>File / Import</i>, all the layer structure from the imported file
+is simply gone.
+---
+The problem
+pack_collaboration.png
 
+Let's assume we have different parts of one cave drawn in two different files.
+They have identical layer structure, with gallery outline, details and
+centerline neatly placed on three separate layers.
+
+The plan is to merge the two files by layers, so that each of the three
+layers of the final file contains relevant objects from both files.
+
+Use these files to follow the tutorial: <a href="svg/cave1.svg">cave1</a>,
+<a href="svg/cave2.svg">cave2</a>.
+---
+Preparing
+pack_pack.png
+
+Open the first file. Select <i>Extensions / Speleo / Layer tricks / Pack for
+export</i>. Tell the extension to <i>Pack: All layers</i>. Click
+<i>Apply</i>.
+
+Your layers are now gone and you should have just one large object
+containing all of them in your drawing. Select that object and copy it to
+clipboard (Ctrl+C).
+---
+Pasting
+pack_paste.png
+
+Go to the second file and open the layers dialog (<i>Layer / Layers
+...</i>). Create a new empty layer, say <i>Import</i>. Paste your other
+file contents into that layer (Ctrl+V).
+
+Now, with the packed object selected, go to <i>Extensions / Speleo / Layer
+tricks / Unpack group</i>. Notice the <i>Import</i> layer now has our three
+sub-layers.
+
+<i>Note: </i> if you are missing some symbols in the pasted drawing, try
+<i>Extensions / Speleo / Symbols / Repair file</i>.
+---
+Alignment
+pack_alignment.png
+
+It would be nice to have the two parts of this cave in proper alignment.
+Fortunately, we imported centerline into both of the drawings. 
+
+Select the top-level <i>Survey</i> layer. Go to <i>Extensions / Speleo /
+Morph to new centerline</i>. Select <i>Quick shift</i> as the morphing
+method, untick all checkboxes and click <i>Apply</i>. The pasted drawing
+should now move into proper position!
+---
+Merging layers
+pack_layers.png
+
+Now, with the top-level <i>Survey</i> layer still selected, choose 
+<i>Extensions / Speleo / Layer tricks / Merge layers by name</i>.
+---
+Done!
+pack_done.png
+
+We are done merging the files. And everything sits in its proper layer!
+Note that the <i>Import</i> layer is empty again. You can safely delete it.
