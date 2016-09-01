@@ -10,6 +10,7 @@ import inkex
 import simpletransform
 import simplestyle
 import logging
+import copy
 
 class SpeleoTransform:
   '''
@@ -162,3 +163,20 @@ class SpeleoEffect(inkex.Effect):
     '''
     if attrib in node.attrib:
       node.attrib.pop(attrib)
+  
+  def safelyMoveTo(self, node, parent, doCopy = False):
+    '''
+    Move a node, preserving its position in absolute coordinates
+    '''
+    oldParentTr = SpeleoTransform.getTotalTransform(node.getparent())
+    newParentTr = SpeleoTransform.getTotalTransform(parent)
+    if doCopy: node = copy.deepcopy(node)
+    simpletransform.applyTransformToNode(oldParentTr, node)
+    simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(newParentTr), node)
+    parent.append(node)
+
+  def safelyCopyTo(self, node, parent):
+    '''
+    Copy a node, preserving its position in absolute coordinates
+    '''
+    return self.safelyMoveTo(node, parent, True)

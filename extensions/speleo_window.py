@@ -14,6 +14,7 @@ import inkex
 import simpletransform
 import simplestyle
 import logging
+import copy
 from speleo import SpeleoEffect, SpeleoTransform
 
 class SpeleoWindow(SpeleoEffect):
@@ -24,6 +25,9 @@ class SpeleoWindow(SpeleoEffect):
     self.OptionParser.add_option("--parent",
                     action="store", type="string", 
                     dest="parent", default="root")
+    self.OptionParser.add_option("--keep-frame",
+                    action="store", type="inkbool", 
+                    dest="frame", default=False)
 
   def findLeafLayers(self, node, collection, isVisible = True):
     '''
@@ -72,6 +76,17 @@ class SpeleoWindow(SpeleoEffect):
     # Create a group object to contain our clones
     output = inkex.etree.SubElement(root, 'g')
     
+    # Copy frames if requested
+    selected = self.selected.iteritems()
+    if self.options.frame:
+      # Copy paths
+      for id, obj in selected:
+        self.safelyCopyTo(obj, output)
+      
+      # Make another group for the clones
+      output = inkex.etree.SubElement(output, 'g')
+    
+    
     # Go through all collected layers
     for (node, isVisible) in layers:
       # Skip invisible ones
@@ -91,8 +106,6 @@ class SpeleoWindow(SpeleoEffect):
       self.log("Node " + node.get("id") + " IS CLONED")
     
     # Now clip to desired shape
-
-    selected = self.selected.iteritems()
     if len(self.selected) > 0:
       
       # Create a new clipPath in defs
@@ -103,8 +116,10 @@ class SpeleoWindow(SpeleoEffect):
       });
               
       # Move all selected objects into the clipPath
+      # TODO need to untransform them!!!
+      selected = self.selected.iteritems()
       for id, obj in selected:
-        clip_path.append(obj)
+        self.safelyMoveTo(obj, clip_path)
 
       # Clip output using this clipPath
       output.set("clip-path", "url(#" + clip_path.get("id") + ")")

@@ -1,0 +1,116 @@
+Patterns for area fills
+The problem
+patterns_specific_rocks.png
+
+Rocks on cave plans come in different kinds. There is angular debris and
+pebbles. There are small rocks, large rocks and boulders. Last, but not
+least, there are specific and unspecific rocks.
+
+Suppose my cave is filled with mud all the way and has three small
+rocks sitting under a tall chimney. I would note the exact position of these
+rocks and place exactly three rock symbols on my cave map, even trying to
+draw them in proportion to their relative size and depict their shape.
+These are specific rocks - the symbol on the plan is strictly related to
+a particular rock in the cave. Probably I would not even be using the
+stock rocks. 
+
+On the other hand, if all the cave is filled with debris, I usually do not
+care about particular rocks. The rock symbols on the plan only indicate that
+there is a lot of debris and do not symbolize individual rocks that you can
+pick and compare with the symbol.
+---
+Rocks are dangerous
+patterns_dangerous_rocks.png
+
+You can cope with unspecific rocks in a couple of ways. One of them is to
+copy rock symbols around many times. It is in fact not a good way, because
+it takes a lot of time and will slow down inkscape on your drawing in the
+long run. This is because you can easily end up with hundreds of distinct
+rock objects, each with its own shape and rotation, that will take a lot of
+effort for your computer to render.
+
+Lets' do it in a better way, using pattern fills.
+---
+Mark your area
+patterns_area.png
+
+First, define a closed shape defining the area to be filled with rocks. You
+can fill it with color for the time being, to see better. 
+---
+Choose your pattern
+patterns_fillstroke.png
+
+Now go to <i>Object / Fill and stroke</i>. Select <i>Fill</i> tab and click
+on the <i>Pattern</i> icon at the top of the tab. Select <i>rocks_medium</i>
+as the filling pattern.
+---
+Adjust rock size
+patterns_size.png
+
+Suppose you actually needed smaller rocks. Activate the <i>Node</i> tool
+(press N) and select your area. Note that in addition to regular node
+handles (marked points that you can use to alter your shape), there should
+be an extra set of three handles somewhere on your canvas - a cross, a
+circle and a square. Beware, they can sometimes display in an unexpected
+place.
+
+These handles control the pattern fill. Now hold Ctrl, grab the square handle 
+and move it around. Your rocks will neatly change sizes.
+---
+Pattern stacking
+patterns_stacking.png
+
+What if in the middle of your area there is larger debris along with the
+small rocks? No problem! Draw another shape on top of the original area and
+apply pattern fill again. Adjust the inner area using Node tool, so that the
+rocks in there are bigger.
+
+---
+Density
+patterns_density.png
+
+Note that each pattern comes in three densities: sparse/medium/dense. You
+can overlay two sparse areas to get somewhere in between sparse and medium.
+---
+Outlined rocks
+patterns_outline.png
+
+As you surely noticed, the rocks have a solid fill, rather than being an
+outline with a white fill. This is because of a small disadvantage of
+pattern fills: the pattern is always sharply cut at the defining shape edges. As
+you can see on the nearby illustration, sharply cut outlines do not look
+nice.
+---
+Gray patterns
+patterns_gray.png
+
+Black, solid filled rocks can make your other symbols indistinct. Because of
+that, all of the rock patterns have a gray version. Consider using them
+instead.
+
+Unfortunately, it is difficult to specify a custom fill color for the
+pattern.
+---
+Gray rocks
+patterns_gray_rocks.png
+
+If you decide to use pattern fills and go for the filled-in rocks, you
+probably will be happy to stay consistent with this convention when placing
+specific rocks on the drawing.
+
+Obviously, it also makes more sense to just draw a couple of symbols for unspecific
+rocks in very small areas, rather than fill them with a pattern. It can be difficult
+to get your pattern right for just two, three or four rock symbols that you want
+appear in a particular place.
+
+To save time, you can simply use <i>Cave rocks - Gray</i> symbol set from  <i>Object /
+Symbols</i>. After you place a rock, rotate and scale it as you see fit.
+
+---
+Other patterns
+patterns_other.png
+
+Note that there are also patterns for filling areas with silt, clay, sand,
+gravel and pebbles. They are all used in a very similar manner. 
+
+Enjoy the patterns!

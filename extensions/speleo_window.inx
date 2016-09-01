@@ -16,6 +16,8 @@
           <item value="copy-reset">Copy and reset original</item>
 	</param>
 
+	<param name="keep-frame" type="boolean" _gui-text="Keep clipping path">1</param>
+
 	<effect>
 		<object-type>path</object-type>
 		<effects-menu>
