@@ -93,32 +93,37 @@ class SpeleoPack(SpeleoEffect):
 #      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(currentObjTr), obj)
 #      simpletransform.applyTransformToNode(objtr, obj)
 #      sys.stderr.write("Fixing2 " + obj.get("id") + " was " + str(objtr) + " is " + str(currentObjTr) + "\n")
+  def isInternalUse(self, node, idIndex):
+    if node.tag == inkex.addNS("use", "svg"):
+      # Get reference
+      href = node.get(inkex.addNS('href', 'xlink'))
+      if href[0] == "#":
+        # See if it references something inside the container - we don't apply the transform then!
+        if href[1:] in idIndex: return True
+    
+    return False
+  
         
   def applyTransformToLeafs(self, transform, node, idIndex):
     if node.tag == inkex.addNS("g", "svg"):
       # Compose the transform with what we have here
       thisTransform = SpeleoTransform.getTransform(node)
-      transform = simpletransform.composeTransform(transform, SpeleoTransform.invertTransform(thisTransform))
-      transform = simpletransform.composeTransform(thisTransform, transform)
+      transform = simpletransform.composeTransform(transform, thisTransform)
+      transform = simpletransform.composeTransform(SpeleoTransform.invertTransform(thisTransform), transform)
 
       # Not a leaf, dig deeper
       for child in node:
         self.applyTransformToLeafs(transform, child, idIndex)
     else:
       # Is it a <use> object? 
-      if node.tag == inkex.addNS("use", "svg"):
-        # Get reference
-        href = node.get(inkex.addNS('href', 'xlink'))
-        if href[0] == "#":
-          # See if it references something inside the container - we don't apply the transform then!
-          if href[1:] in idIndex:
-            # Bail out
-            sys.stderr.write(node.get("id") + " Bailing out for " + href[1:] + "\n")
-            return
-          else:
-            sys.stderr.write(node.get("id") + " keeping ref for " + href[1:] + "\n")
+      if self.isInternalUse(node, idIndex):
+        # Bail out
+        sys.stderr.write(node.get("id") + " Bailing out\n")
+        simpletransform.applyTransformToNode(transform, node)
+        return
+      else:
+        sys.stderr.write(node.get("id") + " keeping ref\n")
       
-      simpletransform.applyTransformToNode(transform, node)
 
       
   def unpackLayers(self, node, transform, idIndex):
@@ -153,8 +158,10 @@ class SpeleoPack(SpeleoEffect):
 
         return
 
-    # We can simply apply our transform and say goodbye!
-    self.applyTransformToLeafs(transform, node, idIndex)
+    if not self.isInternalUse(node, idIndex):
+      # We can simply apply our transform and say goodbye!
+      simpletransform.applyTransformToNode(transform, node)
+      self.applyTransformToLeafs(SpeleoTransform.invertTransform(transform), node, idIndex)
     
     
     # ... well, almost :( still need to search for clips and fix them accordingly
