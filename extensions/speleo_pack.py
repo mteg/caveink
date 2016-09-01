@@ -70,36 +70,28 @@ class SpeleoPack(SpeleoEffect):
     for child in node:
       self.indexUses(child, index, idIndex)
   
-  def indexById(self, node, index):
-    '''
-    Index node and its sub-nodes by id
-    '''
-    index[node.get("id")] = node
-    for i in node:
-      self.indexById(i, index)
 
-  def fixUses(self, index):
-    '''
-    Apply transforms on <use> objects to account for their referred objects movement
-    '''
-    
-    for (obj, prevTr) in index:
-      currentTr = SpeleoTransform.getTotalTransform(obj)
-      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(currentTr), obj)
-      simpletransform.applyTransformToNode(prevTr, obj)
-      sys.stderr.write("Fixing " + obj.get("id") + " was " + str(prevTr) + " is " + str(currentTr) + "\n")
+  def fixUses(self, node, index):
+    for i in node:
+      self.fixUses(i, index)
+
+    if node.tag == inkex.addNS("use", "svg"):
+      # Get reference
+      href = node.get(inkex.addNS('href', 'xlink'))
+      if href[0] == "#":
+        # See if it references something inside the container - we don't apply the transform then!
+        if href[1:] in index:
+          thatTr = index[href[1:]]
+          thisTr = SpeleoTransform.getTransform(node)
+          invTr = SpeleoTransform.invertTransform(thatTr)
+          node.set("transform", simpletransform.formatTransform(simpletransform.composeTransform(thisTr, invTr)))
+#          node.set("transform", simpletransform.formatTransform(SpeleoTransform.invertTransform(tr)) + " " + node.get("transform"))
 
 #      currentObjTr = SpeleoTransform.getTotalTransform(obj)
 #      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(currentObjTr), obj)
 #      simpletransform.applyTransformToNode(objtr, obj)
 #      sys.stderr.write("Fixing2 " + obj.get("id") + " was " + str(objtr) + " is " + str(currentObjTr) + "\n")
   def isInternalUse(self, node, idIndex):
-    if node.tag == inkex.addNS("use", "svg"):
-      # Get reference
-      href = node.get(inkex.addNS('href', 'xlink'))
-      if href[0] == "#":
-        # See if it references something inside the container - we don't apply the transform then!
-        if href[1:] in idIndex: return True
     
     return False
   
@@ -108,7 +100,7 @@ class SpeleoPack(SpeleoEffect):
     if node.tag == inkex.addNS("g", "svg"):
       # Compose the transform with what we have here
       thisTransform = SpeleoTransform.getTransform(node)
-      transform = simpletransform.composeTransform(transform, thisTransform)
+      transform = simpletransform.composeTransform(thisTransform, transform)
       transform = simpletransform.composeTransform(SpeleoTransform.invertTransform(thisTransform), transform)
 
       # Not a leaf, dig deeper
@@ -126,7 +118,7 @@ class SpeleoPack(SpeleoEffect):
       
 
       
-  def unpackLayers(self, node, transform, idIndex):
+  def unpackLayers(self, node, transform, appliedTransforms):
     '''
     Unpack a group back into layers and apply a transform accordingly
     '''
@@ -144,25 +136,25 @@ class SpeleoPack(SpeleoEffect):
         # The group could have acquired its own transform...
         layerTransform = node.get("transform")
         
+        appliedTransforms[node.get("id")] = transform
         # Transforms on regular groups are nice, but we do not want to have a transform on a layer!
         if layerTransform <> None:
           # Remove the transform
           node.attrib.pop("transform")
+          
           
           # Compose it with what we have
           transform = simpletransform.composeTransform(transform, simpletransform.parseTransform(layerTransform))
         
         # Transform all child nodes of this layer, unpacking sub-layers if there are any
         for child in node:
-          self.unpackLayers(child, transform, idIndex)
+          self.unpackLayers(child, transform, appliedTransforms)
 
         return
 
-    if not self.isInternalUse(node, idIndex):
-      # We can simply apply our transform and say goodbye!
-      simpletransform.applyTransformToNode(transform, node)
-      self.applyTransformToLeafs(SpeleoTransform.invertTransform(transform), node, idIndex)
-    
+    # We can simply apply our transform and say goodbye!
+    simpletransform.applyTransformToNode(transform, node)
+    appliedTransforms[node.get("id")] = transform
     
     # ... well, almost :( still need to search for clips and fix them accordingly
  #   try:
@@ -210,16 +202,17 @@ class SpeleoPack(SpeleoEffect):
         # Make an index of all ids
         idIndex = {}
  #       useIndex = []
-        self.indexById(node, idIndex)
+#        self.indexById(node, idIndex)
  #       self.indexUses(node, useIndex, idIndex)
-        sys.stderr.write(str(idIndex) + "\n")
+#        sys.stderr.write(str(idIndex) + "\n")
     
         # Transform the group
         self.processLayerContainer(node, root, invertedTransform, idIndex)
         
+        sys.stderr.write(str(idIndex))
+        self.fixUses(root, idIndex)
+        
         # Fix references
-#        self.fixUses(useIndex)
-#      sys.stderr.write(str(useIndex))
     else:
       # Pack layers into group
       

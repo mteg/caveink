@@ -81,10 +81,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="508.57143"
-     inkscape:cy="62.857143"
+     inkscape:cx="438.57143"
+     inkscape:cy="191.42857"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g10325"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="692"
@@ -2304,9 +2304,10 @@
       <g
          class="wasLayer"
          inkscape:label="Window"
-         id="layer2">
+         id="layer2"
+         transform="matrix(0.94032023,0.34029085,-0.34029085,0.94032023,452.17008,-25.366721)">
         <g
-           transform="translate(-206.79411,340.59473)"
+           transform="translate(-201.07982,292.0233)"
            clip-path="url(#clipPath-5-9)"
            id="g10325">
           <use
@@ -2329,7 +2330,8 @@
              y="0"
              x="0"
              xlink:href="#layer10"
-             id="use10331" />
+             id="use10331"
+             transform="matrix(0.65654315,0,0,0.65654315,60.771231,116.00165)" />
         </g>
       </g>
     </g>
