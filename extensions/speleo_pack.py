@@ -50,66 +50,45 @@ class SpeleoPack(SpeleoEffect):
     # Go deep
     for child in node:
       self.packLayers(child)
-  
-  def fixClips(self, node, root, transform):
-    '''
-    Recursively fix references to clipped paths. 
-    The clipping paths need to be moved to given root and transformed as specified.
-    '''
-    
-    sys.stderr.write("fix clips for " + str(node.get("id")) + "\n")
-    
-    if "clip-path" in node.attrib:
-      # Need to act!
-      clipper = node.get("clip-path")
-      if clipper[0] == "#":
-        clipper = self.getElementById(node.get("clip-path")[1:])
-      elif clipper[0:5] == "url(#":
-        clipper = self.getElementById(node.get("clip-path")[5:-1])
-      else:
-        clipper = None
-
-      # If it exists at all...
-      if clipper <> None:
-        # Copy to root
-        newId = self.uniqueId("clipPath")
-        newClip = self.safelyCopyTo(clipper, root)
-        newClip.set("id", newId)
-        
-        # Apply transform
-        simpletransform.applyTransformToNode(transform, newClip)
-        
-        # Set a new clip
-        node.set("clip-path", newId)
-    
-    for child in node:
-      self.fixClips(child, root, transform)
-
+      
   def indexUses(self, node, index):
     '''
+    Make an index of all <use> tags referencing anything outside <defs>
     '''
     
+    # See if it is a <use>
     if node.tag == inkex.addNS("use", "svg"):
+
+      # Get reference
       href = node.get(inkex.addNS('href', 'xlink'))
       if href[0] == "#":
+        # Find the reference
         refel = self.getElementById(href[1:])
         if refel <> None:
           # Don't bother about symbols
           if refel.getparent().tag <> "defs":
-            index.append((node, refel, SpeleoTransform.getTotalTransform(refel)))
+            # Add to list
+            index.append((node, refel, SpeleoTransform.getTotalTransform(node), SpeleoTransform.getTotalTransform(refel)))
 
+    # Dig recursively
     for child in node:
       self.indexUses(child, index)
 
   def fixUses(self, index):
     '''
+    Apply transforms on <use> objects to account for their referred objects movement
     '''
     
-    for (obj, refel, tr) in index:
-      currentTr = SpeleoTransform.getTotalTransform(refel)
-      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(tr), obj)
-      simpletransform.applyTransformToNode(currentTr, obj)
-      sys.stderr.write("was " + str(tr) + " is " + str(currentTr) + "\n")
+    for (obj, refel, objtr, reftr) in index:
+      currentRefTr = SpeleoTransform.getTotalTransform(refel)
+      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(reftr), obj)
+      simpletransform.applyTransformToNode(currentRefTr, obj)
+      sys.stderr.write("Fixing " + obj.get("id") + " was " + str(reftr) + " is " + str(currentRefTr) + "\n")
+
+#      currentObjTr = SpeleoTransform.getTotalTransform(obj)
+#      simpletransform.applyTransformToNode(SpeleoTransform.invertTransform(currentObjTr), obj)
+#      simpletransform.applyTransformToNode(objtr, obj)
+#      sys.stderr.write("Fixing2 " + obj.get("id") + " was " + str(objtr) + " is " + str(currentObjTr) + "\n")
         
   def unpackLayers(self, node, transform):
     '''
@@ -197,7 +176,7 @@ class SpeleoPack(SpeleoEffect):
         self.processLayerContainer(node, root, invertedTransform)
         
       self.fixUses(useIndex)
-      sys.stderr.write(str(useIndex))
+#      sys.stderr.write(str(useIndex))
     else:
       # Pack layers into group
       
