@@ -1,0 +1,44 @@
+Importing PocketTopo sketches into Inkscape
+File formats
+the_pockettopo.png
+
+Caveink does not read <i>top</i> files directly. In order to import a
+PocketTopo sketch, you first need to run PocketTopo and convert it into a
+Therion export file.
+
+Load your <i>top</i> file in PocketTopo and select <i>File / Export /
+Therion...</i>. Choose a file name and click <i>Save</i>.
+---
+Renaming
+the_rename.png
+
+Unfortunately, we are still not ready. Inkscape will only recognize the file
+after you <i>change its extension</i>.
+
+Go to the folder you saved the file in. The export file name should end with
+<i>.txt</i>. Rename it, so that it ends with <i>.the</i> 
+
+If you do not see the <i>.txt</i> suffix in the first place, it can indicate
+that your operating system hides the extensions from you. If you are using
+Windows, you might want to reconfigure your <i>Folder options</i>. While
+browsing files in the folder, look for a menu option to change
+<i>Folder and search options</i> (for example, in in Windows 10 it is in
+the <i>View</i> tab of the window). After opening the options window,
+go to <i>View</i> and uncheck <i>Hide extensions for known file types</i>.
+---
+Importing
+the_import.png
+
+You can now import the drawing into Inkscape by using <i>File /
+Import...</i>. Simply select the <i>.the</i> file. A window with a couple of
+options should appear. As a starting point, select <i>View: Plan</i>,
+<i>Scale 1:500</i> and <i>Station symbols: Triangles (as Markers)</i>. Tick
+<i>Draw Station names</i> and unselect <i>Draw splay shots</i>.
+
+Note that there is also an option to import Projected elevation. In
+PocketTopo you actually draw an extended profile, so it requires some
+processing. Due to geometric realities, do not expect miracles from this
+conversion - it will only work for projection planes not very off from the
+extended elevation plane.
+
+

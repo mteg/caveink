@@ -108,6 +108,7 @@ class SpeleoWindow(SpeleoEffect):
     # Now clip to desired shape
     if len(self.selected) > 0:
       
+      self.log("Clipping")
       # Create a new clipPath in defs
       defs = self.getDefs()
       clip_path = inkex.etree.SubElement(self.getDefs(), inkex.addNS("clipPath", "svg"), {
@@ -118,6 +119,7 @@ class SpeleoWindow(SpeleoEffect):
       # Move all selected objects into the clipPath
       selected = self.selected.iteritems()
       for id, obj in selected:
+        self.log("Moving " + obj.get("id") + " to clip-path")
         self.safelyMoveTo(obj, clip_path)
 
       # Clip output using this clipPath

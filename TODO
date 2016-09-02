@@ -10,3 +10,4 @@
 + fix randstones x=,y=
 + add "leave original as frame" to window.py
 + fix drawing
+- case insensitive morphing

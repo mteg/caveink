@@ -2,4 +2,112 @@ Morphing paper sketches
 Introduction
 paper_example.png
 
-Now let's trace a paper sketch
+Now let's trace a paper sketch and align it with the true centerline.
+
+First, go to <i>Layers / Layers ...</i> and create layers for this tutorial.
+We need at least three, but five will be even better. Name them in the
+following way: <i>1. Stations</i>, <i>2. Survey</i>, <i>3. Outline</i>,
+<i>4. Details</i>, <i>5. Sketch</i>.
+
+---
+Import the centerline
+paper_3d.png
+
+Select the <i>Survey</i> layer as active. Go to <i>File / Import</i>. Select
+a Survex <i>3d</i> file to import. For a start, you can use
+the file from this tutorial: <a href="other/paper2.3d">paper2.3d</i>.
+
+The import options window for 3d files should appear on your screen. Select
+your scale (<i>1:250</i> for the example files), choose <i>Plan</i>, make sure
+<i>Bearing</i> is 0. Set <i>Survey centerline: Plain line</i> and <i>Survey
+stations: Caveink groups</i>. The <i>Filter prefix</i> should be left empty.
+Uncheck <i>Annotate clones</i> and check <i>Draw scalebar</i>. Click
+<i>Ok</i>.
+
+Now we have our reference centerline in place. You should not put any other
+objects in its layer. To be certain about that, lock the layer (click on the
+padlock icon next to <i>Survey</i> in the layer list).
+---
+Import the sketch
+paper_sketch.png
+
+Now we switch to the <i>Sketch</i> layer. Again, go to <i>File / Import</i>
+and find your sketch (example: <a href="other/paper2.jpg">paper2.jpg</a>).
+
+Import options will appear. Be absolutely sure to select <i>Image import
+type: Link</i>. Click OK. 
+
+---
+Rough alignment
+paper_align.png
+
+Now rotate and scale the sketch so that it is (very) rougly aligned to the
+centerline. Make sure you always scale the image uniformly (ie. with Ctrl
+held during the scaling). 
+
+Hide the centerline (click on the eye icon in the layer list next to
+<i>Survey</i>) and lock the sketch (click the padlock icon near
+<i>Sketch</i>). Use a slider in the layer list to adjust opacity of
+the <i>Sketch</i> layer so that the sketch is faded.
+---
+Trace
+paper_trace.png
+
+Draw a clean copy of your sketch in <i>Outline</i> and <i>Details</i>. Use
+symbols, pattern fills and other Caveink features as needed.
+---
+Mark where the stations are
+paper_stations.png
+
+To morph the drawing to the real centerline, you need to tell
+Caveink where the particular stations are located on your drawing. First, 
+reduce opacity of the <i>Outline</i> and <i>Details</i> layers or hide them,
+so that they do not distract you from this task.
+
+Now Switch to <i>Stations</i> layer. Open <i>Object / Symbols</i> and select
+the <i>Cave plan</i> symbol set. Draw a surveying station symbol to your centerline.
+Place it on one of the stations marked on the sketch. 
+---
+Label and group stations with labels
+paper_group.png
+
+Label your station by using Inkscape's text tool (F8). The station name must exactly match
+the relevant name from your <i>Survey</i> layer. For example, in the example
+files all stations are in fact prepended with <i>paper2.</i> and that prefix
+must also appear in the station label.
+
+In order for the morphing to work, it is essential to have every station
+<i>groupped</i> with its label. Select both the station and the label and
+press Ctrl+G.
+--- 
+Label all stations
+paper_more.png
+
+Mark and label all the other stations on your drawing. You can simply
+duplicate the group as necessary (copy/paste or right click and <i>Duplicate</i>) and
+move the copies where the other stations are located on the sketch. To update the
+labels, switch to text tool (F8) and click on a label text to edit it.
+---
+Run the extension
+paper_morph.png
+
+Now we are ready to run the morphing extension. Make sure that in addition
+to the <i>Stations</i> layer, all the layers to be morphed are visible
+(ie. <i>Outline</i>, <i>Details</i>). You can hide the sketch though.
+
+Select the <i>Survey</i> layer as active and make it visible. It is very
+important that this layer is active while running the morphing feature.
+
+Now click <i>Extensions / Speleo / Morph to new centerline...</i>. Select
+<i>Morphing method: Nearest two stations</i>. Tick <i>Scale distances from
+stations</i> and <i>Rotate symbols</i>. Uncheck <i>Replace original
+stations</i>. Click <i>Apply</i>.
+---
+Done!
+paper_done.png
+
+Your drawing is now adjusted to the actual centerline! 
+
+Of course you will get best results with good drawings that only need little
+adjustments - ie. that are to scale and have well represented angles. Rough
+drawings will always need some reworking!

@@ -1,0 +1,86 @@
+Splitting big drawings into pages
+pages_overview.png
+
+Of course you can split big drawings into separate pages manually, even putting
+each of the pages in separate files. However, you can end up with a lot of work
+if you need to update your map - for example, add some newly discovered passages
+that span many pages. It is even worse if you prepared the pages so that they
+slightly overlap for the reader's convenience.
+
+With Caveink, you can keep working on the original drawing independently of
+the final layout and make all the pages refer to it, so that they update
+automatically as the drawing is edited.
+---
+Preparations
+pages_overview.png
+
+Before invoking Caveink functions, we need some preparations. We are going
+to keep everything in one file. Since the SVG format does not support
+multiple pages per file, we are going to completely ignore the SVG page
+area. In order not to be distracted by the page frame, go to <i>File /
+Document properties</i> and uncheck <i>Show page border</i>.
+
+---
+Layer structure
+pages_layers.png
+
+In order for this trick to work, you have to keep the original drawing in its own
+layer. Let's name it <i>Drawing</i>. This layer should not have any objects directly
+in it, but rather contain all the contents in sub-layers (such as, for example,
+<i>Outline</i>, <i>Details</i> etc.).
+
+On the other hand, we are going create a separate layer for each page that
+we want exported. The pages can be groupped together in another layer (say,
+<i>Pages</i>).
+
+If it does not sound clear, see the example file (<a href="svg/pages.svg">pages.svg</i>).
+---
+Draw a page frame
+pages_frame.png
+
+Go to the <i>Drawing</i> layer. Draw a rectangle over your drawing
+denoting what the first page should contain. You can use the controls just
+below the Inkscape menu bar to configure exact rectangle dimensions, for example
+297x210 mm (which is A4 landscape).
+ 
+Go to <i>Object / Fill and stroke</i> and style the rectangle. Remove fill completely
+and assign a plain stroke style (eg. 0.5 mm, black).
+---
+Run the extension
+pages_run.png
+
+With the rectangle selected, go to <i>Extensions / Speleo / Layer tricks /
+Make a window</i>. Select <i>Clone: Current layer</i> and <i>Layer opacity:
+Clone and keep linked</i>. Tick <i>Keep clipping path</i>. Click
+<i>Apply</i>.
+
+---
+Move to an extra layer
+pages_layer.png
+
+Move your newly created page view to make sure it worked. You should
+have a cloned section of the drawing inside your rectangle. Move it
+somewhere away from the drawing so that it does not get in the way.
+
+Now create a layer to contain this page (outside of the <i>Drawing</i>
+layer!), for example <i>Page 1</i>. With the rectangle selected,
+right click on it and select <i>Move to layer</i>. Choose  <i>Page 1</i> as
+the target layer.
+---
+Repeat for other pages
+pages_many.png
+
+Repeat for subsequent pages. Decorate your page layers with page numbers, a
+legend etc. Note that if you change anything in the <i>Drawing</i> layer,
+the contents of your pages will automatically update.
+---
+Exporting pages to PDF
+pages_export.png
+
+To export an individual page into a PDF file, simply make this page the only
+visible layer. Then select <i>File / Save a copy...</i> and choose a target
+PDF file. An options dialog will appear. Select <i>Output page size: Use
+exported object's size</i>.
+
+In a similar way, you can use <i>File / Export PNG image...</i> to export
+your pages into raster files.
