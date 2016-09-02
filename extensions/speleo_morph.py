@@ -44,7 +44,7 @@ class StationStore:
       if span.tag == inkex.addNS('tspan','svg'):
         if span.text != None: out += span.text
 
-    return out
+    return out.lower()
 
   def saveStation(self, marker, caption):
     '''

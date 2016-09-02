@@ -38,7 +38,7 @@
       $html .= "  <div>\n  <h2>$sectname</h2>\n$text\n<div class='clear'></div></div>\n";
     }
     $html .= "</div>";
-    save_html($lang, $f, $title, $html);
+    save_html($lang, $f = "tutorial_" . $f, $title, $html);
     $tutorials[] = "<a href='$f'>$title</a>";
   }
   
