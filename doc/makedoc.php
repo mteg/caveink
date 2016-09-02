@@ -46,5 +46,6 @@
   save_html($lang, "index.html", "Introduction",
     file_get_contents($dir . "/intro.html") .
     file_get_contents($dir . "/workflows.html") .
+    file_get_contents($dir . "/hints.html") .
     strtr(file_get_contents($dir . "/toc.html"), array("{{TUTORIAL_LIST}}" => implode(", ", $tutorials))));
     

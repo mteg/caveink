@@ -1,4 +1,4 @@
-caveink is a set of Inkscape extensions for drawing cave maps
+Caveink is a set of Inkscape extensions for drawing cave maps
 
 ------
 DISCLAIMER: This is an early test version! DO NOT use for any big projects. 
@@ -17,6 +17,8 @@ These extensions add the following features to Inkscape:
 - Import capability for PocketTopo "Therion export" drawings
 - Easy generation of scale bars and coordinate-annotated grids
 
+The easiest way to get familiar is to follow the installation guide and some
+preliminary tutorials at http://jaskinie.jaszczur.org/caveink-beta1/
 
 caveink has been developed from former work by myself and Thomas Holder
 (see https://github.com/mteg/inkscape-speleo)
