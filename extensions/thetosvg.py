@@ -108,22 +108,24 @@ class TheFile:
 				# Assuming it is data, depending on current file section let's process accordingly
 				if mode == "STATIONS":
 					# Station marks
-					x, y, n = l.split("\t")
+					line = l.split("\t")
+					if len(line) == 3:
+						x, y, n = line
 
-					# Add station coordinates to station set
-					drawing['sset'].append((x.strip(), y.strip()))
-					
-					# Rotate station coordinates to specified view bearing
-					x, y = self.rot(x, y)
-					
-					# Update image extent
-					self.update_extent(drawing['extent'], x, y)
+						# Add station coordinates to station set
+						drawing['sset'].append((x.strip(), y.strip()))
+						
+						# Rotate station coordinates to specified view bearing
+						x, y = self.rot(x, y)
+						
+						# Update image extent
+						self.update_extent(drawing['extent'], x, y)
 
-					# Identically named stations may be specified multiple times
-					# eg. in case there are cross-sections put on the drawing
-					n = n.strip()
-					if n not in drawing['stations']:
-						drawing['stations'][n] = (x, y)
+						# Identically named stations may be specified multiple times
+						# eg. in case there are cross-sections put on the drawing
+						n = n.strip()
+						if n not in drawing['stations']:
+							drawing['stations'][n] = (x, y)
 				elif mode == "SHOTS":
 					# Shot data, ie. coordinates defining a line
 					# either between centerline station
