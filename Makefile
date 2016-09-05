@@ -22,5 +22,6 @@ install:
 	cp extensions/*.py $(INKPATH)/extensions
 	cp extensions/*.inx $(INKPATH)/extensions
 	cp patterns/*.svg $(INKPATH)/patterns
+	cp templates/*.svg $(INKPATH)/templates
 	cp symbols/*.svg $(INKPATH)/symbols
 	cp keys/*.xml $(INKPATH)/keys

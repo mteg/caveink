@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg14245"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="cave.svg">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="405.66141"
+     inkscape:cy="402.18425"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer13"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="692"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     showborder="false"
+     showguides="false" />
+  <defs
+     id="defs14247">
+    <symbol
+       id="gradient">
+      <title
+         id="title123181">Gradient arrow</title>
+      <path
+         style="fill:#000000;stroke:none;stroke-width:0"
+         d="m 0.19701309,-7.9098426 -3.02400009,13.464 6.1200001,0 -3.09600001,-13.464 z"
+         inkscape:connector-curvature="0"
+         id="path123183" />
+    </symbol>
+    <symbol
+       id="mini-gradient">
+      <title
+         id="title123186">Mini gradient arrow</title>
+      <path
+         style="fill:#000000;stroke:none;stroke-width:0"
+         d="m 0.08155535,-3.7957054 -1.51199995,6.732 3.0599999,0 -1.54799995,-6.732 z"
+         inkscape:connector-curvature="0"
+         id="path123188" />
+    </symbol>
+    <symbol
+       id="gradarr">
+      <title
+         id="title20185">Gradient arrow (UIS)</title>
+      <path
+         style="fill:#000000;stroke:none;stroke-width:0.99212599;"
+         d="m 0,-11.637795 -3,7.9999997 6,0"
+         id="path48025" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.99212599;"
+         d="M 0,7.3622047 0,-4.5971851"
+         id="path48027" />
+    </symbol>
+    <symbol
+       id="mini-gradarr">
+      <title
+         id="title20190">Mini gradient arrow (UIS)</title>
+      <path
+         id="path47446"
+         d="m 0,-7.6377953 -2,5 4,0"
+         style="fill:#000000;stroke:none;stroke-width:0.99212599;" />
+      <path
+         id="path47988"
+         d="m 0,4.3622047 0,-8"
+         style="fill:none;stroke:#000000;stroke-width:0.35433072;" />
+    </symbol>
+    <symbol
+       id="sand">
+      <title
+         id="title123215">Sand</title>
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         id="Qsand"
+         cx="0.23171596"
+         cy="0.010030032"
+         r="0.37766555" />
+    </symbol>
+    <symbol
+       id="sands">
+      <title
+         id="title123223">More sand</title>
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="path26959-7"
+         cx="-0.69284582"
+         cy="0.51390457"
+         r="0.098647706" />
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="path26959-2"
+         cx="-0.16161157"
+         cy="-0.58555228"
+         r="0.098647706" />
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="Qsands"
+         cx="0.80771828"
+         cy="0.41727066"
+         r="0.098647706" />
+    </symbol>
+    <symbol
+       id="gravel">
+      <title
+         id="title123219">Gravel</title>
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         id="Qgravel"
+         cx="0.098329239"
+         cy="0.12958454"
+         r="0.73299789" />
+    </symbol>
+    <symbol
+       id="gravels">
+      <title
+         id="title123229">More gravel</title>
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="path26959-4-8"
+         cx="-1.3165044"
+         cy="0.33123484"
+         r="0.48045975" />
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="path26959-4-8-2"
+         cx="0.38813037"
+         cy="-1.1208683"
+         r="0.48045975" />
+      <circle
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         id="Qgravels"
+         cx="0.95633715"
+         cy="0.8994416"
+         r="0.48045975" />
+    </symbol>
+    <symbol
+       id="clay">
+      <title
+         id="title123211">Clay</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -3.2465327,-0.74014929 c 0,0 1.9553,2.36606999 3.27493005,0.625 1.31963995,-1.74107001 3.03571945,0.75893 3.03571945,0.75893"
+         id="Qclay"
+         sodipodi:nodetypes="czc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="silt">
+      <title
+         id="title20214">Silt</title>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="Qsilt"
+         d="m -1.4790024,-0.13935182 3.5154,0"
+         style="color:#000000;display:inline;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605" />
+    </symbol>
+    <symbol
+       id="guano">
+      <title
+         id="title123177">Guano</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -3.1363633,-1.8458472 c 1.63729,-1.193072 3.21904002,-0.912542 2.84329002,3.538785 0.73756,-4.108993 3.74063998,-4.298065 4.31495998,-1.97135703"
+         id="Qguano"
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="source">
+      <title
+         id="title123162">Water inlet</title>
+      <path
+         d="m -0.35811379,-0.022431 c 0,0 1.15754,-0.707388 0.78419,-1.368253 -0.37335,-0.660864 -1.53495001,-0.871165 -1.51024001,-1.62825 0.0247,-0.757085 1.68255001,-1.153227 1.71347001,-2.022723 0.0309,-0.869496 -1.41362,-1.214251 -1.44559,-2.054149 -0.032,-0.839897 1.28858,-1.577801 1.22855,-2.048283 -0.0369,-0.288781 -0.42314,-1.51044 -0.42314,-1.51044 m -3.98440601,8.139523 c 0,0 -0.32239,2.492596 3.91111601,2.492596 4.23350999,0 3.78736999,-2.492596 3.78736999,-2.492596"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path24753"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path24757"
+         d="m -1.2988238,-10.22622 2.718,-0.486 -2.646,-4.14 z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="sink">
+      <title
+         id="title123167">Water sink</title>
+      <path
+         d="m -4.1732358,-2.7037251 c 0,0 -0.32239,2.49259601 3.91112003,2.49259601 4.23350997,0 3.78736997,-2.49259601 3.78736997,-2.49259601 M -0.70295577,-16.60021 c 0,0 -1.15754003,0.707388 -0.78419003,1.368253 0.37335,0.660864 1.53495003,0.871165 1.51024003,1.62825 -0.0247,0.757085 -1.68255003,1.153227 -1.71347003,2.022723 -0.0309,0.869496 1.41362003,1.214251 1.44559003,2.0541489 0.032,0.839897 -1.28858003,1.577801 -1.22855003,2.048283 0.0369,0.288781 0.42314,1.51044 0.42314,1.51044"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path24753-5"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path24757-6"
+         d="m 0.23775423,-6.3964211 -2.71800003,0.486 2.64600003,4.14 z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="water">
+      <title
+         id="title123172">Water flow</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path24753-5-6"
+         d="m 0.05791987,6.4782525 c 0,0 -1.15753997,-0.707388 -0.78419,-1.368253 0.37335,-0.660864 1.53495,-0.871165 1.51024,-1.62825 -0.0247,-0.757085 -1.68255,-1.153227 -1.71347,-2.022723 -0.0309,-0.86949595 1.41362,-1.21425095 1.44559,-2.05414895 0.032,-0.83989705 -1.28858,-1.57780105 -1.22855,-2.04828305 0.0369,-0.288781 0.42314,-1.51044 0.42314,-1.51044"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path24757-6-3"
+         d="m 0.99862987,-3.7255365 -2.71799997,-0.486 2.64599997,-4.14 z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none" />
+    </symbol>
+    <symbol
+       id="draft">
+      <title
+         id="title123191">Draft</title>
+      <path
+         d="m 0.04106592,3.9944374 -3.84000002,3.839998 m 0,3.5671006 3.84000002,-3.8399976 0,-13.776"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path26779"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path26781"
+         d="m -1.6843341,-5.7811636 1.72540002,-0.433298 1.70659998,0.433298 -1.72799998,-4.6560004 z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="camp">
+      <title
+         id="title123196">Camp</title>
+      <path
+         d="M -4.383029,-0.55889042 -0.38302903,-10.889247 3.616971,-0.55889042 m -10,0 12,0"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path26794"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path26796"
+         d="M -0.38302903,-11.55889 2.507111,-10.2816 0.36697097,-9.0588944 Z"
+         style="color:#000000;opacity:1;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m -0.15688903,-10.6416 2.66400003,0.36 -2.26800003,0.6839996 z M -3.383029,-0.55889042 -0.38302903,-8.5588904 2.616971,-0.55889042 Z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         id="path26798"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="bones">
+      <title
+         id="title123207">Bones</title>
+      <path
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.5"
+         d="m -3.8133097,-2.0143401 c 0.44307,-0.66192 1.30081,-0.0611 1.7027,-0.34747 0.40189,-0.28634 -0.0739,-1.24955 0.6973,-1.21254 0.72465005,0.22332 0.84379005,1.80431 1.94064005,3.03120996 1.08979995,1.25514 5.14532995,2.85835004 4.84186995,4.19122004 -0.57692,0.46692 -1.62344,-0.20714 -2.01861,0.18813 -0.44727,0.23031 0.36981,1.29803 -0.6359,1.13345 -1.00574,-0.16458 -0.69089,-2.66174 -2.59199995,-3.936 -1.90111005,-1.27426004 -4.44076005,-1.88702004 -3.93600005,-3.048 z"
+         id="Qbones"
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="humanact">
+      <title
+         id="title123202">Human activity</title>
+      <circle
+         r="3.1739593"
+         cy="-0.17794935"
+         cx="-0.14094818"
+         id="path26821"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605" />
+      <path
+         d="M -0.14092327,-0.17794193 -2.3591433,2.0402781 m 5.39218,-2.21822003 -3.17395997,0 -2.21822003,-2.21821997"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path26823-6"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="stalagnate">
+      <title
+         id="title123287">Stalagnate</title>
+      <path
+         id="Qstalagnate"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 2.0268809,6.5340998 -1.99999999,-3 m -2.00000001,-9 2.00000001,3 0,6 -2.00000001,3 m 4,-12 -1.99999999,3"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="stalactite">
+      <title
+         id="title123279">Stalactite</title>
+      <path
+         id="Qstalactite"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 1.9371518,-5.69873 -1.99999997,3 m -2.00000003,-3 2.00000003,3 0,6"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="stalagmite">
+      <title
+         id="title123283">Stalagmite</title>
+      <path
+         id="Qstalagmite"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 2.1256608,3.981999 -2,-2.99999998 m -2,2.99999998 2,-2.99999998 0,-6.00000002"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="helictite">
+      <title
+         id="title123271">Helictite</title>
+      <path
+         id="Qhelictite"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -2.8873555,-5.2857593 0,6.00000003 6,0 0,5.99999997 m -3.00000003,-12 0,12"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="curtain">
+      <title
+         id="title123267">Curtain</title>
+      <path
+         id="Qcurtain"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 1.9771618,-3.5702844 -1.99999997,3.00000004 m -2.00000003,-3.00000004 2.00000003,3.00000004 0,1.99999996 c 0,0 -1.00000003,0 -1.00000003,1 0,1 1.00000003,1 1.00000003,1 l 0,2"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="sodas">
+      <title
+         id="title123291">Soda straws</title>
+      <path
+         id="Qsodas"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 6.7072691,0.32870448 0,1.99596002 m -0.85231,-1.99596002 0,3.79530002 m -2.36755,-3.79530002 0,1.71186002 m -2.39911,-1.67306002 0,2.96732002 m -1.64150003,-3.00612002 0,1.86970002 m -2.24127997,-1.86970002 0,4.33137002 m -1.98873,-4.33137002 0,1.11208002 m -1.51523,-1.11208002 0,2.78515002 m -1.2456,-2.78515002 15,0"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="disk">
+      <title
+         id="title123262">Disk</title>
+      <circle
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path27066-8"
+         cx="-0.16140349"
+         cy="-1.4028301"
+         r="1.4315381" />
+      <path
+         id="path27158"
+         d="M -1.3667536,3.1061025 -0.20604362,0.38288245 1.3118164,3.1507425"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="flowstone">
+      <title
+         id="title123258">Flowstone</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="M -2.1787521,-0.25173495 0.94624795,-1.367805 1.1694579,1.578625"
+         id="Qflowstone"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="moonmilk">
+      <title
+         id="title123254">Moonmilk</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -5.1890899,-1.2072905 c 1.33521,-2.07322 2.39429,-1.77221 3.77232,-0.37946 1.45181,-0.92849 2.76232,-1.33059 3.50446,0.98214002 1.99435,-0.84270002 3.39982,-0.64327002 3.25893,1.96428998"
+         id="Qmoonmilk"
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="crystal">
+      <title
+         id="title123275">Crystal</title>
+      <path
+         id="path27301-6-8"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 2.2575708,-3.7133361 -4.5,7.79422 m 0,-7.79422 4.5,7.79422 m -6.75,-3.89711002 9,0"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="cauliflower">
+      <title
+         id="title123295">Cauliflower</title>
+      <circle
+         cy="-4.9320254"
+         cx="-0.021177925"
+         id="path27336"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.53149605"
+         r="1.7589217" />
+      <path
+         d="m -2.0211782,0.06797828 4,0 m -1.99999997,-4.99999998 0,4.99999998"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path27340"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="cauliflowers">
+      <title
+         id="title123300">Cauliflowers</title>
+      <circle
+         r="1.7589217"
+         cy="-4.7232122"
+         cx="-4.2704525"
+         id="path27336-9"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.53149605" />
+      <circle
+         r="1.7589217"
+         cy="-4.7232122"
+         cx="0.10454761"
+         id="path27336-7"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.53149605" />
+      <circle
+         r="1.7589217"
+         cy="-4.7232122"
+         cx="4.4795475"
+         id="path27336-2"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.53149605" />
+      <path
+         d="m 4.4795462,-4.7232083 0,5.00000005 m -4.37499999,-5.00000005 0,5.00000005 m -4.37500001,-5.00000005 0,5.00000005 m -2,0 12.75,0"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path27340-7"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="xsectarrow2">
+      <title
+         id="title123249">Cross-section arrow -- part 2</title>
+      <path
+         id="path27131"
+         d="m -0.17177909,0.43572189 27.90546009,0 0,14.01587011"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27133"
+         d="m 23.713681,13.131592 4.02,1.32 4.08,-1.32 -4.05,11.04 z"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.53149605"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="veget">
+      <title
+         id="title123328">Vegetation</title>
+      <path
+         id="Qveget"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m 1.4253714,0.02772484 0.18574,-4.59628004 2.87888,-1.99636 m -4.50406003,-1.53209 0.0929,8.44971004 m -4.73624997,-8.21758004 3.66823997,3.85344 -0.60362997,4.17844004"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="tree">
+      <title
+         id="title123332">Tree</title>
+      <path
+         id="Qtree"
+         d="m -1.1588723,-0.12106789 c 1.41869298,-3.02661001 0.86353998,-7.07931001 0.59399998,-10.07728011 -0.422,-0.88875 -1.46879998,-1.32819 -2.19649998,-1.97551 -0.325,-0.1529 -0.5812,-0.64726 -0.9663,-0.5016 -1.5694,0.32802 -3.5392,0.30197 -4.649,-1.04168 -0.8183,-1.10285 0.038,-2.51772 1.0485,-3.13894 1.2394,-0.3511 -0.8421,-0.81847 -0.099,-1.64965 0.2039,-0.66595 1.4722,-0.70136 0.8181,-1.47984 -0.3381,-1.26649 1.4068,-1.68994 1.8596,-2.17633 -0.4721,-1.35041 0.9576,-2.43249 2.1807,-2.49185 0.8079,0.11454 1.3152,-0.0158 1.79739998,-0.70065 1.3252,-0.81624 3.42580002,-0.63107 4.25900002,0.79743 0.1389,0.72386 0.088,1.20509 0.9946,1.12193 1.0323,0.24663 1.8667,1.36443 1.4188,2.41956 1.0727,0.0198 2.6336,0.69855 2.3484,2.00793 -2.649858,1.36333 1.736286,3.24109 0.2569,5.40572 -1.0665,1.44408 -3.1205,1.61477 -4.7223,1.12305 -1.0923,1.07787 -2.0888,2.25978 -3.02970002,3.4724401 -0.2498,1.15174 -0.061,2.36607 -0.1184,3.54257 -0.219191,2.11028 0.79096502,5.51937001 0.55100002,5.50214001 -0.78790002,0.0285 -1.57640002,0.0231 -2.3647,0.0237 0.01,-0.061 0.012,-0.12208 0.019,-0.18309 z m 2.1685,-10.53422011 c 0.7909,-0.61989 1.4655,-1.37104 2.182,-2.07292 -1.283255,-0.88835 -2.29483102,0.0963 -2.58670002,0.2747 0.1253,0.36925 -0.1764,2.00765 0.40470002,1.79822 z m -1.50550002,-1.00921 c 0.380409,-1.93117 -0.91773598,-1.94079 -2.22699998,-1.23007 0.7089,0.37507 1.4651,1.19739 2.22699998,1.23007 z"
+         style="opacity:1;fill:#000000;stroke:none;enable-background:new"
+         sodipodi:nodetypes="cccccccccccccccccccccccccccccc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="anostomosen">
+      <title
+         id="title123320">Anostomosen</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -13.998997,4.4875308 c 0,0 0.061,2.63151 2.84105,2.33598 2.7800099,-0.29553 -0.43341,-13.30437 4.2300199,-12.81631 4.66342,0.48806 -2.12755,13.60273 2.71478,13.95273 4.84232996,0.35 0.0673,-14.45533 4.92449996,-14.079 4.85717004,0.37633 -2.19014996,13.6711 2.58851004,14.079 4.77866,0.4079 0.26701,-13.95462 4.98763,-13.57392 4.7206201,0.3807 -0.47886,12.73458 2.1465701,13.70019 2.62544,0.96561 2.71479,-1.76777 2.71479,-1.76777"
+         id="Qanastomosen"
+         sodipodi:nodetypes="czzzzzzzc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="karren">
+      <title
+         id="title123324">Karren</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -2.8365229,2.013106 1.71429,1 2.57142,-6 1.71429,1"
+         id="Qkarren"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="paleoflow">
+      <title
+         id="title123307">Paleoflow</title>
+      <path
+         id="path26781-3"
+         d="m 1.73995,7.1471605 -1.7254,0.4333 -1.7066,-0.4333 1.728,4.6559995 z"
+         style="color:#000000;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m -1.98545,-1.4195495 c 0,0 0.0893,1.99999996 2.04464,1.99999996 1.95536,0 1.95536,-1.99999996 1.95536,-1.99999996 m -2,-11.0259905 0,20.0260005"
+         style="color:#000000;display:inline;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path27456"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="scallops">
+      <title
+         id="title123312">Scallops</title>
+      <path
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -1.3467872,-0.69807292 c 0.25355,1.18728 0.61026999,2.41878002 1.27799999,3.78357002 0.66934,-1.04073 1.41996001,-1.72921 1.92600001,-3.47757002 0,0 -0.15699,-1.60608998 -1.56600001,-1.69199998 -1.40900999,-0.0859 -1.63799999,1.38599998 -1.63799999,1.38599998 z"
+         id="Qscallops"
+         sodipodi:nodetypes="ccczc"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="flutes">
+      <title
+         id="title123316">Flutes</title>
+      <path
+         id="Qflutes"
+         style="color:#000000;display:inline;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         d="m -1.428879,0.35225046 c 1.57534,2.31125004 3.1507,2.46115004 4.72604,0 m -7.08907,0 9.4521,0"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="station">
+      <title
+         id="title20316">Surveying station</title>
+      <g
+         id="g20318">
+        <path
+           d="M -1.8,1 1.8,1 0,-2 -1.8,1 z"
+           style="stroke:#000000; fill:none; stroke-width:0.4;stroke-linejoin:miter;fill-opacity:0.5"
+           id="path20320" />
+        <path
+           d="M 0,0 0,0"
+           style="stroke:#000000;fill:none;stroke-width:0.7;stroke-linecap:round"
+           id="path20322" />
+      </g>
+    </symbol>
+    <symbol
+       id="levelref">
+      <title
+         id="title123240">Level reference</title>
+      <path
+         id="Qlevelref"
+         style="color:#000000;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.53149605"
+         d="m -7.1589276,0.11376192 10.206,0 m -1.98,-0.54 1.98,-3.72600002 -3.726,0 z"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="altasl">
+      <title
+         id="title123235">Altitude ASL</title>
+      <circle
+         r="1.4315381"
+         cy="0.078313254"
+         cx="0.037127618"
+         id="path27066"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605" />
+      <path
+         d="m 1.4686608,0.07832388 2.84105,0 m -4.27258,4.27258002 0,-2.84105 m 0,-2.86307 0,-2.84105 m -4.27259,4.27258998 2.84105,0"
+         style="color:#000000;opacity:1;fill:none;stroke:#000000;stroke-width:0.53149605"
+         id="path27068-86"
+         inkscape:connector-curvature="0" />
+    </symbol>
+    <symbol
+       id="grab200a">
+      <title
+         id="title20781">Rock, a</title>
+      <path
+         style="color:#a0a0a0;opacity:1;fill:#a0a0a0;stroke:none;stroke-width:0.99212599"
+         d="m -2.7869765,-1.184483 1.42857,3.97321 4.41965,-1.65178 -0.98215,-4.19643 -3.125,-0.53571 z"
+         id="grQab200a" />
+    </symbol>
+    <symbol
+       id="grrb150a">
+      <title
+         id="title20785">Pebble, a</title>
+      <path
+         style="color:#a0a0a0;opacity:1;fill:#a0a0a0;stroke:none;stroke-width:0.99212605"
+         d="m -1.3934881,2.368912 c 1.03037992,0.0134 2.63991,-0.51827 3.20724,-1.45386997 0.83486,-1.37677 -0.22004,-3.51605003 -1.49205008,-3.13651003 -2.87952992,0.8592 -3.65504992,4.56447 -1.71518992,4.59038 z"
+         id="grQrb150a" />
+    </symbol>
+  </defs>
+  <metadata
+     id="metadata14250">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Page"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect30662"
+       width="744.09448"
+       height="1052.3622"
+       x="0.88582677"
+       y="-0.88580465" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Grid" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Grid mask" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Sketch" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Background" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Survey">
+    <g
+       inkscape:groupmode="layer"
+       id="layer8"
+       inkscape:label="Splay" />
+    <g
+       inkscape:groupmode="layer"
+       id="layer9"
+       inkscape:label="Main" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="Details" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer13"
+     inkscape:label="Insights" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer10"
+     inkscape:label="Outline" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer11"
+     inkscape:label="Remarks" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer12"
+     inkscape:label="Legend" />
+
+  <inkscape:_templateinfo>
+      <inkscape:_name>Cave Plan</inkscape:_name>
+      <inkscape:author>mteg</inkscape:author>
+      <inkscape:date>2016-09-05</inkscape:date>
+      <inkscape:_keywords>cave</inkscape:_keywords>
+  </inkscape:_templateinfo>
+
+</svg>

@@ -8,6 +8,7 @@ Distributed under the terms of the GNU General Public License v2
 
 import inkex
 import os
+import sys
 from lxml import etree
 
 from speleo import SpeleoEffect, SpeleoTransform
@@ -113,6 +114,50 @@ class SpeleoFix(SpeleoLine):
         # Make sure it's there!
         self.ensureSymbol(href[1:])
     
+  def processDefs(self, defs):
+    '''
+    Fixes references to stock patterns
+    '''
+    
+    # First pass - collect stock patterns definitions and duplicate stock patterns
+    stockPatterns = {}
+    toReplace = {}
+    for i in defs:
+      # If not a pattern, it's not interesting
+      if i.tag <> inkex.addNS("pattern", "svg"): continue
+      
+      # If not a stock pattern, it's not interesting
+      if not (inkex.addNS("stockid", "inkscape")) in i.attrib: continue
+      
+      # Get stock pattern ID
+      stockid = i.get(inkex.addNS("stockid", "inkscape"))
+      
+      # Already encountered?
+      if stockid in stockPatterns:
+        # Yes - let's get rid of it!
+        toReplace[i.get("id")] = stockPatterns[stockid]
+      else:
+        # No - insert into stock pattern dictionary
+        stockPatterns[stockid] = i.get("id")
+    
+    # Second pass - remove all garbage and replace references
+    for i in defs:
+      # If not a pattern, it's not interesting
+      if i.tag <> inkex.addNS("pattern", "svg"): continue
+      
+      # Does it reference other pattern?
+      if inkex.addNS("href", "xlink") in i.attrib:
+        # See if the reference needs replacing
+        ref = i.get(inkex.addNS("href", "xlink"))
+        if ref[1:] in toReplace:
+          i.set(inkex.addNS("href", "xlink"), "#" + toReplace[ref[1:]])
+        # Do not process further
+        continue
+      
+      # Is it on our replacement list?
+      if i.get("id") in toReplace:
+        # We do not need it any more, sorry
+        defs.remove(i)
     
   def effect(self):
     # Initialize symbol knowledge
@@ -120,6 +165,9 @@ class SpeleoFix(SpeleoLine):
     
     # Process the tree
     self.processTree(self.getRoot());
+    
+    # Process defs
+    self.processDefs(self.getDefs());
       
 if __name__ == '__main__':
   e = SpeleoFix()
