@@ -1,13 +1,13 @@
 + fix 3dtosvg interface
-- docs
++ docs
 + test cases
-- make SpeleoLine also able to fix broken lines
++ make SpeleoLine also able to fix broken lines
 + grids on rectangles rather than pages
 - xpath single throwing stupid errors/exceptions
 + clipPath translations - see what happens when packing/unpacking some content with window
 - solve overview maps (outline clipping? what about presumed dimensions...?) 
-- test under Windows
++ test under Windows
 + fix randstones x=,y=
 + add "leave original as frame" to window.py
 + fix drawing
-- case insensitive morphing
++ case insensitive morphing
