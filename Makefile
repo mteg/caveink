@@ -17,6 +17,7 @@ test:
 
 clean:
 	make -C tests clean
+	rm -f extensions/*~ extensions/*.pyc symbols/*~
 
 install:
 	cp extensions/*.py $(INKPATH)/extensions

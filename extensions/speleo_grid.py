@@ -164,6 +164,9 @@ class SpeleoGrid(SpeleoEffect):
 		if self.options.fontsize < 1:
 			self.options.fontsize = 8
 
+		xc = 0
+		yc = 0
+
 		if len(self.selected) == 0:
 			# Start at (0, 0)
 			xc = yc = 0

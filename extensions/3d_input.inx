@@ -55,6 +55,7 @@ continuous control over the scale (bearing likewise).
   <param name="filter" type="string" _gui-text="Filter Prefix"></param>
   <param name="annotate" type="boolean" _gui-text="Annotate Clones for Therion Export">true</param>
   <param name="scalebar" type="boolean" _gui-text="Draw Scalebar">true</param>
+  <param name="skip-splays" type="boolean" _gui-text="Skip splay legs">true</param>
   <!--
 	<param name="dpi" type="int" min="1" max="1200" _gui-text="DPI">90</param>
 	<param name="extend" type="string" _gui-text="Path to 'extend':">/usr/bin/extend</param>

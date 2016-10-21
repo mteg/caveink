@@ -28,6 +28,7 @@ Usage: python 3dtosvg.py [OPTIONS] FILE.3d
   --scalebar=[0,1]   1: Draw scalebar
   --annotate=[0,1]   1: Annotate for Therion Export
   --filter=prefix    Filter by label prefix and trim prefix off (TODO: implement and check therion book)
+  --skip-splays	     Do not import splay shots
 
 If you select extend view and there is a *.espec file with same
 basename as the *.3d file, it will be passed to the extend binary
@@ -44,6 +45,7 @@ Changelog:
  * 2013-11-26: Support for v8 Survex format. Now it became really filthy code!
  * 2016-08-30: Added support for station markers compatible with other caveink extensions
                Removed --marker and --stationnames in favour of --stations and --path
+ * 2016-10-19: Added support for skip-splays
 '''
 
 import sys, math, os
@@ -60,7 +62,7 @@ args = {
 	'annotate': 1,
 	'use_inkscape_label': 1,
 	'use_therion_attribs': 0,
-
+	'skip-splays': 0,
 	'filter': '',
 }
 
@@ -491,6 +493,7 @@ splay_style = [
 
 def print_path(coords):
 	if coords[0] == 'S':
+		if args['skip-splays']: return
 		s = splay_style
 		coords[0] = 'M'
 	else:
