@@ -34,6 +34,8 @@ class SpeleoWindow(SpeleoEffect):
     Recursively collects all leaf layers into a list of tuples (node, isVisible)
     '''
     
+    if node.get("id") == None: return False
+    
     self.log("Entering addVisibleLeafLayers for " + node.get("id"))
     
     # If it is not a group, it is not interesting
@@ -69,12 +71,15 @@ class SpeleoWindow(SpeleoEffect):
     # Get root node
     root = self.getRoot() if self.options.parent == "root" else self.currentLayer()
 
+    # Get current layer
+    current = self.currentLayer()
+
     # Collect all leaf layers 
     layers = []
     self.findLeafLayers(root, layers)
     
     # Create a group object to contain our clones
-    output = inkex.etree.SubElement(root, 'g')
+    output = inkex.etree.SubElement(current, 'g')
     
     # Copy frames if requested
     selected = self.selected.iteritems()
@@ -91,6 +96,7 @@ class SpeleoWindow(SpeleoEffect):
     for (node, isVisible) in layers:
       # Skip invisible ones
       if not isVisible: continue
+      if node == current: continue
       
       # Clone the layer
       clone = inkex.etree.SubElement(output, 'use', {

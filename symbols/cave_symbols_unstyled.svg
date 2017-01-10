@@ -486,14 +486,25 @@
   </symbol>
   <symbol
      
-     id="grflowstone">
+     id="grwall-calcite">
     <title
-       id="grtitle123258">Flowstone</title>
+       id="grtitle123258">Wall calcite</title>
     <path
        style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
        d="M -2.1787521,-0.25173495 0.94624795,-1.367805 1.1694579,1.578625"
        id="grQflowstone"
        inkscape:connector-curvature="0" />
+  </symbol>
+
+  <symbol 
+      id="grflowstone">
+    <title id="grtitle123999">Flowstone</title>
+    <path
+       style="color:inherit;opacity:1;fill:none;stroke:inherit;stroke-width:inherit"
+       d="m -2.4925786,0.75001973 c 0,0 1.1684599,-2.08306003 2.78449997,-2.08223003 1.61603003,8.3e-4 2.81760003,1.84007003 2.81760003,1.84007003"
+       id="grpath105580"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czc" />
   </symbol>
   <symbol
      
