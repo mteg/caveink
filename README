@@ -1,10 +1,16 @@
 Caveink is a set of Inkscape extensions for drawing cave maps
 
 ------
-DISCLAIMER: This is an early test version! DO NOT use for any big projects. 
-Feel free to do lots of testing and to contribute. Any kind of help is welcome.
+DISCLAIMER: This project is a solution for drawing medium sized cave maps,
+generally no longer than a few kilometers (if in 1:1000 or 1:500). For bigger
+projects, consider employing Therion, since they are probably going to be slow
+and painful to work on in Inkscape.
 ------
 
+------
+DISCLAIMER: This project is still a work in progress. Feel free to help with
+testing and to contribute. Any kind of help is welcome.
+------
 
 These extensions add the following features to Inkscape:
 - A library of cave map symbols following UIS conventions
@@ -18,7 +24,7 @@ These extensions add the following features to Inkscape:
 - Easy generation of scale bars and coordinate-annotated grids
 
 The easiest way to get familiar is to follow the installation guide and some
-preliminary tutorials at http://jaskinie.jaszczur.org/caveink-beta1/
+preliminary tutorials at http://jaskinie.jaszczur.org/caveink-beta3/
 
 caveink has been developed from former work by myself and Thomas Holder
 (see https://github.com/mteg/inkscape-speleo)
