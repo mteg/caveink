@@ -375,6 +375,7 @@ class SpeleoMorph(SpeleoEffect):
       node.set("d", simplepath.formatPath(path))
       
       # Remove attributes that break our efforts
+      # TODO not really compatible now with our modern dripline / step generating code
       self.removeAttrib(node, inkex.addNS("path-effect", "inkscape"))
       self.removeAttrib(node, inkex.addNS("original-d", "inkscape"))
       self.removeAttrib(node, inkex.addNS("type", "sodipodi"))

@@ -15,23 +15,6 @@ from speleo import SpeleoEffect, SpeleoTransform
 from speleo_line import SpeleoLine
 
 class SpeleoFix(SpeleoLine):
-  def scanDefs(self, file, index):
-    '''
-    Index direct children of a <defs> element in an SVG tree by their ID
-    '''
-    
-    # Find the <defs> element
-    try:
-      defs = file.xpath('/svg:svg//svg:defs', namespaces=inkex.NSS)[0]
-    except Exception: 
-      return None
-    
-    # Iterate through all direct children
-    for node in defs:
-      index[node.get("id")] = node
-    
-    return defs
-  
   def loadSymbols(self, file):
     '''
     Try loading symbols from <defs> in an external file into self.extSymbols

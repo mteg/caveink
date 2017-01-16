@@ -28,10 +28,13 @@ class SpeleoLine(SpeleoEffect):
         dest="linetype", default=1)
     self.OptionParser.add_option("--linewidth",
         action="store", type="float", 
-        dest="linewidth", default=0.5)
+        dest="linewidth", default=0.28)
     self.OptionParser.add_option("--char",
         action="store", type="string", 
         dest="char", default=1)
+    self.OptionParser.add_option("--method",
+        action="store", type="string", 
+        dest="method", default="legacy")
   
   def testFix(self, node, replaceLine = False):
     # Get children of this node
@@ -64,12 +67,35 @@ class SpeleoLine(SpeleoEffect):
           return True
     return False
   
+  def makeLinePE(self, node):
+    if node.tag != inkex.addNS("path", "svg"):
+      return False
+
+    docscale = self.getDocScale()
+      
+    if len(node.get(inkex.addNS("original-d", "inkscape"), "")) == 0:
+      node.set(inkex.addNS("original-d", "inkscape"), node.get("d"))
+      self.removeAttrib(node, inkex.addNS("d", "svg"))
+        
+    
+    node.set(inkex.addNS("path-effect", "inkscape"), "#caveink-step-effect" if self.options.char < 4 else "#caveink-drip-effect");
+
+    tr = SpeleoTransform.getTotalTransform(node)
+    this_scale = (tr[0][0] + tr[1][1]) / 2.0
+    linewidth = self.options.linewidth / this_scale * docscale
+    line_style = 'stroke:#000000;stroke-width:%.3fpx;fill:none' % linewidth
+    node.set('style', line_style)
+  
+  
   def makeLine(self, node, grp = None):
     if node.tag != inkex.addNS("path", "svg"):
       return False
 
     t = self.options.linetype
     
+    if self.options.method == "patheffect":
+      return self.makeLinePE(node)
+      
 
     tr = SpeleoTransform.getTotalTransform(node.getparent())
     parent_scale = (tr[0][0] + tr[1][1]) / 2.0
@@ -111,11 +137,57 @@ class SpeleoLine(SpeleoEffect):
     return True
   
   def effect(self):
-    self.char = ['', '!', '{', '}', '(', ')', '<', '^'][int(self.options.char)]
+    if self.options.method == "legacy":
+      self.char = ['', '!', '{', '}', '(', ')', '<', '^'][int(self.options.char)]
+    else:
+      defsIndex = {}
+      defs = self.getDefs()
+      ds = self.getDocScale()
+
+      self.scanDefs(self.document, defsIndex)
+
+      if not "caveink-step-effect" in defsIndex:
+        inkex.etree.SubElement(defs, inkex.addNS("path-effect", "inkscape"), {
+          "effect": "ruler",
+          "id": "caveink-step-effect",
+          "is_visible": "true",
+          "unit": "px",
+          "mark_distance": str(1.8 * ds),
+          "mark_length": str(0.8 * ds),
+          "minor_mark_length": str(0.8 * ds),
+          "major_mark_steps": str(5 * ds),
+          "shift": "0",
+          "offset": str(1 * ds),
+          "mark_dir": "left",
+          "border_marks": "none"
+        });
+
+      if not "caveink-drip-effect" in defsIndex:
+        inkex.etree.SubElement(defs, inkex.addNS("path-effect", "inkscape"), {
+          "effect": "skeletal",
+          "id": "caveink-drip-effect",
+          "is_visible": "true",
+#          "pattern": "M %.f,%.f H 0 M %.f,0 v %.f" % (0.70158401 * ds, 0.65146999 * ds, 0.132292 * ds, 1.30294 * ds),
+          "pattern": "M 0,0 H %f M 0,0 V %f M 0,0 V %f" % (0.6 * ds, 0.6 * ds, -0.6 * ds),
+          "copytype": "repeated_stretched",
+          "prop_scale": "1",
+          "scale_y_rel": "false",
+          "spacing": str(0.6 * ds),
+          "normal_offset": "0",
+          "tang_offset": "0",
+          "prop_units": "false",
+          "vertical_pattern": "true",
+          "fuse_tolerance": "0"
+        });
+  
     for id, node in self.selected.iteritems():
       if self.testFix(node.getparent(), True): continue
       if self.testFix(node, True): continue
-      if self.makeLine(node): continue
+      if self.options.method == "legacy":
+        if self.makeLine(node): continue
+      else:
+        if self.makeLinePE(node): continue
+        
       self.scanTree(node)
 
 if __name__ == '__main__':

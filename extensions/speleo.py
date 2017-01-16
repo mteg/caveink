@@ -174,6 +174,24 @@ class SpeleoEffect(inkex.Effect):
       defs = inkex.etree.SubElement(self.getRoot(), "defs")
     
     return defs
+
+  def scanDefs(self, file, index):
+    '''
+    Index direct children of a <defs> element in an SVG tree by their ID
+    '''
+    
+    # Find the <defs> element
+    try:
+      defs = file.xpath('/svg:svg//svg:defs', namespaces=inkex.NSS)[0]
+    except Exception: 
+      return None
+    
+    # Iterate through all direct children
+    for node in defs:
+      index[node.get("id")] = node
+    
+    return defs
+
   
   def isLayer(self, node):
     '''

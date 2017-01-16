@@ -12,6 +12,10 @@
             <item value="6">Type 3 (sloping step)</item>
             <item value="7">Type 4 (flowstone)</item>
 	</param>
+        <param name="method" type="enum" _gui-text="Output method">
+            <item value="legacy">Legacy (using SpeleoUIS font)</item>
+            <item value="effect">Path effect</item>
+	</param>
 	<param name="linetype" type="int" gui-hidden="true">2</param>
 	<effect>
 		<object-type>path</object-type>
