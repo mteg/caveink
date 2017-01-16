@@ -422,8 +422,9 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:therion="http://therion.speleo.sk/therion"
-	width="%f"
-	height="%f">
+	width="%fmm"
+	height="%fmm"
+	viewBox="0 0 %f %f">
 <sodipodi:namedview
 	inkscape:document-units="mm"
 	units="mm" />
@@ -452,6 +453,8 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 	transform="scale(%f)">
 	<!-- imported with scale 1:%d from %s -->
 """ % (
+		width / args['scale'],
+		height / args['scale'],
 		width * scale,
 		height * scale,
 		1.0 / scale,

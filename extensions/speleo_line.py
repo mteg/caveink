@@ -77,17 +77,18 @@ class SpeleoLine(SpeleoEffect):
     tr = SpeleoTransform.getTotalTransform(node)
     this_scale = (tr[0][0] + tr[1][1]) / 2.0
 
-    fontsize = self.options.fontsize / parent_scale
-    linewidth = self.options.linewidth / this_scale
-    fontstroke = self.options.fontstroke / parent_scale
+    docscale = self.getDocScale()
+    fontsize = self.options.fontsize / parent_scale * 0.352778 * docscale
+    linewidth = self.options.linewidth / this_scale * docscale
+    fontstroke = self.options.fontstroke / parent_scale * docscale
 
     if t == 1:
-      line_style = 'stroke:#000000;stroke-width:%.3fmm;fill:none' % linewidth
+      line_style = 'stroke:#000000;stroke-width:%.3fpx;fill:none' % linewidth
       text_style = 'font-size:%.3fpt' % fontsize
       text = self.char * 100 
     elif t == 2:
-      line_style = 'stroke:#000000;fill:none;stroke-width:0.5mm;stroke-opacity:0.005'
-      text_style = 'font-size:%.3fpt;stroke:#000000;stroke-width:%.3fmm' % (fontsize, fontstroke)
+      line_style = 'stroke:#000000;fill:none;stroke-width:0.5px;stroke-opacity:0.005'
+      text_style = 'font-size:%.3fpx;stroke:#000000;stroke-width:%.3fpx' % (fontsize, fontstroke)
       text = self.char * 100 
     
 

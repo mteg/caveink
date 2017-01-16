@@ -461,7 +461,7 @@ else:
 			# Reserved
 			continue
 
-# extend
+# extent
 width = max_x - min_x;
 height = max_y - min_y
 
@@ -555,8 +555,10 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:therion="http://therion.speleo.sk/therion"
-	width="%f"
-	height="%f">
+	width="%fmm"
+	height="%fmm"
+	viewBox="0 0 %f %f"
+	>
 <sodipodi:namedview
 	inkscape:document-units="mm"
 	units="mm" />
@@ -585,8 +587,10 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 	transform="scale(%f)">
 	<!-- imported with scale 1:%d from %s -->
 """ % (
-		width * scale,
-		height * scale,
+		float(width) / 100 / args["scale"] * 1000,
+		float(height) / 100 / args["scale"] * 1000,
+		float(width) * scale,
+		float(height) * scale,
 		1.0 / scale,
 		scale,
 		args['scale'],

@@ -57,11 +57,17 @@ class SpeleoTransform:
     nx = a[0][0] * pt[0] + a[0][1] * pt[1] + a[0][2]
     ny = a[1][0] * pt[0] + a[1][1] * pt[1] + a[1][2]
     return (nx, ny)
+  
 
 class SpeleoEffect(inkex.Effect):
   '''
   Generic effect class, shared by other "speleo" effects
   '''
+
+  try:
+    inkex.Effect.unittouu
+  except AttributeError:
+    unittouu = inkex.unittouu
   
   def __init__(self):
     inkex.Effect.__init__(self)
@@ -135,6 +141,24 @@ class SpeleoEffect(inkex.Effect):
     Shorthand method for getting root
     '''
     return self.document.getroot()
+ 
+  def getDocScale(self):
+    '''
+    Get scale factors to take into account
+    
+    viewbox / docsize = 35.4 = 90 / 25.4
+    '''
+    docScale = 1 / self.uutounit(1, 'mm')
+    
+    node = self.getRoot()
+    viewBox = node.get('viewBox')
+    viewBox = [float(i) for i in viewBox.split()]
+    doc_width = self.unittouu(node.get('width', viewBox[2]))
+    doc_height = self.unittouu(node.get('height', viewBox[3]))
+    
+    docScale /= (doc_width / viewBox[2] + doc_height / viewBox[3]) / 2
+    return docScale
+    
   
   def getDefs(self):
     '''

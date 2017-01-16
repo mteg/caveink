@@ -12,12 +12,12 @@ Distributed under the terms of the GNU General Public License v2
 import math
 import inkex
 import simpletransform
+import logging
 
 from speleo import SpeleoEffect, SpeleoTransform
 
 class SpeleoGrid(SpeleoEffect):
-	def __init__(self):
-		inkex.Effect.__init__(self)
+	def initOptions(self):
 		self.OptionParser.add_option("--spacing",
 				action="store", type="float", 
 				dest="spacing", default=50)
@@ -52,7 +52,11 @@ class SpeleoGrid(SpeleoEffect):
 			
 		x_center -= pos_x
 		y_center -= pos_y
-		uu_spacing = self.options.spacing / self.options.scale * 1000.0 / 25.4 * 90.0		
+		
+		uufactor = self.getDocScale()
+
+		uu_spacing = self.options.spacing / self.options.scale * 1000.0 * uufactor;		
+		
 		x_start = x_center - math.floor(x_center / uu_spacing) * uu_spacing
 		y_start = y_center - math.floor(y_center / uu_spacing) * uu_spacing
 		num_x = int(math.ceil(doc_w / uu_spacing))
@@ -69,7 +73,7 @@ class SpeleoGrid(SpeleoEffect):
 		simpletransform.applyTransformToNode(simpletransform.parseTransform("translate(%.6f, %.6f)" % (pos_x, pos_y)), g)
 
 		if self.options.coords != "none":
-			g.set('style', 'stroke:#888;fill:#888;stroke-width:0.2mm;font-size:' + str(self.options.fontsize) + 'pt;text-anchor:end;text-align:end')
+			g.set('style', 'stroke:#888;fill:#888;stroke-width:' + str(uufactor * 0.2) + 'px;font-size:' + str(self.options.fontsize * uufactor * 0.352778) + 'px;text-anchor:end;text-align:end')
 
 			cg = inkex.etree.SubElement(g, "g")
 			g = inkex.etree.SubElement(g, "g")
@@ -77,7 +81,7 @@ class SpeleoGrid(SpeleoEffect):
 			g.set('style', 'fill:none;')
 			cg.set('style', 'stroke:none;stroke-width:0')
 		else:
-			g.set('style', 'stroke:#888;fill:none;stroke-width:0.2mm')
+			g.set('style', 'stroke:#888;fill:none;stroke-width:' + str(uufactor * 0.2))
 
 
 		# Vertical lines and coordinates
@@ -93,7 +97,7 @@ class SpeleoGrid(SpeleoEffect):
 				l = inkex.etree.SubElement(cg, 'text')
 				l.text = str(int(round((x - x_center) / uu_spacing * self.options.spacing) + self.options.origin_x)) + self.options.units
 				l.set("style", "text-anchor:end;text-align:end")
-				l.set("transform", ("translate(%.2f,15)" + rot) % (x - 5))
+				l.set("transform", ("translate(%.2f,%.2f)" + rot) % (x - 1.4 * uufactor, 4.2 * uufactor))
 		
 		# Horizontal lines and coordinates
 		for y in range(0, num_y):
@@ -108,7 +112,7 @@ class SpeleoGrid(SpeleoEffect):
 				l = inkex.etree.SubElement(cg, 'text')
 				l.text = str(int(-round((y - y_center) / uu_spacing * self.options.spacing) + self.options.origin_y)) + self.options.units
 				l.set("style", "text-anchor:end;text-align:end")
-				l.set("transform", "translate(45,%.2f)" % (y - 5))
+				l.set("transform", "translate(%.2f,%.2f)" % (12.7 * uufactor, y - 1.4 * uufactor))
 
 		# Crosses, if requested
 		if self.options.type == "cross":
@@ -157,6 +161,9 @@ class SpeleoGrid(SpeleoEffect):
 	
 	
 	def effect(self):
+		# Configure logging
+		if len(self.options.debug): logging.basicConfig(level = logging.DEBUG)
+				
 		doc_w = self.unittouu(self.document.getroot().get('width'))
 		doc_h = self.unittouu(self.document.getroot().get('height'))
 		pos_x = pos_y = 0
