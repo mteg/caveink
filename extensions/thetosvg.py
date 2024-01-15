@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 help = '''
@@ -39,8 +39,8 @@ class TheFile:
 		self.shots = []
 		# List of shots between stations in form of tuples (from, to)
 
-		self.drawings = {'PLAN': {'shots': [], 'stations': {}, 'sset': [], 'lines': {}, 'extent': dict(self.ex)},
-			    'ELEVATION': {'shots': [], 'stations': {}, 'sset': [], 'lines': {}, 'extent': dict(self.ex)}}
+		self.drawings = {'PLAN': {'shots': [], 'stations': {}, 'all_stations': [], 'sset': [], 'lines': {}, 'extent': dict(self.ex)},
+			    'ELEVATION': {'shots': [], 'stations': {}, 'all_stations': [], 'sset': [], 'lines': {}, 'extent': dict(self.ex)}}
 		# Drawing structure
 		# For every drawing, it holds:
 		#  sset - List of all ORIGINAL station coordinates, as occuring in the drawing 
@@ -126,6 +126,7 @@ class TheFile:
 						n = n.strip()
 						if n not in drawing['stations']:
 							drawing['stations'][n] = (x, y)
+						drawing['all_stations'].append((n, x, y))
 				elif mode == "SHOTS":
 					# Shot data, ie. coordinates defining a line
 					# either between centerline station
@@ -422,9 +423,8 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:therion="http://therion.speleo.sk/therion"
-	width="%fmm"
-	height="%fmm"
-	viewBox="0 0 %f %f">
+	width="%f"
+	height="%f">
 <sodipodi:namedview
 	inkscape:document-units="mm"
 	units="mm" />
@@ -453,8 +453,6 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 	transform="scale(%f)">
 	<!-- imported with scale 1:%d from %s -->
 """ % (
-		width / args['scale'],
-		height / args['scale'],
 		width * scale,
 		height * scale,
 		1.0 / scale,
@@ -482,7 +480,7 @@ def print_stationnames(s):
 	Print station names
 	s - dictionary of stations (name => (x,y)) 
 	'''
-	for label, (x, y) in s.iteritems():
+	for (label, x, y) in s:
 		print '<text style="font-size: %spt;" transform="translate(%.2f,%.2f) scale(%f) translate(4,2)"' \
 			% (args["font-size"], x -extent['min-x'], -y + extent['max-y'], 1 / scale)
 		print '  >%s</text>' % (label)
@@ -535,7 +533,7 @@ print "</g>"
 # Output station names
 if args["station-names"]:
 	print "<g id='station_names'>"
-	print_stationnames(drawing["stations"])
+	print_stationnames(drawing["all_stations"])
 	print "</g>"
 
 # Output strokes (polylines)

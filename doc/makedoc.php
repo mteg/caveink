@@ -1,4 +1,4 @@
-<?
+<?php
   if(!isset($argv[1])) die("Usage: makedoc.php <lang>");
   $lang = $argv[1];
   

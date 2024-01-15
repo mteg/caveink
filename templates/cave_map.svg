@@ -1,41 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
    width="210mm"
    height="297mm"
-   viewBox="0 0 744.09448819 1052.3622047"
-   id="svg14245"
-   version="1.1"
-   inkscape:version="0.91 r"
-   sodipodi:docname="cave.svg">
+   viewBox="0 0 210 297">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="1"
+     inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="405.66141"
-     inkscape:cy="402.18425"
+     inkscape:zoom="0.35"
+     inkscape:cx="400"
+     inkscape:cy="560" 
      inkscape:document-units="mm"
-     inkscape:current-layer="layer13"
-     showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="692"
-     inkscape:window-x="0"
-     inkscape:window-y="24"
-     inkscape:window-maximized="1"
-     showborder="false"
-     showguides="false" />
+     inkscape:current-layer="layer1" />
   <defs
      id="defs14247">
     <symbol
@@ -687,10 +674,9 @@
      inkscape:label="Legend" />
 
   <inkscape:_templateinfo>
-      <inkscape:_name>Cave Plan</inkscape:_name>
+      <inkscape:_name>Cave Plan (updated)</inkscape:_name>
       <inkscape:author>mteg</inkscape:author>
-      <inkscape:date>2016-09-05</inkscape:date>
+      <inkscape:date>2018-12-23</inkscape:date>
       <inkscape:_keywords>cave</inkscape:_keywords>
   </inkscape:_templateinfo>
-
 </svg>

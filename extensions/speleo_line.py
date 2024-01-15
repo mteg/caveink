@@ -78,7 +78,7 @@ class SpeleoLine(SpeleoEffect):
       self.removeAttrib(node, inkex.addNS("d", "svg"))
         
     
-    node.set(inkex.addNS("path-effect", "inkscape"), "#caveink-step-effect" if self.options.char < 4 else "#caveink-drip-effect");
+    node.set(inkex.addNS("path-effect", "inkscape"), "#caveink-step-effect" if int(self.options.char) < 4 else "#caveink-drip-effect");
 
     tr = SpeleoTransform.getTotalTransform(node)
     this_scale = (tr[0][0] + tr[1][1]) / 2.0

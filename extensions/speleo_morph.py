@@ -362,8 +362,14 @@ class SpeleoMorph(SpeleoEffect):
           
     # If it's a path ...
     if node.tag == inkex.addNS('path','svg'):
+      # Check if it's under path effect
+      dSource = inkex.addNS("original-d", "inkscape")
+      if node.get(dSource) == None: 
+        # Transform original D
+        dSource = "d"
+
       # Parse path data
-      path = simplepath.parsePath(node.get("d"))
+      path = simplepath.parsePath(node.get(dSource))
       
       # Get absolute transform
       tr = SpeleoTransform.getTotalTransform(node)
@@ -372,14 +378,13 @@ class SpeleoMorph(SpeleoEffect):
       self.rectifyPath(path, src, dst, tr)
       
       # Re-set path data
-      node.set("d", simplepath.formatPath(path))
+      node.set(dSource, simplepath.formatPath(path))
       
-      # Remove attributes that break our efforts
-      # TODO not really compatible now with our modern dripline / step generating code
-      self.removeAttrib(node, inkex.addNS("path-effect", "inkscape"))
-      self.removeAttrib(node, inkex.addNS("original-d", "inkscape"))
-      self.removeAttrib(node, inkex.addNS("type", "sodipodi"))
-      
+      # Remove attributes that cause trouble
+      if dSource == "d":
+        self.removeAttrib(node, inkex.addNS("path-effect", "inkscape"))
+        self.removeAttrib(node, inkex.addNS("original-d", "inkscape"))
+        self.removeAttrib(node, inkex.addNS("type", "sodipodi"))      
       return
     elif node.get("x") <> None and node.tag == inkex.addNS("use", "svg"):
 
