@@ -60,7 +60,9 @@ class StationStore:
       return 1
 
     # Get absolute marker coordinates
-    coords = SpeleoTransform.transformCoords((float(marker.get("x")), float(marker.get("y"))), SpeleoTransform.getTotalTransform(marker))
+    self.log("Saving station ID = %s" % (name))
+    
+    coords = SpeleoTransform.transformCoords((float(marker.get("x") or 0), float(marker.get("y") or 0)), SpeleoTransform.getTotalTransform(marker))
     self.log("Station %s has coordinates %.2f, %.2f" % (name, coords[0], coords[1]))
     
     # Save the station
@@ -75,6 +77,8 @@ class StationStore:
     For this extension, all groups that consist of exactly one
     marker and one text element are a surveying station.
     '''
+    
+    if self.effect.hasDisplayNone(node): return False
     
     # Get children of this node
     children = node.getchildren()
@@ -144,7 +148,7 @@ class StationStore:
     self.kd = KDTree(list(self.dict.values()))
     
     # Make an index for resolving queries
-    self.stationList = self.dict.keys()
+    self.stationList = list(self.dict.keys())
 
     # Resolve references
     for idx, name in enumerate(self.stationList):
@@ -161,11 +165,12 @@ class StationStore:
           sys.stderr.write("Cannot resolve station " + name)
 
 
-  def __init__(self, layer, recursive = True):
+  def __init__(self, effect, layer, recursive = True):
     '''
     Initialize a station storage object, loading stations from an XML node
     '''
     # Reset stuff
+    self.effect = effect;
     self.dict = {}
     self.stationLayer = None
     self.prefix = None
@@ -175,11 +180,11 @@ class StationStore:
     
     
     # Did we find a prefix on the way?
-    if self.prefix <> None:
+    if self.prefix != None:
       # Need to rename everything, sorry
       old_dict = self.dict
       self.dict = {}
-      for k, v in old_dict.iteritems():
+      for k, v in old_dict.items():
         if k[:3] == "-->":
           self.dict["-->" + self.prefix + k[3:].strip()] = v
         else:
@@ -187,20 +192,20 @@ class StationStore:
 
 class SpeleoMorph(SpeleoEffect):
   def initOptions(self):
-    self.OptionParser.add_option("--replace",
-        action="store", type="inkbool", 
+    self.arg_parser.add_argument("--replace",
+        action="store", type=inkex.Boolean, 
         dest="replace", default=False)
-    self.OptionParser.add_option("--parent",
-        action="store", type="string", 
+    self.arg_parser.add_argument("--parent",
+        action="store", type=str, 
         dest="parent", default="root")
-    self.OptionParser.add_option("--mode",
-        action="store", type="string", 
+    self.arg_parser.add_argument("--mode",
+        action="store", type=str, 
         dest="mode", default="followNearestTwo")  
-    self.OptionParser.add_option("--scale",
-        action="store", type="inkbool", 
+    self.arg_parser.add_argument("--scale",
+        action="store", type=inkex.Boolean, 
         dest="scale", default=True)  
-    self.OptionParser.add_option("--rotate-symbols",
-        action="store", type="inkbool", 
+    self.arg_parser.add_argument("--rotate-symbols",
+        action="store", type=inkex.Boolean, 
         dest="rotate", default=True)  
         
   def getTransformed(self, x, y, src, dst, t, node = None):
@@ -219,7 +224,7 @@ class SpeleoMorph(SpeleoEffect):
     # ... so that we do not waste time on inverting transforms
     
     # See if we need to rotate a symbol...
-    if angle <> 0 and node <> None:
+    if angle != 0 and node != None:
       # Maybe it needs rotation!
       if node.tag == inkex.addNS("use", "svg") and self.options.rotate:
         name = node.get(inkex.addNS("href", "xlink"))[1:]
@@ -245,7 +250,7 @@ class SpeleoMorph(SpeleoEffect):
     '''
     
     # Do we already know the offset?
-    if self.goffs <> None:
+    if self.goffs != None:
       # Yes! Just apply it.
       return (gx + self.goffs[0], gy + self.goffs[1], 0)
     
@@ -268,7 +273,7 @@ class SpeleoMorph(SpeleoEffect):
     neigh = src.findDistinctClosest(gx, gy, 1)
     
     # There has to be one? Just one!
-    if len(neigh) <> 1: return (gx, gy, 0)
+    if len(neigh) != 1: return (gx, gy, 0)
     
     # Get name and distance...
     (st, dist) = neigh[0]
@@ -291,7 +296,7 @@ class SpeleoMorph(SpeleoEffect):
   def transformCoordinates_NearestTwo(self, gx, gy, src, dst):
     # Need two neighbors for this trick
     neigh = src.findDistinctClosest(gx, gy, 2)
-    if len(neigh) <> 2: return (gx, gy, 0)
+    if len(neigh) != 2: return (gx, gy, 0)
     
     # Get close and far neighbor
     (cn, cdist) = neigh[0]
@@ -369,8 +374,9 @@ class SpeleoMorph(SpeleoEffect):
         dSource = "d"
 
       # Parse path data
-      path = simplepath.parsePath(node.get(dSource))
-      
+      #path = simplepath.parsePath(node.get(dSource))
+      path = inkex.Path(node.get(dSource)).to_arrays()
+
       # Get absolute transform
       tr = SpeleoTransform.getTotalTransform(node)
       
@@ -378,15 +384,19 @@ class SpeleoMorph(SpeleoEffect):
       self.rectifyPath(path, src, dst, tr)
       
       # Re-set path data
-      node.set(dSource, simplepath.formatPath(path))
+#      node.set(dSource, simplepath.formatPath(path))
+      node.set(dSource, str(inkex.Path(path)))
       
       # Remove attributes that cause trouble
       if dSource == "d":
         self.removeAttrib(node, inkex.addNS("path-effect", "inkscape"))
         self.removeAttrib(node, inkex.addNS("original-d", "inkscape"))
         self.removeAttrib(node, inkex.addNS("type", "sodipodi"))      
+      else:
+        self.removeAttrib(node, "d")
+      
       return
-    elif node.get("x") <> None and node.tag == inkex.addNS("use", "svg"):
+    elif node.tag == inkex.addNS("use", "svg"):
 
       # Convert use coordinates to a transform
 #      node.set("transform", node.get("transform") + " translate(" + node.get('x') + "," + node.get('y') + ")")
@@ -396,11 +406,11 @@ class SpeleoMorph(SpeleoEffect):
       tr = SpeleoTransform.getTotalTransform(node)
       
       # Convert and set new coordinates
-      (x, y) = self.getTransformed(float(node.get("x")), float(node.get("y")), src, dst, tr, node)
+      (x, y) = self.getTransformed(float(node.get("x") or 0), float(node.get("y") or 0), src, dst, tr, node)
       
       node.set("x", str(x))
       node.set("y", str(y))
-    elif node.get("x") <> None:
+    elif node.get("x") != None:
       # Generic handler for nodes having x & y coordinates
       tr = SpeleoTransform.getTotalTransform(node)
       
@@ -409,7 +419,7 @@ class SpeleoMorph(SpeleoEffect):
       
       node.set("x", str(x))
       node.set("y", str(y))
-    elif node.get("cx") <> None:
+    elif node.get("cx") != None:
       # Generic handler for nodes having x & y coordinates as cx/cy
       tr = SpeleoTransform.getTotalTransform(node)
       
@@ -444,18 +454,33 @@ class SpeleoMorph(SpeleoEffect):
       # Recurse, seeing if it has any sub-layers?
       if self.findCenterlineLayers(node, list) == 0:
         # No! It's a leaf layer! Great! See if it has any stations ...
-        ss = StationStore(node)
+        ss = StationStore(self, node)
         if len(ss.dict) > 0:
           # It has - add it to our list
           list.append((node, ss))
           
     return childLayerCount
+  
+  def findLayerByName(self, parent, name):
+    for node in parent.getchildren():
+      # Not a layer? Bye!
+      if not self.isLayer(node): continue
+      
+      # Invisible? Bye!
+      if self.hasDisplayNone(node): continue
+      
+      if node.get(inkex.addNS("label", "inkscape")) == name:
+      	return node
+
+    return None
                 
   
   def effect(self):
     # Configure self.logging
     if len(self.options.debug): logging.basicConfig(level = logging.DEBUG)
-          
+    
+    logging.basicConfig(level = logging.DEBUG)
+    
     # Configure morphing method
     if self.options.mode == "followNearestTwo":
       self.transformCoordinates = self.transformCoordinates_NearestTwo
@@ -466,42 +491,26 @@ class SpeleoMorph(SpeleoEffect):
       self.transformCoordinates = self.transformCoordinates_PlainShift
 
     # Get current layer - needs to hold the target centerline
-    dst = self.currentLayer()
-    if dst == None: return
+    dst = self.findLayerByName(self.document.getroot(), "target");    
+    if dst == None:
+      self.log("Cannot find target layer")
+      return     
     self.dst = dst
 
     # Process stations from the target
-    dstStations = StationStore(dst)
+    dstStations = StationStore(self, dst)
 
-    # Find all other layers that have stations in them
-    centerLines = []
-    self.findCenterlineLayers(self.document.getroot(), centerLines)
-                
-    # Go through all of the centerlines (other than target)
-    for (src, srcStations) in centerLines:
-      # Build nearest-neighbor lookup tree
-      srcStations.buildKD()
-      
-      # TODO Huge trouble possible if two centerlines share a parent
-      
-      # Move objects referenced to this centerline
-      self.rectify(srcStations, dstStations, src.getparent(), src)
-      
-      if self.options.replace:
-        # Duplicate new centerline into old layer, if requested
-
-        # Remove all that was there
-        for ch in src:
-          src.remove(ch)
-
-        # Add copies of new cl
-        for ch in dst:
-          src.append(copy.deepcopy(ch))
-        
-        # TODO could copy only stations that are present in src!
-
+    src = self.findLayerByName(self.document.getroot(), "source");
+    if src == None:
+      self.log("Cannot find source layer")
+      return     
+    
+    srcStations = StationStore(self, src)  
+    srcStations.buildKD()
+    
+    self.rectify(srcStations, dstStations, self.document.getroot(), src)      
           
 if __name__ == '__main__':
   e = SpeleoMorph()
-  e.affect()
+  e.run()
 

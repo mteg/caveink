@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 help = '''
@@ -14,9 +14,9 @@ Usage: python thetosvg.py [OPTIONS] FILE.the
   --station-names=[0,1]  Display station names? (default: 1)
   --font-size=N      Font size in points (default: 5pt)
   --splays=[0,1]     Display splay shots (default: 1)
-  --dpi=ARG          Resolution in DPI (default 90)
+  --dpi=ARG          Resolution in DPI (default 96)
   
-Copyright (C) 2013 Mateusz Golicz
+Copyright (C) 2013, 2024 Mateusz Golicz
 Uses code from 3dtosvg, which is Copyright (C) 2008 Thomas Holder, http://sf.net/users/speleo3/
 
 Distributed under the terms of the GNU General Public License v2
@@ -63,7 +63,7 @@ class TheFile:
 		# holds the name of .the file section that is currently parsed
 
 		# Let's read the drawing file
-		f = open(infile, 'rb')
+		f = open(infile, 'r')
 
 		# For every line
 		for l in f.readlines():
@@ -315,7 +315,7 @@ class TheFile:
 					d["shots"].append((id1, id2, (x1, y1), (x2, y2)))
 			
 			# Transform lines
-			for color, line_list in drawings["ELEVATION"]["lines"].iteritems():
+			for color, line_list in drawings["ELEVATION"]["lines"].items():
 				# For every line color
 			
 				# Define the color in the new drawing
@@ -353,7 +353,7 @@ args = {
 	'view': 0,
 	'bearing': 0,
 	'markers': 1,
-	'dpi': 90,
+	'dpi': 96,
 	'station-names': 1,
 	'font-size': 5,
 	'splays': 1,
@@ -417,7 +417,7 @@ height = extent['max-y'] - extent['min-y']
 
 # Output the SVG header
 
-print """<?xml version="1.0" encoding="UTF-8"?>
+print("""<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
 	xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
 	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -459,7 +459,7 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 		scale,
 		args['scale'],
 		'file', # UTF-8 containing file names causing problems!
-	)
+	))
 
 def print_path(c):
 	'''
@@ -469,11 +469,11 @@ def print_path(c):
 	'''
 	if len(c) < 2:
 		return
-	print '<path d="',
-	print "M %.2f,%.2f" % (c[0][0] - extent['min-x'], -c[0][1] + extent['max-y']),
+	print('<path d="', end=' ')
+	print("M %.2f,%.2f" % (c[0][0] - extent['min-x'], -c[0][1] + extent['max-y']), end=' ')
 	for i in c[1:]:
-		print " L %.2f,%.2f" % (i[0] - extent['min-x'], -i[1] + extent['max-y']),
-	print '" />'
+		print(" L %.2f,%.2f" % (i[0] - extent['min-x'], -i[1] + extent['max-y']), end=' ')
+	print('" />')
 
 def print_stationnames(s):
 	'''
@@ -481,9 +481,9 @@ def print_stationnames(s):
 	s - dictionary of stations (name => (x,y)) 
 	'''
 	for (label, x, y) in s:
-		print '<text style="font-size: %spt;" transform="translate(%.2f,%.2f) scale(%f) translate(4,2)"' \
-			% (args["font-size"], x -extent['min-x'], -y + extent['max-y'], 1 / scale)
-		print '  >%s</text>' % (label)
+		print('<text style="font-size: %spt;" transform="translate(%.2f,%.2f) scale(%f) translate(4,2)"' \
+			% (args["font-size"], x -extent['min-x'], -y + extent['max-y'], 1 / scale))
+		print('  >%s</text>' % (label))
 
 
 # Prepare shots for printing
@@ -504,7 +504,7 @@ for id1, id2, s1, s2 in drawing["shots"]:
 		# Shot between station and non-station
 		shots_splay.append(shot)
 
-print "<g id='shots'>";
+print("<g id='shots'>");
 
 # Output centerline shots
 marker = {
@@ -517,31 +517,31 @@ centerline_style = ';'.join([
 	'marker-mid:' + marker,
 	'marker-end:' + marker])
 
-print "<g id='shots_centerline' style='stroke: red; stroke-width: %s; %s; %s'>" % (str(1 / scale), style, centerline_style)
-print "".join(shots_centerline)
-print "</g>"
+print("<g id='shots_centerline' style='stroke: red; stroke-width: %s; %s; %s'>" % (str(1 / scale), style, centerline_style))
+print("".join(shots_centerline))
+print("</g>")
 
 if args["splays"]:
 	# Output splay shots
-	print "<g id='shots_splay' style='stroke: #f88; stroke-width: %s; %s'>" % (str(0.5 / scale), style)
-	print "".join(shots_splay)
-	print "</g>"
+	print("<g id='shots_splay' style='stroke: #f88; stroke-width: %s; %s'>" % (str(0.5 / scale), style))
+	print("".join(shots_splay))
+	print("</g>")
 
 # End shots
-print "</g>"
+print("</g>")
 
 # Output station names
 if args["station-names"]:
-	print "<g id='station_names'>"
+	print("<g id='station_names'>")
 	print_stationnames(drawing["all_stations"])
-	print "</g>"
+	print("</g>")
 
 # Output strokes (polylines)
-for k, v in drawing["lines"].iteritems():
-	print "<g style='stroke: %s; stroke-width: %smm; %s' id='stroke_%s'>" % (k.lower(), str(0.1 / scale), style, k)
+for k, v in drawing["lines"].items():
+	print("<g style='stroke: %s; stroke-width: %smm; %s' id='stroke_%s'>" % (k.lower(), str(0.1 / scale), style, k))
 	for l in v:
 		print_path(l)
-	print "</g>"
+	print("</g>")
 
-print '</g>'
-print "</svg>"
+print('</g>')
+print("</svg>")

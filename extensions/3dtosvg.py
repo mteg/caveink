@@ -19,7 +19,7 @@ Usage: python 3dtosvg.py [OPTIONS] FILE.3d
                      'circle-marked' or 'triangle-marked'
   --stations=ARG     Control generation of stations. Use 'none', 'just-name',
                      'triangle-clones', 'labeled-triangle-clones', 'caveink-groups'
-  --dpi=ARG          Resolution in DPI (default 90)
+  --dpi=ARG          Resolution in DPI (default 96)
   --extend-cmd=ARG   The "extend" program is part of Survex and required
                      for --view=2. If it is not found inside PATH, you may
                      specify the absolute path for the binary with ARG.
@@ -46,6 +46,7 @@ Changelog:
  * 2016-08-30: Added support for station markers compatible with other caveink extensions
                Removed --marker and --stationnames in favour of --stations and --path
  * 2016-10-19: Added support for skip-splays
+ * 2024-11-04: Rewritten for inkscape 1.3, set default DPI = 96
 '''
 
 import sys, math, os
@@ -54,7 +55,7 @@ args = {
 	'scale': 100,
 	'view': 0,
 	'bearing': 0,
-	'dpi': 90,
+	'dpi': 96,
 	'extend-cmd': 'extend',
 	'scalebar': 1,
 	'stations': 'caveink-groups',
@@ -117,14 +118,14 @@ if args['view'] == 2:
 f = open(infile, 'rb')
 
 line = f.readline() # File ID
-if not line.startswith('Survex 3D Image File'):
+if not line.startswith(b'Survex 3D Image File'):
 	die("not a Survex 3D File, aborting")
 
 line = f.readline() # File format version
-assert line[0] == 'v'
+assert line.startswith(b'v')
 ff_version = int(line[1:])
 
-line = unicode(f.readline(), 'latin1') # Survex title
+line = str(f.readline(), 'latin1') # Survex title
 if line.rstrip().endswith(' (extended)'):
 	args['view'] = 2
 	args['bearing'] = 0
@@ -211,8 +212,8 @@ def read_v8label(common_flag, common_val):
 	
 	if cadd:
 		string = skip_bytes(cadd)
-		debug_3d(0, " expand label by " + str(cadd) + ": " + string)
-		curr_label += string
+#		debug_3d(0, " expand label by " + str(cadd) + ": " + string)
+		curr_label += string.decode('ascii')
 				
 
 def skip_bytes(n):
@@ -499,57 +500,57 @@ def print_path(coords):
 	else:
 		s = style
 		
-	print '<path style="%s"' % (';'.join(s))
+	print('<path style="%s"' % (';'.join(s)))
 	if args['use_therion_attribs']:
-		print '  therion:type="survey"'
+		print('  therion:type="survey"')
 	if args['use_inkscape_label']:
-		print '  inkscape:label="line survey"'
+		print('  inkscape:label="line survey"')
 	sys.stdout.write('d="')
 	for i in range(0, len(coords), 3):
 		sys.stdout.write(coords[i] + " " +
 			str(coords[i + 1] - min_x) + "," +
 			str(coords[i + 2] - min_y) + " ")
 	sys.stdout.write('"');
-	print ' />'
+	print(' />')
 
 def print_points():
 	prev = [ -1, -1 ]
-	for label,xy in labels.iteritems():
+	for label,xy in labels.items():
 		if xy == prev:
 			continue
 		label = name_survex2therion(label)
-		print '<use transform="translate(%f,%f)" xlink:href="#point-station"' \
-			% (xy[0] - min_x, xy[1] - min_y)
+		print('<use transform="translate(%f,%f)" xlink:href="#point-station"' \
+			% (xy[0] - min_x, xy[1] - min_y))
 		if args['use_therion_attribs']:
-			print '  therion:role="point" therion:type="station"'
+			print('  therion:role="point" therion:type="station"')
 		if args['use_inkscape_label']:
-			print '  inkscape:label="point station -name %s" />' % (label)
+			print('  inkscape:label="point station -name %s" />' % (label))
 		else:
-			print '  inkscape:label="%s" />' % (label)
+			print('  inkscape:label="%s" />' % (label))
 		prev = xy
 
 def print_points_in_groups():
 	prev = [ -1, -1 ]
-	for label,xy in labels.iteritems():
+	for label,xy in labels.items():
 		if xy == prev:
 			continue
-		print '<g transform="translate(%f,%f)"><use xlink:href="#point-station" />'  % (xy[0] - min_x, xy[1] - min_y)
-		print '<text x="10" y="0">%s</text></g>' % label
+		print('<g transform="translate(%f,%f)"><use xlink:href="#point-station" />'  % (xy[0] - min_x, xy[1] - min_y))
+		print('<text x="10" y="0">%s</text></g>' % label)
 		prev = xy
 
 
 def print_stationnames():
-	for label,xy in labels.iteritems():
+	for label,xy in labels.items():
 		label = label.rsplit('.', 1)[-1]
-		print '<text transform="translate(%f,%f) scale(%f) translate(4,2)"' \
-			% (xy[0] - min_x, xy[1] - min_y, args['scale'] / 50)
+		print('<text transform="translate(%f,%f) scale(%f) translate(4,2)"' \
+			% (xy[0] - min_x, xy[1] - min_y, args['scale'] / 50))
 		if args['use_therion_attribs']:
-			print '  therion:role="point" therion:type="station-name"'
+			print('  therion:role="point" therion:type="station-name"')
 		if args['use_inkscape_label']:
-			print '  inkscape:label="point station-name"'
-		print '  >%s</text>' % (label)
+			print('  inkscape:label="point station-name"')
+		print('  >%s</text>' % (label))
 
-print """<?xml version="1.0" encoding="UTF-8"?>
+print("""<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
 	xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
 	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -595,41 +596,41 @@ print """<?xml version="1.0" encoding="UTF-8"?>
 		scale,
 		args['scale'],
 		'file', # UTF-8 containing file names causing problems!
-	)
+	))
 
 def print_hierarchy(hname, h):
 	if hname != '':
 		hname += '.'
-	for k, child in h.iteritems():
+	for k, child in h.items():
 		label = hname + k
-		print "<g id='%s'>" % label
+		print("<g id='%s'>" % label)
 		if label in paths:
 			for p in paths[label]:
 				print_path(p)
 		print_hierarchy(label, child)
-		print "</g>"
+		print("</g>")
 
-if args['path'] <> 'none':	
+if args['path'] != 'none':	
 	print_hierarchy('', hierarchy)
 
 if args['stations'] == 'triangle-clones' or args['stations'] == 'labeled-triangle-clones':
 	print_points()
 	if args['stations'] == 'labeled-triangle-clones': print_stationnames()
 elif args['stations'] == 'caveink-groups':
-	print "<g style='font-size: 30px'>"
+	print("<g style='font-size: 30px'>")
 	print_points_in_groups()
-	print "</g>"
-elif args['stations'] <> 'none':
+	print("</g>")
+elif args['stations'] != 'none':
 	print_stationnames()
 
-print '</g>'
+print('</g>')
 
 if args['scalebar']:
 	try:
 		from render_scalebar import Scalebar
 		scalebar = Scalebar(args['scale'], args['dpi'])
-		print scalebar.get_xml()
+		print(scalebar.get_xml())
 	except:
-		print "<text>Scalebar import failed</text>";
+		print("<text>Scalebar import failed</text>");
 
-print "</svg>"
+print("</svg>")

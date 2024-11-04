@@ -2,13 +2,14 @@
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
 <!--
 Copyright (C) 2008 Thomas Holder, http://sf.net/users/speleo3/
+Copyright (C) 2024 Mateusz Golicz, http://jaskinie.jaszczur.org/
 Distributed under the terms of the GNU General Public License v2
 
 Import filter for Survex 3D files (*.3d)
 
 For convenience only the essential options are shown by default, but
 the commented out options will also work if you enable them. You may
-also replace the scale "enum" param with the "int" param for
+also replace the scale "optiongroup" param with the "int" param for
 continuous control over the scale (bearing likewise).
 -->
   <_name>Survex 3D Input</_name>
@@ -17,20 +18,20 @@ continuous control over the scale (bearing likewise).
   <!--
   	<param name="scale" type="int" min="1" max="25000" _gui-text="Scale (1:X)">100</param>
   -->
-  <param name="scale" type="enum" _gui-text="Scale">
-    <item value="25">1:25</item>
-    <item value="50">1:50</item>
-    <item value="100">1:100</item>
-    <item value="200">1:200</item>
-    <item value="250">1:250</item>
-    <item value="500">1:500</item>
-    <item value="1000">1:1000</item>
-    <item value="2000">1:2000</item>
-    <item value="2500">1:2500</item>
-    <item value="5000">1:5000</item>
-    <item value="10000">1:10000</item>
-    <item value="20000">1:20000</item>
-    <item value="25000">1:25000</item>
+  <param name="scale" type="optiongroup" _gui-text="Scale">
+    <option value="25">1:25</option>
+    <option value="50">1:50</option>
+    <option value="100">1:100</option>
+    <option value="200">1:200</option>
+    <option value="250">1:250</option>
+    <option value="500">1:500</option>
+    <option value="1000">1:1000</option>
+    <option value="2000">1:2000</option>
+    <option value="2500">1:2500</option>
+    <option value="5000">1:5000</option>
+    <option value="10000">1:10000</option>
+    <option value="20000">1:20000</option>
+    <option value="25000">1:25000</option>
   </param>
   <param name="view" type="optiongroup" _gui-text="View">
     <option value="0">Plan</option>
@@ -38,19 +39,19 @@ continuous control over the scale (bearing likewise).
     <option value="2">Extended elevation</option>
   </param>
   <param name="bearing" type="int" min="0" max="359" _gui-text="Bearing (degrees)">0</param>
-  <param name="path" type="enum" _gui-text="Survey centerline" gui-description="Show symbols on stations. Markers are fixed to the centerline path, whereas clones are symbols which are independant from the centerline path and are annotated with station name (for therion export).">
-    <item value="none">None</item>
-    <item value="plain">Plain line</item>
-    <item value="circle-marked">Line w/Circle markers</item>
-    <item value="triangle-marked">Line w/Triangle markers</item>
+  <param name="path" type="optiongroup" _gui-text="Survey centerline" gui-description="Show symbols on stations. Markers are fixed to the centerline path, whereas clones are symbols which are independant from the centerline path and are annotated with station name (for therion export).">
+    <option value="none">None</option>
+    <option value="plain">Plain line</option>
+    <option value="circle-marked">Line w/Circle markers</option>
+    <option value="triangle-marked">Line w/Triangle markers</option>
   </param>
 
-  <param name="stations" type="enum" _gui-text="Survey stations">
-    <item value="none">None</item>
-    <item value="just-name">Just names</item>
-    <item value="triangle-clones">Triangles (as Clones)</item>
-    <item value="labeled-triangle-clones">Triangles (as Clones) w/name</item>
-    <item value="caveink-groups">Caveink groups</item>
+  <param name="stations" type="optiongroup" _gui-text="Survey stations">
+    <option value="none">None</option>
+    <option value="just-name">Just names</option>
+    <option value="triangle-clones">Triangles (as Clones)</option>
+    <option value="labeled-triangle-clones">Triangles (as Clones) w/name</option>
+    <option value="caveink-groups">Caveink groups</option>
   </param>
   <param name="filter" type="string" _gui-text="Filter Prefix"></param>
   <param name="annotate" type="boolean" _gui-text="Annotate Clones for Therion Export">true</param>

@@ -2,18 +2,17 @@
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
 	<_name>Morph to new centerline</_name>
 	<id>speleo.misc.morph</id>
-	<dependency type="executable" location="extensions">inkex.py</dependency>
 	<dependency type="executable" location="extensions">speleo_morph.py</dependency>
 
-        <param name="mode" type="enum" _gui-text="Morphing method">
-          <item value="followNearestTwo">Nearest two stations</item>
-          <item value="keepToClosest">Nearest station</item>
-          <item value="plainShift">Quick shift</item>
+        <param name="mode" type="optiongroup" _gui-text="Morphing method">
+          <option value="followNearestTwo">Nearest two stations</option>
+          <option value="keepToClosest">Nearest station</option>
+          <option value="plainShift">Quick shift</option>
 	</param>
 
-	<param name="scale" type="boolean" _gui-text="Scale distances from stations">1</param>
-	<param name="replace" type="boolean" _gui-text="Replace original stations">1</param>
-	<param name="rotate-symbols" type="boolean" _gui-text="Rotate symbols">1</param>
+	<param name="scale" type="boolean" _gui-text="Scale distances from stations">true</param>
+	<param name="replace" type="boolean" _gui-text="Replace original stations">true</param>
+	<param name="rotate-symbols" type="boolean" _gui-text="Rotate symbols">true</param>
 
 	<effect>
 		<object-type>path</object-type>

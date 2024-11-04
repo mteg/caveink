@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ! python2 $1 $2 $3.svg > $3.out.svg; then
+if ! python3 $1 $2 $3.svg > $3.out.svg; then
 	exit 1
 fi
 	

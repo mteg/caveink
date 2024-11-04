@@ -47,8 +47,9 @@ class SpeleoTransform:
     Shorthand method that is lacking in simpletransform
     '''
     if node.tag == inkex.addNS("svg", "svg"): return SpeleoTransform.Identity
-    return simpletransform.composeParents(node, SpeleoTransform.Identity)
-
+#    return simpletransform.composeParents(node, SpeleoTransform.Identity)
+    return node.composed_transform().matrix
+    
   @staticmethod
   def transformCoords(pt, a):
     '''
@@ -71,8 +72,8 @@ class SpeleoEffect(inkex.Effect):
   
   def __init__(self):
     inkex.Effect.__init__(self)
-    self.OptionParser.add_option("--debug",
-          action="store", type="string", 
+    self.arg_parser.add_argument("--debug",
+          action="store", type=str, 
           dest="debug", default="")
     self.initOptions()
   
@@ -87,7 +88,7 @@ class SpeleoEffect(inkex.Effect):
     '''
     Get the 'nearest' true layer (ie. not a group or something)
     '''
-    layer = self.current_layer
+    layer = self.svg.get_current_layer()
     if layer == None: return self.getRoot()
     while True:
       groupmode = layer.get(inkex.addNS('groupmode', 'inkscape'))
@@ -106,7 +107,7 @@ class SpeleoEffect(inkex.Effect):
     '''
     style = node.get('style')
     if style:
-      style = simplestyle.parseStyle(style)
+      style = dict(inkex.Style.parse_str(style))
       if key in style:
         return style[key]
     return default
@@ -117,7 +118,7 @@ class SpeleoEffect(inkex.Effect):
     '''
     style = node.get('style')
     if style:
-            style = simplestyle.parseStyle(style)
+            style = dict(inkex.Style.parse_str(style))
     else:
             style = {}
     style[key] = value
